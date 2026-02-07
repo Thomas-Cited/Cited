@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { LanguageProvider } from './contexts/LanguageContext';
 import { DynamicBackground } from './components/DynamicBackground';
 import { Navigation } from './components/Navigation';
 import { Footer } from './sections/Footer';
@@ -18,6 +19,7 @@ import './App.css';
 function App() {
   return (
     <BrowserRouter>
+      <LanguageProvider>
       <div className="relative min-h-screen">
         <DynamicBackground />
         <Navigation />
@@ -39,7 +41,7 @@ function App() {
 
         {/* Floating CTA Button */}
         <a
-          href="https://calendly.com/cited-agency/15min"
+          href="https://calendly.com/vignaudthomas40/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#007AFF] text-white font-medium rounded-full shadow-lg hover:bg-[#0056CC] hover:scale-105 transition-all"
@@ -48,6 +50,7 @@ function App() {
           Book a call
         </a>
       </div>
+      </LanguageProvider>
     </BrowserRouter>
   );
 }

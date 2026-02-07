@@ -14,7 +14,7 @@ const contactMethods = [
     label: 'Book a call',
     value: 'Schedule a meeting',
     icon: Calendar,
-    href: 'https://calendly.com/cited-agency/15min',
+    href: 'https://calendly.com/vignaudthomas40/30min',
     copyable: false,
   },
 ];
