@@ -57,23 +57,18 @@ export default function GeoScore() {
       value: Math.floor(Math.random() * 100),
     }));
 
-    // Send to Formspree
+    // Send to Tally
     try {
-      await fetch('https://formspree.io/f/mvzqgyjl', {
+      const formDataToSend = new FormData();
+      formDataToSend.append('Brand name', formData.brandName);
+      formDataToSend.append('Industry', formData.industry);
+      formDataToSend.append('Website', formData.website || 'Not provided');
+      formDataToSend.append('AI Provider', activeProvider);
+      formDataToSend.append('Score', String(score));
+
+      await fetch('https://tally.so/r/0Q6Q5j', {
         method: 'POST',
-        body: JSON.stringify({
-          _subject: 'New GEO Score Analysis - Cited Agency',
-          source: 'GEO Score',
-          brandName: formData.brandName,
-          industry: formData.industry,
-          website: formData.website || 'Not provided',
-          aiProvider: activeProvider,
-          score: String(score),
-        }),
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        },
+        body: formDataToSend,
       });
     } catch {
       // Silent fail - still show results
