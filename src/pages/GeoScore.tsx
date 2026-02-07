@@ -29,7 +29,7 @@ const scoreFactors = [
   { name: 'Entity Recognition', weight: 20 },
   { name: 'Authority Signals', weight: 15 },
   { name: 'Technical Performance', weight: 10 },
-  { name: 'Multi-language Support', weight: 10 },
+  { name: 'AI-Friendly Content', weight: 10 },
 ];
 
 export default function GeoScore() {

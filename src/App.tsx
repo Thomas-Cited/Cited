@@ -12,6 +12,7 @@ import Blog from './pages/Blog';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Legal from './pages/Legal';
+import NotFound from './pages/NotFound';
 import './App.css';
 
 function App() {
@@ -31,13 +32,14 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/legal" element={<Legal />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
 
         {/* Floating CTA Button */}
         <a
-          href="https://calendly.com/vignaudthomas40/30min"
+          href="https://calendly.com/cited-agency/15min"
           target="_blank"
           rel="noopener noreferrer"
           className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#007AFF] text-white font-medium rounded-full shadow-lg hover:bg-[#0056CC] hover:scale-105 transition-all"

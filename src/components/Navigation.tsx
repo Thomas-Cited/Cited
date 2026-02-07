@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const navLinks = [
   { label: 'Home', href: '/' },
@@ -67,12 +67,9 @@ export function Navigation() {
 
             {/* Right Side */}
             <div className="flex items-center gap-4">
-              <button className="hidden sm:flex items-center gap-2 text-sm text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition-colors">
-                <Globe className="w-4 h-4" />
-              </button>
 
               <a
-                href="https://calendly.com/vignaudthomas40/30min"
+                href="https://calendly.com/cited-agency/15min"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center px-5 py-2.5 bg-[#007AFF] text-white text-sm font-medium rounded-full hover:bg-[#0056CC] transition-colors"
@@ -118,7 +115,7 @@ export function Navigation() {
                   </Link>
                 ))}
                 <a
-                  href="https://calendly.com/vignaudthomas40/30min"
+                  href="https://calendly.com/cited-agency/15min"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 px-4 py-3 bg-[#007AFF] text-white font-medium rounded-xl text-center block"
