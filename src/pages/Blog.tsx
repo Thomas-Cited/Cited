@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Clock, Tag, FileText } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
 
 const articles = [
   {
@@ -50,6 +51,34 @@ const articles = [
 const categories = ['All', 'GEO Basics', 'Technical', 'Implementation', 'Case Study', 'Industry'];
 
 export default function Blog() {
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+  const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail) return;
+
+    setIsSubscribing(true);
+    try {
+      const response = await fetch('https://formspree.io/f/mvzqgyjl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email: newsletterEmail,
+          source: 'Newsletter',
+        }),
+      });
+      if (response.ok) {
+        setIsSubscribed(true);
+      }
+    } catch {
+      // Silent fail
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
+
   return (
     <div className="pt-24">
       {/* Hero */}
@@ -171,19 +200,37 @@ export default function Blog() {
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">Stay updated</h2>
           <p className="text-[#1d1d1f]/50 mb-8">Get the latest GEO insights delivered to your inbox.</p>
-          <form className="flex flex-col sm:flex-row gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-6 py-4 bg-white border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20"
-            />
-            <button
-              type="submit"
-              className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all"
-            >
-              Subscribe
-            </button>
-          </form>
+          {isSubscribed ? (
+            <div className="flex items-center justify-center gap-3 py-4 px-6 bg-[#34C759]/10 rounded-xl">
+              <Check className="w-5 h-5 text-[#34C759]" />
+              <span className="text-[#34C759] font-medium">Thanks for subscribing!</span>
+            </div>
+          ) : (
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
+              <input
+                type="email"
+                value={newsletterEmail}
+                onChange={(e) => setNewsletterEmail(e.target.value)}
+                placeholder="Enter your email"
+                className="flex-1 px-6 py-4 bg-white border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20"
+                required
+              />
+              <button
+                type="submit"
+                disabled={isSubscribing}
+                className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isSubscribing ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Subscribing...
+                  </>
+                ) : (
+                  'Subscribe'
+                )}
+              </button>
+            </form>
+          )}
         </div>
       </section>
     </div>

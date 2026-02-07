@@ -87,10 +87,26 @@ export default function SchemaAudit() {
 
   const handleEmailReport = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    // Simulate sending
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    setEmailSent(true);
+    if (!email || !result) return;
+
+    try {
+      const response = await fetch('https://formspree.io/f/mvzqgyjl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          source: 'Schema Audit Report',
+          url,
+          score: result.score,
+          schemasFound: result.schemasFound.join(', '),
+        }),
+      });
+      if (response.ok) {
+        setEmailSent(true);
+      }
+    } catch {
+      // Silent fail
+    }
   };
 
   return (

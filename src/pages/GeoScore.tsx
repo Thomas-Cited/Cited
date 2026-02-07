@@ -49,18 +49,33 @@ export default function GeoScore() {
     if (!formData.brandName || !formData.industry) return;
 
     setLoading(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Generate random score for demo
     const score = Math.floor(Math.random() * 60) + 20;
-    setResult({
-      score,
-      factors: scoreFactors.map(f => ({
-        ...f,
-        value: Math.floor(Math.random() * 100),
-      })),
-    });
+    const factors = scoreFactors.map(f => ({
+      ...f,
+      value: Math.floor(Math.random() * 100),
+    }));
+
+    // Send to Formspree
+    try {
+      await fetch('https://formspree.io/f/mvzqgyjl', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'GEO Score',
+          brandName: formData.brandName,
+          industry: formData.industry,
+          website: formData.website || 'Not provided',
+          aiProvider: activeProvider,
+          score,
+        }),
+      });
+    } catch {
+      // Silent fail - still show results
+    }
+
+    setResult({ score, factors });
     setLoading(false);
   };
 

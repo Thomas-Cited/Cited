@@ -10,8 +10,8 @@ const budgetOptions = [
 ];
 
 const contactMethods = [
-  { icon: Mail, label: 'Email', value: 'contact@citedagency.com', href: 'mailto:contact@citedagency.com' },
-  { icon: MessageSquare, label: 'Book a call', value: 'Schedule 30 min', href: 'https://calendly.com/vignaudthomas40/30min' },
+  { icon: Mail, label: 'Email', value: 'contact@citedagency.com', href: 'mailto:contact@citedagency.com', external: false },
+  { icon: MessageSquare, label: 'Book a call', value: 'Schedule 30 min', href: 'https://calendly.com/vignaudthomas40/30min', external: true },
 ];
 
 export default function Contact() {
@@ -26,12 +26,39 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [error, setError] = useState('');
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+    setError('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mvzqgyjl', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          website: formData.website,
+          budget: formData.budget,
+          goal: formData.goal,
+        }),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        setError('Something went wrong. Please try again.');
+      }
+    } catch {
+      setError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -243,6 +270,10 @@ export default function Contact() {
                       </>
                     )}
                   </button>
+
+                  {error && (
+                    <p className="text-center text-sm text-[#FF3B30]">{error}</p>
+                  )}
                 </form>
               </>
             )}
