@@ -59,19 +59,20 @@ export default function GeoScore() {
 
     // Send to Formspree
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('source', 'GEO Score');
-      formDataToSend.append('brandName', formData.brandName);
-      formDataToSend.append('industry', formData.industry);
-      formDataToSend.append('website', formData.website || 'Not provided');
-      formDataToSend.append('aiProvider', activeProvider);
-      formDataToSend.append('score', String(score));
-
       await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
-        body: formDataToSend,
+        body: JSON.stringify({
+          _subject: 'New GEO Score Analysis - Cited Agency',
+          source: 'GEO Score',
+          brandName: formData.brandName,
+          industry: formData.industry,
+          website: formData.website || 'Not provided',
+          aiProvider: activeProvider,
+          score: String(score),
+        }),
         headers: {
           'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
     } catch {

@@ -53,27 +53,30 @@ export default function Contact() {
     setError('');
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('source', 'Contact Form');
-      formDataToSend.append('firstName', formData.firstName);
-      formDataToSend.append('lastName', formData.lastName);
-      formDataToSend.append('email', formData.email);
-      formDataToSend.append('website', formData.website);
-      formDataToSend.append('budget', formData.budget);
-      formDataToSend.append('goal', formData.goal);
-
       const response = await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
-        body: formDataToSend,
+        body: JSON.stringify({
+          _subject: 'New Contact Form Submission - Cited Agency',
+          source: 'Contact Form',
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          website: formData.website,
+          budget: formData.budget,
+          goal: formData.goal,
+        }),
         headers: {
           'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
+
+      const result = await response.json();
 
       if (response.ok) {
         setIsSubmitted(true);
       } else {
-        setError('Something went wrong. Please try again.');
+        setError(result.error || 'Something went wrong. Please try again.');
       }
     } catch {
       setError('Network error. Please try again.');

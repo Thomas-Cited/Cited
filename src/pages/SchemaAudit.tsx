@@ -90,18 +90,19 @@ export default function SchemaAudit() {
     if (!email || !result) return;
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('source', 'Schema Audit Report');
-      formDataToSend.append('email', email);
-      formDataToSend.append('url', url);
-      formDataToSend.append('score', String(result.score));
-      formDataToSend.append('schemasFound', result.schemasFound.join(', '));
-
       const response = await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
-        body: formDataToSend,
+        body: JSON.stringify({
+          _subject: 'New Schema Audit Report Request - Cited Agency',
+          source: 'Schema Audit Report',
+          email: email,
+          url: url,
+          score: String(result.score),
+          schemasFound: result.schemasFound.join(', '),
+        }),
         headers: {
           'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       if (response.ok) {

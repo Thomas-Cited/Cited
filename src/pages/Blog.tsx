@@ -61,15 +61,16 @@ export default function Blog() {
 
     setIsSubscribing(true);
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('source', 'Newsletter');
-      formDataToSend.append('email', newsletterEmail);
-
       const response = await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
-        body: formDataToSend,
+        body: JSON.stringify({
+          _subject: 'New Newsletter Subscription - Cited Agency',
+          source: 'Newsletter',
+          email: newsletterEmail,
+        }),
         headers: {
           'Accept': 'application/json',
+          'Content-Type': 'application/json',
         },
       });
       if (response.ok) {
