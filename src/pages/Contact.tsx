@@ -1,17 +1,29 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
-import { Send, User, Mail, Globe, DollarSign, Target, MessageSquare, Check, Loader2 } from 'lucide-react';
+import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
+
+const contactMethods = [
+  {
+    label: 'Email',
+    value: 'contact@citedagency.com',
+    icon: Mail,
+    href: '#',
+    copyable: true,
+  },
+  {
+    label: 'Book a call',
+    value: 'Schedule a meeting',
+    icon: Calendar,
+    href: 'https://calendly.com/cited-agency/15min',
+    copyable: false,
+  },
+];
 
 const budgetOptions = [
   'Select...',
   'Starter — $2,000 + $450/mo',
   'Growth — $4,000 + $600/mo',
   'Custom — from $6,000',
-];
-
-const contactMethods = [
-  { icon: Mail, label: 'Email', value: 'contact@citedagency.com', href: 'mailto:contact@citedagency.com', external: false },
-  { icon: MessageSquare, label: 'Book a call', value: 'Schedule 30 min', href: 'https://calendly.com/vignaudthomas40/30min', external: true },
 ];
 
 export default function Contact() {
@@ -27,6 +39,13 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const [error, setError] = useState('');
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText('contact@citedagency.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,23 +112,50 @@ export default function Contact() {
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {contactMethods.map((method, index) => (
-              <motion.a
+              <motion.div
                 key={index}
-                href={method.href}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="apple-card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow"
               >
-                <div className="w-12 h-12 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
-                  <method.icon className="w-6 h-6 text-[#007AFF]" />
-                </div>
-                <div>
-                  <p className="text-sm text-[#1d1d1f]/50">{method.label}</p>
-                  <p className="font-semibold text-[#1d1d1f]">{method.value}</p>
-                </div>
-              </motion.a>
+                {method.copyable ? (
+                  <button
+                    onClick={copyEmail}
+                    className="w-full apple-card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow text-left"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
+                      {emailCopied ? (
+                        <Check className="w-6 h-6 text-[#34C759]" />
+                      ) : (
+                        <method.icon className="w-6 h-6 text-[#007AFF]" />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm text-[#1d1d1f]/50">{method.label}</p>
+                      <p className="font-semibold text-[#1d1d1f]">
+                        {emailCopied ? 'Email copied!' : method.value}
+                      </p>
+                    </div>
+                    <Copy className="w-5 h-5 text-[#1d1d1f]/30" />
+                  </button>
+                ) : (
+                  <a
+                    href={method.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="apple-card p-6 flex items-center gap-4 hover:shadow-lg transition-shadow"
+                  >
+                    <div className="w-12 h-12 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
+                      <method.icon className="w-6 h-6 text-[#007AFF]" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-[#1d1d1f]/50">{method.label}</p>
+                      <p className="font-semibold text-[#1d1d1f]">{method.value}</p>
+                    </div>
+                  </a>
+                )}
+              </motion.div>
             ))}
           </div>
         </div>
