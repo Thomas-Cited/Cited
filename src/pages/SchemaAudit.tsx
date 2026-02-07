@@ -59,30 +59,47 @@ export default function SchemaAudit() {
     setResult(null);
     setCurrentStep(0);
 
-    // Simulate analysis steps
-    for (let i = 0; i < analysisSteps.length; i++) {
-      setCurrentStep(i);
-      await new Promise(resolve => setTimeout(resolve, 800));
+    try {
+      // Start progress animation
+      const progressInterval = setInterval(() => {
+        setCurrentStep(prev => (prev < analysisSteps.length - 1 ? prev + 1 : prev));
+      }, 1000);
+
+      // Call the real API
+      const response = await fetch(`https://schema-audit-api.vignaudthomas40.workers.dev?url=${encodeURIComponent(url)}`);
+
+      clearInterval(progressInterval);
+      setCurrentStep(analysisSteps.length - 1);
+
+      if (!response.ok) {
+        throw new Error('Analysis failed');
+      }
+
+      const data = await response.json();
+
+      setResult({
+        score: data.score,
+        schemasFound: data.schemasFound || [],
+        issues: data.issues?.map((issue: { type: string; message: string; severity?: string }) => ({
+          type: issue.severity === 'high' ? 'missing' : 'warning',
+          message: issue.message,
+        })) || [],
+      });
+    } catch (error) {
+      // Fallback to demo if API fails
+      const schemasFound = ['Organization', 'WebSite', 'WebPage'];
+      const score = Math.floor(Math.random() * 40) + 30;
+
+      setResult({
+        score,
+        schemasFound,
+        issues: [
+          { type: 'warning', message: 'Could not analyze URL - showing demo results' },
+        ],
+      });
+    } finally {
+      setIsAnalyzing(false);
     }
-
-    // Generate demo result
-    const schemasFound = ['Organization', 'WebSite', 'WebPage'];
-    const score = Math.floor(Math.random() * 40) + 30;
-
-    if (Math.random() > 0.5) schemasFound.push('Article');
-    if (Math.random() > 0.7) schemasFound.push('FAQPage');
-
-    setResult({
-      score,
-      schemasFound,
-      issues: [
-        { type: 'missing', message: 'No Product schema detected' },
-        { type: 'missing', message: 'No BreadcrumbList schema' },
-        { type: 'warning', message: 'Organization schema missing logo property' },
-        { type: 'warning', message: 'WebPage schema missing dateModified' },
-      ],
-    });
-    setIsAnalyzing(false);
   };
 
   const handleEmailReport = async (e: React.FormEvent) => {
