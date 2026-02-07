@@ -59,17 +59,20 @@ export default function GeoScore() {
 
     // Send to Formspree
     try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('source', 'GEO Score');
+      formDataToSend.append('brandName', formData.brandName);
+      formDataToSend.append('industry', formData.industry);
+      formDataToSend.append('website', formData.website || 'Not provided');
+      formDataToSend.append('aiProvider', activeProvider);
+      formDataToSend.append('score', String(score));
+
       await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          source: 'GEO Score',
-          brandName: formData.brandName,
-          industry: formData.industry,
-          website: formData.website || 'Not provided',
-          aiProvider: activeProvider,
-          score,
-        }),
+        body: formDataToSend,
+        headers: {
+          'Accept': 'application/json',
+        },
       });
     } catch {
       // Silent fail - still show results

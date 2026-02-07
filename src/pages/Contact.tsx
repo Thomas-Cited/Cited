@@ -34,19 +34,21 @@ export default function Contact() {
     setError('');
 
     try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('source', 'Contact Form');
+      formDataToSend.append('firstName', formData.firstName);
+      formDataToSend.append('lastName', formData.lastName);
+      formDataToSend.append('email', formData.email);
+      formDataToSend.append('website', formData.website);
+      formDataToSend.append('budget', formData.budget);
+      formDataToSend.append('goal', formData.goal);
+
       const response = await fetch('https://formspree.io/f/mvzqgyjl', {
         method: 'POST',
+        body: formDataToSend,
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          website: formData.website,
-          budget: formData.budget,
-          goal: formData.goal,
-        }),
       });
 
       if (response.ok) {
