@@ -1,14 +1,16 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Home() {
+  const { t } = useLanguage();
+
   return (
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-6 overflow-hidden">
         <div className="relative z-10 max-w-5xl mx-auto text-center">
-          {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -16,30 +18,27 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-[#f5f5f7] rounded-full"
           >
             <span className="w-2 h-2 bg-[#007AFF] rounded-full" />
-            <span className="text-sm text-[#1d1d1f]/70">GEO Agency — Generative Engine Optimization</span>
+            <span className="text-sm text-[#1d1d1f]/70">{t('hero.badge')}</span>
           </motion.div>
 
-          {/* Main Title - PLUS GRAS */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-6xl sm:text-7xl md:text-8xl font-bold mb-8 leading-[1.1] tracking-tight text-[#1d1d1f]"
           >
-            Get <span className="gradient-text">cited</span> by<br />AI engines.
+            {t('hero.title')}<span className="gradient-text">{t('hero.titleHighlight')}</span>{t('hero.titleEnd')}<br />{t('hero.titleEnd2')}
           </motion.h1>
 
-          {/* Subtitle */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-xl md:text-2xl text-[#1d1d1f]/60 max-w-2xl mx-auto mb-12 leading-relaxed"
           >
-            We optimize your visibility in ChatGPT, Perplexity and Google AI to generate qualified leads without relying on advertising.
+            {t('hero.subtitle')}
           </motion.p>
 
-          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -50,7 +49,7 @@ export default function Home() {
               to="/geo-score"
               className="group flex items-center gap-2 px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all"
             >
-              Test your score
+              {t('hero.cta')}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-0.5 transition-transform" />
             </Link>
 
@@ -59,11 +58,10 @@ export default function Home() {
               className="flex items-center gap-2 px-8 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-full hover:bg-[#e8e8ed] transition-all"
             >
               <MessageCircle className="w-5 h-5" />
-              Talk to an expert
+              {t('hero.ctaSecondary')}
             </Link>
           </motion.div>
 
-          {/* Stats Preview */}
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -71,9 +69,9 @@ export default function Home() {
             className="mt-24 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto"
           >
             {[
-              { value: '40%', label: 'AI searches', color: '#007AFF' },
-              { value: '200M+', label: 'ChatGPT users', color: '#5856D6' },
-              { value: '8x', label: 'Average ROI', color: '#AF52DE' },
+              { value: t('hero.stat1Value'), label: t('hero.stat1Label'), color: '#007AFF' },
+              { value: t('hero.stat2Value'), label: t('hero.stat2Label'), color: '#5856D6' },
+              { value: t('hero.stat3Value'), label: t('hero.stat3Label'), color: '#AF52DE' },
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -91,29 +89,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
       <StatsSection />
-
-      {/* Services Preview */}
       <ServicesPreview />
-
-      {/* Process Section */}
       <ProcessSection />
-
-      {/* Results Section */}
       <ResultsSection />
-
-      {/* CTA Section */}
       <CTASection />
     </>
   );
 }
 
 function StatsSection() {
+  const { t } = useLanguage();
+
   const stats = [
-    { icon: Eye, value: '0%', label: 'Current AI visibility', desc: 'Most websites never appear in ChatGPT or Perplexity answers.', color: '#007AFF', negative: true },
-    { icon: TrendingDown, value: '30%', label: 'Organic clicks', desc: "Google's AI Overviews drastically reduce clicks to websites.", color: '#FF3B30', negative: true },
-    { icon: Users, value: '200M', label: 'ChatGPT users', desc: 'A massive market looking for recommendations. Are you recommended?', color: '#5856D6', negative: false },
+    { icon: Eye, value: t('stats.stat1Value'), label: t('stats.stat1Label'), desc: t('stats.stat1Desc'), color: '#007AFF', negative: true },
+    { icon: TrendingDown, value: t('stats.stat2Value'), label: t('stats.stat2Label'), desc: t('stats.stat2Desc'), color: '#FF3B30', negative: true },
+    { icon: Users, value: t('stats.stat3Value'), label: t('stats.stat3Label'), desc: t('stats.stat3Desc'), color: '#5856D6', negative: false },
   ];
 
   return (
@@ -121,10 +112,10 @@ function StatsSection() {
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            Traditional SEO is no longer enough.
+            {t('stats.title')}
           </h2>
           <p className="text-lg text-[#1d1d1f]/50 max-w-2xl mx-auto">
-            40% of searches now go through AI. If you don't appear in their answers, you're invisible.
+            {t('stats.subtitle')}
           </p>
         </div>
 
@@ -152,19 +143,21 @@ function StatsSection() {
 }
 
 function ServicesPreview() {
+  const { t } = useLanguage();
+
   const services = [
-    { icon: Search, title: 'GEO Audit', desc: 'Complete analysis of your current visibility in AI engines.', color: '#007AFF', features: ['50+ key queries', 'AI competitive analysis', 'GEO score', 'Roadmap'] },
-    { icon: Settings, title: 'Technical Optimization', desc: 'Implementation of structured data for LLMs.', color: '#5856D6', features: ['Schema.org', 'AI-friendly structure', 'E-E-A-T', 'Performance'] },
-    { icon: PenTool, title: 'GEO Content', desc: 'Content designed to be cited by AI.', color: '#AF52DE', features: ['Citation-ready articles', 'Optimized FAQs', 'Data & sources', 'Q&A format'] },
+    { icon: Search, title: t('services.service1Title'), desc: t('services.service1Subtitle'), color: '#007AFF', features: [t('services.service1Feature1'), t('services.service1Feature2'), t('services.service1Feature3'), t('services.service1Feature4')] },
+    { icon: Settings, title: t('services.service2Title'), desc: t('services.service2Subtitle'), color: '#5856D6', features: [t('services.service2Feature1'), t('services.service2Feature2'), t('services.service2Feature3'), t('services.service2Feature4')] },
+    { icon: PenTool, title: t('services.service3Title'), desc: t('services.service3Subtitle'), color: '#AF52DE', features: [t('services.service3Feature1'), t('services.service3Feature2'), t('services.service3Feature3'), t('services.service3Feature4')] },
   ];
 
   return (
     <section className="py-24 px-6 bg-[#f5f5f7]">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-white rounded-full text-sm text-[#1d1d1f]/50 mb-4">What we do</span>
+          <span className="inline-block px-4 py-1.5 bg-white rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('services.badge')}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            A proven methodology for the <span className="gradient-text">generative AI era.</span>
+            {t('services.title')}<span className="gradient-text">{t('services.titleHighlight')}</span>
           </h2>
         </div>
 
@@ -197,7 +190,7 @@ function ServicesPreview() {
 
         <div className="text-center mt-12">
           <Link to="/services" className="inline-flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-all">
-            View all services
+            {t('services.viewAll')}
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -207,25 +200,26 @@ function ServicesPreview() {
 }
 
 function ProcessSection() {
+  const { t } = useLanguage();
+
   const steps = [
-    { num: '1', title: 'Audit', desc: 'Analysis of your AI visibility' },
-    { num: '2', title: 'Strategy', desc: 'Personalized action plan' },
-    { num: '3', title: 'Execution', desc: 'Technical & content optimization' },
-    { num: '4', title: 'Measure', desc: 'Tracking & continuous improvement' },
+    { num: '1', title: t('process.step1Title'), desc: t('process.step1Desc') },
+    { num: '2', title: t('process.step2Title'), desc: t('process.step2Desc') },
+    { num: '3', title: t('process.step3Title'), desc: t('process.step3Desc') },
+    { num: '4', title: t('process.step4Title'), desc: t('process.step4Desc') },
   ];
 
   return (
     <section className="py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">Our process</span>
+          <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('process.badge')}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            A clear 4-step methodology<br /><span className="gradient-text">for measurable results.</span>
+            {t('process.title')}<br /><span className="gradient-text">{t('process.titleHighlight')}</span>
           </h2>
         </div>
 
         <div className="relative">
-          {/* Ligne de connexion */}
           <div className="hidden md:block absolute top-8 left-[12.5%] right-[12.5%] h-1 bg-gradient-to-r from-[#007AFF] via-[#5856D6] to-[#AF52DE] rounded-full" />
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
@@ -263,20 +257,22 @@ function ProcessSection() {
 }
 
 function ResultsSection() {
+  const { t } = useLanguage();
+
   const results = [
-    { value: '+340%', label: 'Average AI mentions', desc: 'Increase in brand citations' },
-    { value: '23', label: 'Key queries covered', desc: 'Strategic search terms' },
-    { value: '+47%', label: 'Qualified traffic', desc: 'High-intent visitors' },
-    { value: '8x', label: 'Average ROI', desc: 'Return on investment' },
+    { value: '+340%', label: t('results.result1Label'), desc: t('results.result1Desc') },
+    { value: '23', label: t('results.result2Label'), desc: t('results.result2Desc') },
+    { value: '+47%', label: t('results.result3Label'), desc: t('results.result3Desc') },
+    { value: '8x', label: t('results.result4Label'), desc: t('results.result4Desc') },
   ];
 
   return (
     <section className="py-24 px-6 bg-[#f5f5f7]">
       <div className="max-w-5xl mx-auto">
         <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-white rounded-full text-sm text-[#1d1d1f]/50 mb-4">Concrete results</span>
+          <span className="inline-block px-4 py-1.5 bg-white rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('results.badge')}</span>
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            Our clients see their AI visibility<br /><span className="gradient-text">take off within weeks.</span>
+            {t('results.title')}<br /><span className="gradient-text">{t('results.titleHighlight')}</span>
           </h2>
         </div>
 
@@ -302,6 +298,8 @@ function ResultsSection() {
 }
 
 function CTASection() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-24 px-6">
       <div className="max-w-4xl mx-auto">
@@ -312,17 +310,17 @@ function CTASection() {
           className="apple-card p-12 text-center"
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            Is your brand <span className="gradient-text">invisible to AI?</span>
+            {t('cta.title')}<span className="gradient-text">{t('cta.titleHighlight')}</span>
           </h2>
           <p className="text-lg text-[#1d1d1f]/50 mb-8 max-w-xl mx-auto">
-            Discover your GEO Score in 30 seconds. Free, no commitment.
+            {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link to="/geo-score" className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all">
-              Check my score
+              {t('cta.button')}
             </Link>
             <Link to="/contact" className="px-8 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-full hover:bg-[#e8e8ed] transition-all">
-              Book a call
+              {t('cta.bookCall')}
             </Link>
           </div>
         </motion.div>

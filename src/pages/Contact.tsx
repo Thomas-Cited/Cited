@@ -1,32 +1,35 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
-
-const contactMethods = [
-  {
-    label: 'Email',
-    value: 'contact@citedagency.com',
-    icon: Mail,
-    href: '#',
-    copyable: true,
-  },
-  {
-    label: 'Book a call',
-    value: 'Schedule a meeting',
-    icon: Calendar,
-    href: 'https://calendly.com/vignaudthomas40/30min',
-    copyable: false,
-  },
-];
-
-const budgetOptions = [
-  'Select...',
-  'Starter — $2,000 + $450/mo',
-  'Growth — $4,000 + $600/mo',
-  'Custom — from $6,000',
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Contact() {
+  const { t } = useLanguage();
+
+  const contactMethods = [
+    {
+      label: t('contact.email'),
+      value: 'contact@citedagency.com',
+      icon: Mail,
+      href: '#',
+      copyable: true,
+    },
+    {
+      label: t('contact.bookCall'),
+      value: t('contact.scheduleMeeting'),
+      icon: Calendar,
+      href: 'https://calendly.com/vignaudthomas40/30min',
+      copyable: false,
+    },
+  ];
+
+  const budgetOptions = [
+    t('contact.budgetOption1'),
+    t('contact.budgetOption2'),
+    t('contact.budgetOption3'),
+    t('contact.budgetOption4'),
+  ];
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -37,14 +40,27 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-
   const [error, setError] = useState('');
   const [emailCopied, setEmailCopied] = useState(false);
 
   const copyEmail = async () => {
-    await navigator.clipboard.writeText('contact@citedagency.com');
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
+    try {
+      await navigator.clipboard.writeText('contact@citedagency.com');
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    } catch {
+      // Fallback for browsers without clipboard API
+      const textArea = document.createElement('textarea');
+      textArea.value = 'contact@citedagency.com';
+      textArea.style.position = 'fixed';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setEmailCopied(true);
+      setTimeout(() => setEmailCopied(false), 2000);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,11 +85,10 @@ export default function Contact() {
       if (response.ok || response.redirected) {
         setIsSubmitted(true);
       } else {
-        setError('Something went wrong. Please try again.');
+        setError(t('contact.error'));
       }
     } catch {
       // Tally redirects on success, which can cause a CORS error
-      // If we get here after the fetch, assume success
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -86,7 +101,6 @@ export default function Contact() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -94,18 +108,17 @@ export default function Contact() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">Contact</span>
+            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('contact.tagline')}</span>
             <h1 className="text-5xl sm:text-6xl font-bold text-[#1d1d1f] mb-6 tracking-tight">
-              Let's talk about your <span className="gradient-text">AI visibility.</span>
+              {t('contact.title')}<span className="gradient-text">{t('contact.titleHighlight')}</span>
             </h1>
             <p className="text-xl text-[#1d1d1f]/50 max-w-2xl mx-auto">
-              Get a free consultation and discover how we can help your brand get cited by AI engines.
+              {t('contact.subtitle')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Methods */}
       <section className="py-8 px-6">
         <div className="max-w-4xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -132,7 +145,7 @@ export default function Contact() {
                     <div className="flex-1">
                       <p className="text-sm text-[#1d1d1f]/50">{method.label}</p>
                       <p className="font-semibold text-[#1d1d1f]">
-                        {emailCopied ? 'Email copied!' : method.value}
+                        {emailCopied ? t('contact.emailCopied') : method.value}
                       </p>
                     </div>
                     <Copy className="w-5 h-5 text-[#1d1d1f]/30" />
@@ -159,7 +172,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Form */}
       <section className="py-16 px-6">
         <div className="max-w-2xl mx-auto">
           <motion.div
@@ -177,21 +189,21 @@ export default function Contact() {
                 <div className="w-20 h-20 rounded-full bg-[#34C759] flex items-center justify-center mx-auto mb-6">
                   <Check className="w-10 h-10 text-white" />
                 </div>
-                <h2 className="text-3xl font-bold text-[#1d1d1f] mb-3">Thank you!</h2>
+                <h2 className="text-3xl font-bold text-[#1d1d1f] mb-3">{t('contact.thankYou')}</h2>
                 <p className="text-[#1d1d1f]/60">
-                  We've received your message and will get back to you within 24 hours.
+                  {t('contact.received')}
                 </p>
               </motion.div>
             ) : (
               <>
-                <h2 className="text-2xl font-bold text-[#1d1d1f] mb-2">Send us a message</h2>
-                <p className="text-[#1d1d1f]/50 mb-8">Fill out the form below and we'll get back to you shortly.</p>
-                
+                <h2 className="text-2xl font-bold text-[#1d1d1f] mb-2">{t('contact.formTitle')}</h2>
+                <p className="text-[#1d1d1f]/50 mb-8">{t('contact.formSubtitle')}</p>
+
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div>
                       <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                        First name <span className="text-[#007AFF]">*</span>
+                        {t('contact.firstName')} <span className="text-[#007AFF]">*</span>
                       </label>
                       <div className="relative">
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -208,7 +220,7 @@ export default function Contact() {
                     </div>
                     <div>
                       <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                        Last name <span className="text-[#007AFF]">*</span>
+                        {t('contact.lastName')} <span className="text-[#007AFF]">*</span>
                       </label>
                       <div className="relative">
                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -227,7 +239,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                      Professional email <span className="text-[#007AFF]">*</span>
+                      {t('contact.professionalEmail')} <span className="text-[#007AFF]">*</span>
                     </label>
                     <div className="relative">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -245,7 +257,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                      Website <span className="text-[#007AFF]">*</span>
+                      {t('contact.website')} <span className="text-[#007AFF]">*</span>
                     </label>
                     <div className="relative">
                       <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -263,7 +275,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                      Monthly budget
+                      {t('contact.budget')}
                     </label>
                     <div className="relative">
                       <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -284,7 +296,7 @@ export default function Contact() {
 
                   <div>
                     <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                      Your main goal
+                      {t('contact.goal')}
                     </label>
                     <div className="relative">
                       <Target className="absolute left-4 top-4 w-5 h-5 text-[#1d1d1f]/30" />
@@ -294,7 +306,7 @@ export default function Contact() {
                         value={formData.goal}
                         onChange={handleChange}
                         className="w-full pl-12 pr-4 py-3 bg-[#f5f5f7] border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20 transition-all resize-none"
-                        placeholder="Tell us about your goals and challenges..."
+                        placeholder={t('contact.goalPlaceholder')}
                       />
                     </div>
                   </div>
@@ -307,11 +319,11 @@ export default function Contact() {
                     {isSubmitting ? (
                       <>
                         <Loader2 className="w-5 h-5 animate-spin" />
-                        Sending...
+                        {t('contact.sending')}
                       </>
                     ) : (
                       <>
-                        Send message
+                        {t('contact.send')}
                         <Send className="w-5 h-5" />
                       </>
                     )}

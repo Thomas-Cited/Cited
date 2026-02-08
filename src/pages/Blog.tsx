@@ -1,59 +1,64 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
-
-const articles = [
-  {
-    title: 'What is Generative Engine Optimization (GEO)?',
-    excerpt: 'Discover how GEO differs from traditional SEO and why it matters for your business in the AI era.',
-    category: 'GEO Basics',
-    readTime: '5 min read',
-    date: 'Jan 15, 2026',
-    featured: true,
-  },
-  {
-    title: 'How ChatGPT Cites Websites: A Technical Deep Dive',
-    excerpt: 'Understanding the mechanisms behind AI citation and how to optimize your content for maximum visibility.',
-    category: 'Technical',
-    readTime: '8 min read',
-    date: 'Jan 12, 2026',
-  },
-  {
-    title: 'Schema.org for AI: The Complete Guide',
-    excerpt: 'Learn how to implement structured data that helps AI systems understand and cite your content.',
-    category: 'Implementation',
-    readTime: '12 min read',
-    date: 'Jan 8, 2026',
-  },
-  {
-    title: 'Case Study: How We Increased AI Mentions by 340%',
-    excerpt: 'A detailed breakdown of our strategy and the results we achieved for a B2B SaaS company.',
-    category: 'Case Study',
-    readTime: '6 min read',
-    date: 'Jan 5, 2026',
-  },
-  {
-    title: 'The Future of Search: AI vs Traditional SEO',
-    excerpt: 'Why traditional SEO is no longer enough and how to prepare for the AI-first future.',
-    category: 'Industry',
-    readTime: '7 min read',
-    date: 'Jan 2, 2026',
-  },
-  {
-    title: 'E-E-A-T Optimization for Large Language Models',
-    excerpt: 'How to build authority signals that AI systems recognize and trust.',
-    category: 'Technical',
-    readTime: '10 min read',
-    date: 'Dec 28, 2025',
-  },
-];
-
-const categories = ['All', 'GEO Basics', 'Technical', 'Implementation', 'Case Study', 'Industry'];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Blog() {
+  const { t } = useLanguage();
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+
+  const articles = [
+    {
+      title: t('blog.article1Title'),
+      excerpt: t('blog.article1Excerpt'),
+      category: t('blog.article1Category'),
+      readTime: t('blog.article1ReadTime'),
+      date: t('blog.article1Date'),
+      featured: true,
+    },
+    {
+      title: t('blog.article2Title'),
+      excerpt: t('blog.article2Excerpt'),
+      category: t('blog.article2Category'),
+      readTime: t('blog.article2ReadTime'),
+      date: t('blog.article2Date'),
+    },
+    {
+      title: t('blog.article3Title'),
+      excerpt: t('blog.article3Excerpt'),
+      category: t('blog.article3Category'),
+      readTime: t('blog.article3ReadTime'),
+      date: t('blog.article3Date'),
+    },
+    {
+      title: t('blog.article4Title'),
+      excerpt: t('blog.article4Excerpt'),
+      category: t('blog.article4Category'),
+      readTime: t('blog.article4ReadTime'),
+      date: t('blog.article4Date'),
+    },
+    {
+      title: t('blog.article5Title'),
+      excerpt: t('blog.article5Excerpt'),
+      category: t('blog.article5Category'),
+      readTime: t('blog.article5ReadTime'),
+      date: t('blog.article5Date'),
+    },
+    {
+      title: t('blog.article6Title'),
+      excerpt: t('blog.article6Excerpt'),
+      category: t('blog.article6Category'),
+      readTime: t('blog.article6ReadTime'),
+      date: t('blog.article6Date'),
+    },
+  ];
+
+  const categories = [
+    t('blog.catAll'), t('blog.catGeoBasics'), t('blog.catTechnical'),
+    t('blog.catImplementation'), t('blog.catCaseStudy'), t('blog.catIndustry'),
+  ];
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,7 +75,6 @@ export default function Blog() {
       });
       setIsSubscribed(true);
     } catch {
-      // Tally may cause CORS error on redirect, assume success
       setIsSubscribed(true);
     } finally {
       setIsSubscribing(false);
@@ -79,7 +83,6 @@ export default function Blog() {
 
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -87,18 +90,17 @@ export default function Blog() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">Blog</span>
+            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('blog.tagline')}</span>
             <h1 className="text-5xl sm:text-6xl font-bold text-[#1d1d1f] mb-6 tracking-tight">
-              Insights on <span className="gradient-text">AI visibility.</span>
+              {t('blog.title')}<span className="gradient-text">{t('blog.titleHighlight')}</span>
             </h1>
             <p className="text-xl text-[#1d1d1f]/50 max-w-2xl mx-auto">
-              The latest strategies, case studies, and insights on optimizing for generative AI engines.
+              {t('blog.subtitle')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Categories */}
       <section className="py-8 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex flex-wrap justify-center gap-2">
@@ -106,8 +108,8 @@ export default function Blog() {
               <button
                 key={index}
                 className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  index === 0 
-                    ? 'bg-[#007AFF] text-white' 
+                  index === 0
+                    ? 'bg-[#007AFF] text-white'
                     : 'bg-[#f5f5f7] text-[#1d1d1f]/70 hover:bg-[#e8e8ed]'
                 }`}
               >
@@ -118,7 +120,6 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Featured Article */}
       <section className="py-8 px-6">
         <div className="max-w-5xl mx-auto">
           {articles.filter(a => a.featured).map((article, index) => (
@@ -135,7 +136,7 @@ export default function Blog() {
                     <span className="px-3 py-1 bg-[#007AFF]/10 text-[#007AFF] text-xs font-medium rounded-full">
                       {article.category}
                     </span>
-                    <span className="text-sm text-[#1d1d1f]/50">Featured</span>
+                    <span className="text-sm text-[#1d1d1f]/50">{t('blog.featured')}</span>
                   </div>
                   <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{article.title}</h2>
                   <p className="text-[#1d1d1f]/60 mb-6">{article.excerpt}</p>
@@ -147,7 +148,7 @@ export default function Blog() {
                     <span>{article.date}</span>
                   </div>
                   <button className="inline-flex items-center gap-2 text-[#007AFF] font-semibold hover:underline">
-                    Read article
+                    {t('blog.readArticle')}
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
@@ -160,10 +161,9 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Articles Grid */}
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl font-bold text-[#1d1d1f] mb-8">Latest Articles</h2>
+          <h2 className="text-2xl font-bold text-[#1d1d1f] mb-8">{t('blog.latestArticles')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {articles.filter(a => !a.featured).map((article, index) => (
               <motion.article
@@ -193,15 +193,14 @@ export default function Blog() {
         </div>
       </section>
 
-      {/* Newsletter */}
       <section className="py-16 px-6 bg-[#f5f5f7]">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">Stay updated</h2>
-          <p className="text-[#1d1d1f]/50 mb-8">Get the latest GEO insights delivered to your inbox.</p>
+          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{t('blog.stayUpdated')}</h2>
+          <p className="text-[#1d1d1f]/50 mb-8">{t('blog.stayUpdatedSubtitle')}</p>
           {isSubscribed ? (
             <div className="flex items-center justify-center gap-3 py-4 px-6 bg-[#34C759]/10 rounded-xl">
               <Check className="w-5 h-5 text-[#34C759]" />
-              <span className="text-[#34C759] font-medium">Thanks for subscribing!</span>
+              <span className="text-[#34C759] font-medium">{t('blog.subscribed')}</span>
             </div>
           ) : (
             <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
@@ -209,7 +208,7 @@ export default function Blog() {
                 type="email"
                 value={newsletterEmail}
                 onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder="Enter your email"
+                placeholder={t('blog.emailPlaceholder')}
                 className="flex-1 px-6 py-4 bg-white border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20"
                 required
               />
@@ -221,10 +220,10 @@ export default function Blog() {
                 {isSubscribing ? (
                   <>
                     <Loader2 className="w-5 h-5 animate-spin" />
-                    Subscribing...
+                    {t('blog.subscribing')}
                   </>
                 ) : (
-                  'Subscribe'
+                  t('blog.subscribe')
                 )}
               </button>
             </form>

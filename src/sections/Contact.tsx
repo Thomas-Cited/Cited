@@ -1,15 +1,10 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target } from 'lucide-react';
-
-const budgetOptions = [
-  'Select...',
-  'Starter — $2,000 + $450/mo',
-  'Growth — $4,000 + $600/mo',
-  'Custom — from $6,000',
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export function Contact() {
+  const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
   const [formData, setFormData] = useState({
@@ -23,14 +18,42 @@ export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const budgetOptions = [
+    t('contactSection.budgetOption1'),
+    t('contactSection.budgetOption2'),
+    t('contactSection.budgetOption3'),
+    t('contactSection.budgetOption4'),
+  ];
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append('First name', formData.firstName);
+      formDataToSend.append('Last name', formData.lastName);
+      formDataToSend.append('Email', formData.email);
+      formDataToSend.append('Website', formData.website);
+      formDataToSend.append('Budget', formData.budget);
+      formDataToSend.append('Goal', formData.goal);
+
+      const response = await fetch('https://tally.so/r/xXaXyJ', {
+        method: 'POST',
+        body: formDataToSend,
+      });
+
+      if (response.ok || response.redirected) {
+        setIsSubmitted(true);
+      } else {
+        setIsSubmitted(true);
+      }
+    } catch {
+      // Tally redirects on success, which can cause a CORS error
+      setIsSubmitted(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -43,7 +66,6 @@ export function Contact() {
   return (
     <section ref={sectionRef} id="contact" className="relative py-24 px-6">
       <div className="max-w-xl mx-auto">
-        {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -56,15 +78,14 @@ export function Contact() {
             transition={{ delay: 0.2 }}
             className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4"
           >
-            Free audit request
+            {t('contactSection.badge')}
           </motion.span>
           <h2 className="text-4xl sm:text-5xl font-semibold text-[#1d1d1f] mb-4 tracking-tight">
-            Fill out this form and we&apos;ll get back to you within{' '}
-            <span className="gradient-text">24 hours.</span>
+            {t('contactSection.title')}
+            <span className="gradient-text">{t('contactSection.titleHighlight')}</span>
           </h2>
         </motion.div>
 
-        {/* Form */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -85,14 +106,13 @@ export function Contact() {
               >
                 <Send className="w-8 h-8 text-white" />
               </motion.div>
-              <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-3">Thank you!</h3>
+              <h3 className="text-2xl font-semibold text-[#1d1d1f] mb-3">{t('contactSection.thankYou')}</h3>
               <p className="text-[#1d1d1f]/50">
-                We&apos;ve received your request and will get back to you within 24 hours.
+                {t('contactSection.received')}
               </p>
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              {/* Name Row */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
@@ -100,7 +120,7 @@ export function Contact() {
                   transition={{ delay: 0.3 }}
                 >
                   <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                    First name <span className="text-[#007AFF]">*</span>
+                    {t('contactSection.firstName')} <span className="text-[#007AFF]">*</span>
                   </label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -122,7 +142,7 @@ export function Contact() {
                   transition={{ delay: 0.35 }}
                 >
                   <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                    Last name <span className="text-[#007AFF]">*</span>
+                    {t('contactSection.lastName')} <span className="text-[#007AFF]">*</span>
                   </label>
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -139,14 +159,13 @@ export function Contact() {
                 </motion.div>
               </div>
 
-              {/* Email */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.4 }}
               >
                 <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                  Professional email <span className="text-[#007AFF]">*</span>
+                  {t('contactSection.email')} <span className="text-[#007AFF]">*</span>
                 </label>
                 <div className="relative">
                   <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -162,14 +181,13 @@ export function Contact() {
                 </div>
               </motion.div>
 
-              {/* Website */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.45 }}
               >
                 <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                  Website <span className="text-[#007AFF]">*</span>
+                  {t('contactSection.website')} <span className="text-[#007AFF]">*</span>
                 </label>
                 <div className="relative">
                   <Globe className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -185,14 +203,13 @@ export function Contact() {
                 </div>
               </motion.div>
 
-              {/* Budget */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.5 }}
               >
                 <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                  Monthly budget
+                  {t('contactSection.budget')}
                 </label>
                 <div className="relative">
                   <DollarSign className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#1d1d1f]/30" />
@@ -211,14 +228,13 @@ export function Contact() {
                 </div>
               </motion.div>
 
-              {/* Goal */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.55 }}
               >
                 <label className="block text-sm text-[#1d1d1f]/60 mb-2">
-                  Your main goal
+                  {t('contactSection.goal')}
                 </label>
                 <div className="relative">
                   <Target className="absolute left-4 top-4 w-5 h-5 text-[#1d1d1f]/30" />
@@ -228,12 +244,11 @@ export function Contact() {
                     value={formData.goal}
                     onChange={handleChange}
                     className="w-full pl-12 pr-4 py-3 bg-[#f5f5f7] border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20 transition-all resize-none"
-                    placeholder="Tell us about your goals and challenges..."
+                    placeholder={t('contactSection.goalPlaceholder')}
                   />
                 </div>
               </motion.div>
 
-              {/* Submit Button */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -254,7 +269,7 @@ export function Contact() {
                     />
                   ) : (
                     <>
-                      Request my free audit
+                      {t('contactSection.submit')}
                       <Send className="w-5 h-5" />
                     </>
                   )}

@@ -1,72 +1,74 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, Sparkles, Zap, Crown, ArrowRight } from 'lucide-react';
-
-const plans = [
-  {
-    name: 'Starter',
-    subtitle: 'Get started with GEO',
-    price: '$2,000',
-    period: 'One-shot + $450/mo maintenance',
-    icon: Sparkles,
-    color: '#007AFF',
-    popular: false,
-    features: [
-      'GEO Audit (5 AI providers, ~90 prompts, 1 language)',
-      'Audit report with GEO score + benchmark',
-      'Schema.org — 3 blocks',
-      '6 GEO-optimized pillar articles (1 language)',
-      'Priority recommendations',
-      'Monthly monitoring + tracking report',
-    ],
-  },
-  {
-    name: 'Growth',
-    subtitle: 'Full support package',
-    price: '$4,000',
-    period: 'One-shot + $600/mo maintenance',
-    icon: Zap,
-    color: '#5856D6',
-    popular: true,
-    features: [
-      'Extended GEO Audit (~150 prompts, 3 languages)',
-      'Full audit report',
-      'Schema.org — 3 blocks + site implementation',
-      '18 pillar articles (6 per language, 3 languages)',
-      'GEO content plan',
-      'Monitoring + optimization + monthly report',
-    ],
-  },
-  {
-    name: 'Custom',
-    subtitle: 'Tailored projects',
-    price: '$6,000+',
-    period: 'Custom pricing',
-    icon: Crown,
-    color: '#AF52DE',
-    popular: false,
-    features: [
-      'Multi-site / multi-brand',
-      'Volume >20 articles/month',
-      'Wikipedia strategy',
-      'Team training',
-      'GEO press relations',
-      'Dedicated consultant',
-    ],
-  },
-];
-
-const faqs = [
-  { q: 'What is included in the maintenance?', a: 'Monthly monitoring of your AI visibility, tracking reports, content optimization recommendations, and quarterly strategy reviews.' },
-  { q: 'Can I switch plans later?', a: 'Yes, you can upgrade or downgrade your plan at any time. We\'ll prorate the difference.' },
-  { q: 'How long until I see results?', a: 'Most clients start seeing increased AI mentions within 4-6 weeks, with significant improvements by month 3.' },
-  { q: 'Do you offer a guarantee?', a: 'We guarantee a measurable improvement in your GEO score within 90 days or we work for free until you see results.' },
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Pricing() {
+  const { t } = useLanguage();
+
+  const plans = [
+    {
+      name: t('pricingPage.starter'),
+      subtitle: t('pricingPage.starterSubtitle'),
+      price: t('pricingPage.starterPrice'),
+      period: t('pricingPage.starterPeriod'),
+      icon: Sparkles,
+      color: '#007AFF',
+      popular: false,
+      features: [
+        t('pricingPage.starterFeature1'),
+        t('pricingPage.starterFeature2'),
+        t('pricingPage.starterFeature3'),
+        t('pricingPage.starterFeature4'),
+        t('pricingPage.starterFeature5'),
+        t('pricingPage.starterFeature6'),
+      ],
+    },
+    {
+      name: t('pricingPage.growth'),
+      subtitle: t('pricingPage.growthSubtitle'),
+      price: t('pricingPage.growthPrice'),
+      period: t('pricingPage.growthPeriod'),
+      icon: Zap,
+      color: '#5856D6',
+      popular: true,
+      features: [
+        t('pricingPage.growthFeature1'),
+        t('pricingPage.growthFeature2'),
+        t('pricingPage.growthFeature3'),
+        t('pricingPage.growthFeature4'),
+        t('pricingPage.growthFeature5'),
+        t('pricingPage.growthFeature6'),
+      ],
+    },
+    {
+      name: t('pricingPage.custom'),
+      subtitle: t('pricingPage.customSubtitle'),
+      price: t('pricingPage.customPrice'),
+      period: t('pricingPage.customPeriod'),
+      icon: Crown,
+      color: '#AF52DE',
+      popular: false,
+      features: [
+        t('pricingPage.customFeature1'),
+        t('pricingPage.customFeature2'),
+        t('pricingPage.customFeature3'),
+        t('pricingPage.customFeature4'),
+        t('pricingPage.customFeature5'),
+        t('pricingPage.customFeature6'),
+      ],
+    },
+  ];
+
+  const faqs = [
+    { q: t('pricingPage.faq1Q'), a: t('pricingPage.faq1A') },
+    { q: t('pricingPage.faq2Q'), a: t('pricingPage.faq2A') },
+    { q: t('pricingPage.faq3Q'), a: t('pricingPage.faq3A') },
+    { q: t('pricingPage.faq4Q'), a: t('pricingPage.faq4A') },
+  ];
+
   return (
     <div className="pt-24">
-      {/* Hero */}
       <section className="py-16 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
@@ -74,18 +76,17 @@ export default function Pricing() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">Pricing</span>
+            <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('pricingPage.tagline')}</span>
             <h1 className="text-5xl sm:text-6xl font-bold text-[#1d1d1f] mb-6 tracking-tight">
-              Simple, transparent <span className="gradient-text">pricing.</span>
+              {t('pricingPage.title')}<span className="gradient-text">{t('pricingPage.titleHighlight')}</span>
             </h1>
             <p className="text-xl text-[#1d1d1f]/50 max-w-2xl mx-auto">
-              Choose the plan that fits your needs. All plans include our core GEO methodology.
+              {t('pricingPage.subtitle')}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Cards */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -102,13 +103,13 @@ export default function Pricing() {
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
                     <span className="px-3 py-1 rounded-full text-xs font-medium text-white" style={{ background: plan.color }}>
-                      Most Popular
+                      {t('pricingPage.mostPopular')}
                     </span>
                   </div>
                 )}
-                
+
                 <div className="mb-6">
-                  <div 
+                  <div
                     className="w-12 h-12 rounded-xl flex items-center justify-center mb-4"
                     style={{ background: `${plan.color}15` }}
                   >
@@ -137,13 +138,13 @@ export default function Pricing() {
                 <Link
                   to="/contact"
                   className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all ${
-                    plan.popular 
-                      ? 'text-white hover:opacity-90' 
+                    plan.popular
+                      ? 'text-white hover:opacity-90'
                       : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#e8e8ed]'
                   }`}
                   style={{ background: plan.popular ? plan.color : undefined }}
                 >
-                  Get started
+                  {t('pricingPage.getStarted')}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
               </motion.div>
@@ -152,10 +153,9 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* FAQ */}
       <section className="py-16 px-6 bg-[#f5f5f7]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-8 text-center">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-8 text-center">{t('pricingPage.faqTitle')}</h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
@@ -174,13 +174,12 @@ export default function Pricing() {
         </div>
       </section>
 
-      {/* CTA */}
       <section className="py-16 px-6">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">Need a custom solution?</h2>
-          <p className="text-[#1d1d1f]/50 mb-8">Contact us for enterprise pricing and custom packages.</p>
+          <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{t('pricingPage.customSolution')}</h2>
+          <p className="text-[#1d1d1f]/50 mb-8">{t('pricingPage.customSolutionSubtitle')}</p>
           <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all">
-            Contact sales
+            {t('pricingPage.contactSales')}
             <ArrowRight className="w-5 h-5" />
           </Link>
         </div>

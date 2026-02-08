@@ -1,8 +1,11 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Home } from 'lucide-react';
+import { useLanguage } from '../contexts/LanguageContext';
 
 export default function NotFound() {
+  const { t } = useLanguage();
+
   return (
     <div className="pt-24 min-h-screen flex items-center justify-center">
       <div className="max-w-md mx-auto text-center px-6">
@@ -13,10 +16,10 @@ export default function NotFound() {
         >
           <div className="text-8xl font-bold gradient-text mb-4">404</div>
           <h1 className="text-2xl font-bold text-[#1d1d1f] mb-4">
-            Page not found
+            {t('404.title')}
           </h1>
           <p className="text-[#1d1d1f]/50 mb-8">
-            The page you're looking for doesn't exist or has been moved.
+            {t('404.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -24,14 +27,14 @@ export default function NotFound() {
               className="flex items-center justify-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-colors"
             >
               <Home className="w-4 h-4" />
-              Go home
+              {t('404.home')}
             </Link>
             <button
               onClick={() => window.history.back()}
               className="flex items-center justify-center gap-2 px-6 py-3 bg-[#f5f5f7] text-[#1d1d1f] font-medium rounded-full hover:bg-[#e8e8ed] transition-colors"
             >
               <ArrowLeft className="w-4 h-4" />
-              Go back
+              {t('404.back')}
             </button>
           </div>
         </motion.div>
