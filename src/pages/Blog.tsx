@@ -8,6 +8,7 @@ export default function Blog() {
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [subscribeError, setSubscribeError] = useState(false);
 
   const articles = [
     {
@@ -65,17 +66,23 @@ export default function Blog() {
     if (!newsletterEmail) return;
 
     setIsSubscribing(true);
+    setSubscribeError(false);
     try {
       const formDataToSend = new FormData();
       formDataToSend.append('Email', newsletterEmail);
 
-      await fetch('https://tally.so/r/jaQaqa', {
+      const response = await fetch('https://tally.so/r/jaQaqa', {
         method: 'POST',
         body: formDataToSend,
       });
+
+      if (!response.ok) {
+        throw new Error('Subscription failed');
+      }
+
       setIsSubscribed(true);
     } catch {
-      setIsSubscribed(true);
+      setSubscribeError(true);
     } finally {
       setIsSubscribing(false);
     }
@@ -203,30 +210,35 @@ export default function Blog() {
               <span className="text-[#34C759] font-medium">{t('blog.subscribed')}</span>
             </div>
           ) : (
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                placeholder={t('blog.emailPlaceholder')}
-                className="flex-1 px-6 py-4 bg-white border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20"
-                required
-              />
-              <button
-                type="submit"
-                disabled={isSubscribing}
-                className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
-              >
-                {isSubscribing ? (
-                  <>
-                    <Loader2 className="w-5 h-5 animate-spin" />
-                    {t('blog.subscribing')}
-                  </>
-                ) : (
-                  t('blog.subscribe')
-                )}
-              </button>
-            </form>
+            <>
+              <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-4">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={t('blog.emailPlaceholder')}
+                  className="flex-1 px-6 py-4 bg-white border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isSubscribing}
+                  className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all disabled:opacity-50 flex items-center justify-center gap-2"
+                >
+                  {isSubscribing ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      {t('blog.subscribing')}
+                    </>
+                  ) : (
+                    t('blog.subscribe')
+                  )}
+                </button>
+              </form>
+              {subscribeError && (
+                <p className="mt-4 text-sm text-red-500">{t('blog.subscribeError')}</p>
+              )}
+            </>
           )}
         </div>
       </section>
