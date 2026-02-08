@@ -331,37 +331,23 @@ export default function SchemaAudit() {
       </section>
 
       <section className="py-16 px-6 bg-[#f5f5f7]">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{t('schemaAudit.pricingTitle')}</h2>
-            <p className="text-[#1d1d1f]/50">{t('schemaAudit.pricingSubtitle')}</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { name: t('schemaAudit.pricingStarter'), price: t('schemaAudit.pricingStarterPrice'), desc: t('schemaAudit.pricingStarterDesc'), features: ['Organization', 'WebSite', 'WebPage'] },
-              { name: t('schemaAudit.pricingGrowth'), price: t('schemaAudit.pricingGrowthPrice'), desc: t('schemaAudit.pricingGrowthDesc'), features: ['All Starter types', 'Article', 'Product', 'Service', 'FAQPage', 'HowTo'], popular: true },
-              { name: t('schemaAudit.pricingEnterprise'), price: t('schemaAudit.pricingEnterprisePrice'), desc: t('schemaAudit.pricingEnterpriseDesc'), features: ['All schema types', 'Custom entities', 'Priority support', 'Quarterly reviews'] },
-            ].map((plan, index) => (
-              <motion.div key={index} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: index * 0.1 }} className={`apple-card p-6 ${plan.popular ? 'ring-2 ring-[#007AFF]' : ''}`}>
-                {plan.popular && <span className="inline-block px-3 py-1 bg-[#007AFF] text-white text-xs font-medium rounded-full mb-4">{t('schemaAudit.mostPopular')}</span>}
-                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-1">{plan.name}</h3>
-                <p className="text-sm text-[#1d1d1f]/50 mb-4">{plan.desc}</p>
-                <div className="text-3xl font-bold text-[#007AFF] mb-6">{plan.price}</div>
-                <ul className="space-y-2 mb-6">
-                  {plan.features.map((f, i) => (
-                    <li key={i} className="flex items-center gap-2 text-sm text-[#1d1d1f]/70">
-                      <Check className="w-4 h-4 text-[#007AFF]" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <Link to="/contact" className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all ${plan.popular ? 'bg-[#007AFF] text-white hover:bg-[#0056CC]' : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#e8e8ed]'}`}>
-                  {t('schemaAudit.getStarted')}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+            <p className="text-[#1d1d1f]/50 mb-8 max-w-xl mx-auto">{t('schemaAudit.pricingSubtitle')}</p>
+            <Link
+              to="/pricing"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all"
+            >
+              {t('schemaAudit.viewPricing')}
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 

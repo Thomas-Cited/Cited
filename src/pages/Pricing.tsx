@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, Sparkles, Zap, Crown, ArrowRight } from 'lucide-react';
+import { Check, Sparkles, Zap, Crown, ArrowRight, Code } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Pricing() {
@@ -150,6 +150,134 @@ export default function Pricing() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-6">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{t('pricingPage.schemaTitle')}</h2>
+              <p className="text-[#1d1d1f]/50 max-w-2xl mx-auto">{t('pricingPage.schemaSubtitle')}</p>
+            </motion.div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                name: t('pricingPage.schemaEssentials'),
+                subtitle: t('pricingPage.schemaEssentialsSubtitle'),
+                price: t('pricingPage.schemaEssentialsPrice'),
+                color: '#007AFF',
+                popular: false,
+                features: [
+                  t('pricingPage.schemaEssentialsFeature1'),
+                  t('pricingPage.schemaEssentialsFeature2'),
+                  t('pricingPage.schemaEssentialsFeature3'),
+                  t('pricingPage.schemaEssentialsFeature4'),
+                ],
+              },
+              {
+                name: t('pricingPage.schemaGrowth'),
+                subtitle: t('pricingPage.schemaGrowthSubtitle'),
+                price: t('pricingPage.schemaGrowthPrice'),
+                color: '#5856D6',
+                popular: true,
+                features: [
+                  t('pricingPage.schemaGrowthFeature1'),
+                  t('pricingPage.schemaGrowthFeature2'),
+                  t('pricingPage.schemaGrowthFeature3'),
+                  t('pricingPage.schemaGrowthFeature4'),
+                  t('pricingPage.schemaGrowthFeature5'),
+                  t('pricingPage.schemaGrowthFeature6'),
+                ],
+              },
+              {
+                name: t('pricingPage.schemaEnterprise'),
+                subtitle: t('pricingPage.schemaEnterpriseSubtitle'),
+                price: t('pricingPage.schemaEnterprisePrice'),
+                color: '#AF52DE',
+                popular: false,
+                features: [
+                  t('pricingPage.schemaEnterpriseFeature1'),
+                  t('pricingPage.schemaEnterpriseFeature2'),
+                  t('pricingPage.schemaEnterpriseFeature3'),
+                  t('pricingPage.schemaEnterpriseFeature4'),
+                ],
+              },
+            ].map((plan, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className={`apple-card p-6 relative ${plan.popular ? 'ring-2' : ''}`}
+                style={{ '--tw-ring-color': plan.color } as React.CSSProperties}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium text-white" style={{ background: plan.color }}>
+                      {t('pricingPage.schemaMostPopular')}
+                    </span>
+                  </div>
+                )}
+                <div className="mb-4">
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-3"
+                    style={{ background: `${plan.color}15` }}
+                  >
+                    <Code className="w-5 h-5" style={{ color: plan.color }} />
+                  </div>
+                  <h3 className="text-xl font-bold text-[#1d1d1f]">{plan.name}</h3>
+                  <p className="text-sm text-[#1d1d1f]/50">{plan.subtitle}</p>
+                </div>
+                <div className="mb-4">
+                  <span className="text-3xl font-bold" style={{ color: plan.color }}>{plan.price}</span>
+                </div>
+                <ul className="space-y-2 mb-6">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-[#1d1d1f]/70">
+                      <Check className="w-4 h-4 flex-shrink-0" style={{ color: plan.color }} />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  to="/contact"
+                  className={`w-full flex items-center justify-center gap-2 py-3 rounded-xl font-semibold transition-all text-sm ${
+                    plan.popular
+                      ? 'text-white hover:opacity-90'
+                      : 'bg-[#f5f5f7] text-[#1d1d1f] hover:bg-[#e8e8ed]'
+                  }`}
+                  style={{ background: plan.popular ? plan.color : undefined }}
+                >
+                  {t('pricingPage.schemaGetStarted')}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="text-center mt-8"
+          >
+            <Link
+              to="/pricing"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="inline-flex items-center gap-2 text-[#007AFF] font-medium hover:underline"
+            >
+              {t('pricingPage.schemaUpgrade')}
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
