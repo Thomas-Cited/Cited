@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool } from 'lucide-react';
+import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -27,7 +27,7 @@ export default function Home() {
             transition={{ duration: 0.7, delay: 0.1 }}
             className="text-6xl sm:text-7xl md:text-8xl font-bold mb-8 leading-[1.1] tracking-tight text-[#1d1d1f]"
           >
-            {t('hero.title')}<span className="gradient-text">{t('hero.titleHighlight')}</span>{t('hero.titleEnd')}<br />{t('hero.titleEnd2')}
+            {t('hero.title')}<br /><span className="gradient-text">{t('hero.titleHighlight')}</span>{t('hero.titleEnd')}
           </motion.h1>
 
           <motion.p
@@ -63,6 +63,16 @@ export default function Home() {
           </motion.div>
 
           <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mt-6 flex items-center justify-center gap-2 text-sm text-[#34C759] font-medium"
+          >
+            <Shield className="w-4 h-4" />
+            <span>{t('hero.guarantee')}</span>
+          </motion.div>
+
+          <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -91,8 +101,9 @@ export default function Home() {
 
       <StatsSection />
       <ServicesPreview />
-      <ProcessSection />
       <ResultsSection />
+      <AgencyVsToolsSection />
+      <ProcessSection />
       <CTASection />
     </>
   );
@@ -102,9 +113,9 @@ function StatsSection() {
   const { t } = useLanguage();
 
   const stats = [
-    { icon: Eye, value: t('stats.stat1Value'), label: t('stats.stat1Label'), desc: t('stats.stat1Desc'), color: '#007AFF', negative: true },
-    { icon: TrendingDown, value: t('stats.stat2Value'), label: t('stats.stat2Label'), desc: t('stats.stat2Desc'), color: '#FF3B30', negative: true },
-    { icon: Users, value: t('stats.stat3Value'), label: t('stats.stat3Label'), desc: t('stats.stat3Desc'), color: '#5856D6', negative: false },
+    { icon: Eye, value: t('stats.stat1Value'), label: t('stats.stat1Label'), desc: t('stats.stat1Desc'), color: '#007AFF' },
+    { icon: TrendingDown, value: t('stats.stat2Value'), label: t('stats.stat2Label'), desc: t('stats.stat2Desc'), color: '#FF3B30' },
+    { icon: Users, value: t('stats.stat3Value'), label: t('stats.stat3Label'), desc: t('stats.stat3Desc'), color: '#5856D6' },
   ];
 
   return (
@@ -130,7 +141,7 @@ function StatsSection() {
               className="apple-card p-8"
             >
               <div className="text-5xl font-bold mb-3" style={{ color: stat.color }}>
-                {stat.negative && '-'}{stat.value}
+                {stat.value}
               </div>
               <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2">{stat.label}</h3>
               <p className="text-[#1d1d1f]/50 text-sm">{stat.desc}</p>
@@ -259,11 +270,10 @@ function ProcessSection() {
 function ResultsSection() {
   const { t } = useLanguage();
 
-  const results = [
-    { value: '+340%', label: t('results.result1Label'), desc: t('results.result1Desc') },
-    { value: '23', label: t('results.result2Label'), desc: t('results.result2Desc') },
-    { value: '+47%', label: t('results.result3Label'), desc: t('results.result3Desc') },
-    { value: '8x', label: t('results.result4Label'), desc: t('results.result4Desc') },
+  const audits = [
+    { brand: t('results.audit1Brand'), industry: t('results.audit1Industry'), score: t('results.audit1Score'), finding: t('results.audit1Finding'), color: '#FF3B30' },
+    { brand: t('results.audit2Brand'), industry: t('results.audit2Industry'), score: t('results.audit2Score'), finding: t('results.audit2Finding'), color: '#FF9500' },
+    { brand: t('results.audit3Brand'), industry: t('results.audit3Industry'), score: t('results.audit3Score'), finding: t('results.audit3Finding'), color: '#FF3B30' },
   ];
 
   return (
@@ -276,22 +286,148 @@ function ResultsSection() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-          {results.map((result, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {audits.map((audit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="apple-card p-6 text-center"
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+              className="apple-card p-6"
             >
-              <div className="text-3xl font-bold text-[#007AFF] mb-1">{result.value}</div>
-              <div className="text-sm font-medium text-[#1d1d1f]">{result.label}</div>
-              <div className="text-xs text-[#1d1d1f]/40 mt-1">{result.desc}</div>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-semibold text-[#1d1d1f]">{audit.brand}</h3>
+                  <p className="text-xs text-[#1d1d1f]/40">{audit.industry}</p>
+                </div>
+                <div className="text-2xl font-bold" style={{ color: audit.color }}>
+                  {audit.score}
+                </div>
+              </div>
+              <p className="text-sm text-[#1d1d1f]/60 leading-relaxed">{audit.finding}</p>
             </motion.div>
           ))}
         </div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center mt-8"
+        >
+          <p className="text-xs text-[#1d1d1f]/30 mb-6">{t('results.auditNote')}</p>
+          <Link
+            to="/geo-score"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-all"
+          >
+            {t('results.auditCta')}
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+function AgencyVsToolsSection() {
+  const { t } = useLanguage();
+
+  const toolFeatures = [
+    { text: t('agencyVsTools.col1Item1'), included: true },
+    { text: t('agencyVsTools.col1Item2'), included: true },
+    { text: t('agencyVsTools.col1Item3'), included: true },
+    { text: t('agencyVsTools.col1Item4'), included: false },
+    { text: t('agencyVsTools.col1Item5'), included: false },
+    { text: t('agencyVsTools.col1Item6'), included: false },
+  ];
+
+  const agencyFeatures = [
+    t('agencyVsTools.col2Item1'),
+    t('agencyVsTools.col2Item2'),
+    t('agencyVsTools.col2Item3'),
+    t('agencyVsTools.col2Item4'),
+    t('agencyVsTools.col2Item5'),
+    t('agencyVsTools.col2Item6'),
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('agencyVsTools.badge')}</span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
+            {t('agencyVsTools.title')}<span className="gradient-text">{t('agencyVsTools.titleHighlight')}</span>
+          </h2>
+          <p className="text-lg text-[#1d1d1f]/50 max-w-2xl mx-auto">
+            {t('agencyVsTools.subtitle')}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="apple-card p-8 border border-[#e8e8ed]"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-[#f5f5f7] flex items-center justify-center">
+                <BarChart3 className="w-5 h-5 text-[#1d1d1f]/40" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1d1d1f]">{t('agencyVsTools.col1Title')}</h3>
+            </div>
+            <p className="text-sm text-[#1d1d1f]/40 mb-6">{t('agencyVsTools.col1Price')}</p>
+            <ul className="space-y-3">
+              {toolFeatures.map((feature, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  {feature.included ? (
+                    <CheckCircle className="w-4 h-4 text-[#34C759] flex-shrink-0" />
+                  ) : (
+                    <X className="w-4 h-4 text-[#FF3B30] flex-shrink-0" />
+                  )}
+                  <span className={`text-sm ${feature.included ? 'text-[#1d1d1f]/70' : 'text-[#1d1d1f]/30'}`}>{feature.text}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="apple-card p-8 ring-2 ring-[#007AFF]"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <div className="w-10 h-10 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
+                <Target className="w-5 h-5 text-[#007AFF]" />
+              </div>
+              <h3 className="text-xl font-semibold text-[#1d1d1f]">{t('agencyVsTools.col2Title')}</h3>
+            </div>
+            <p className="text-sm text-[#007AFF] font-medium mb-6">{t('agencyVsTools.col2Price')}</p>
+            <ul className="space-y-3">
+              {agencyFeatures.map((feature, i) => (
+                <li key={i} className="flex items-center gap-3">
+                  <CheckCircle className="w-4 h-4 text-[#007AFF] flex-shrink-0" />
+                  <span className="text-sm text-[#1d1d1f]/70">{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-center mt-8 text-lg font-semibold text-[#1d1d1f]"
+        >
+          {t('agencyVsTools.conclusion')}
+        </motion.p>
       </div>
     </section>
   );

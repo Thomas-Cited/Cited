@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Check, Sparkles, Zap, Crown, ArrowRight, Code } from 'lucide-react';
+import { Check, Sparkles, Zap, Crown, ArrowRight, Code, Shield } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export default function Pricing() {
@@ -83,6 +83,19 @@ export default function Pricing() {
             <p className="text-xl text-[#1d1d1f]/50 max-w-2xl mx-auto">
               {t('pricingPage.subtitle')}
             </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="mt-8 inline-flex items-center gap-3 px-6 py-3 bg-[#34C759]/10 rounded-2xl border border-[#34C759]/20"
+          >
+            <Shield className="w-5 h-5 text-[#34C759]" />
+            <div className="text-left">
+              <p className="text-sm font-semibold text-[#34C759]">{t('guarantee.title')}</p>
+              <p className="text-xs text-[#1d1d1f]/50">{t('guarantee.description')}</p>
+            </div>
           </motion.div>
         </div>
       </section>
