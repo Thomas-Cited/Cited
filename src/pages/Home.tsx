@@ -6,7 +6,7 @@ import { useSeo } from '../hooks/use-seo';
 
 export default function Home() {
   useSeo({
-    title: 'Cited. — GEO Agency | AI Visibility Experts',
+    title: 'Cited. — AI Visibility Agency',
     description: 'Get your brand cited by ChatGPT, Perplexity, and Google AI. We optimize your content for AI engines — more citations, more traffic, more leads.',
     path: '/',
   });
