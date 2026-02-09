@@ -14,8 +14,8 @@ const aiProviders = [
 
 export default function GeoScore() {
   useSeo({
-    title: 'Free GEO Score — Test Your AI Visibility | Cited.',
-    description: 'Check how visible your brand is on ChatGPT, Perplexity, Claude, Gemini, and Google AI. Get your free GEO score in seconds.',
+    title: 'Free AI Audit — Test Your AI Visibility | Cited.',
+    description: 'Check how visible your brand is on ChatGPT, Perplexity, Claude, Gemini, and Google AI. Get your free AI readiness score in seconds.',
     path: '/geo-score',
   });
   const { t } = useLanguage();

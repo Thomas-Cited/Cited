@@ -39,8 +39,8 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 
 export default function FAQ() {
   useSeo({
-    title: 'FAQ — Generative Engine Optimization Questions | Cited.',
-    description: 'Answers to common questions about GEO, AI visibility, Schema.org, and how Cited helps brands get cited by AI engines.',
+    title: 'FAQ — AI Visibility Questions | Cited.',
+    description: 'Answers to common questions about AI visibility, Schema.org, and how Cited helps brands get cited by AI engines.',
     path: '/faq',
   });
   const { t } = useLanguage();

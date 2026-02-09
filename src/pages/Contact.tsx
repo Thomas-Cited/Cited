@@ -7,7 +7,7 @@ import { useSeo } from '../hooks/use-seo';
 export default function Contact() {
   useSeo({
     title: 'Contact — Get in Touch | Cited.',
-    description: 'Ready to boost your AI visibility? Contact Cited to discuss your GEO strategy and get your brand cited by AI engines.',
+    description: 'Ready to boost your AI visibility? Contact Cited to discuss your strategy and get your brand cited by AI engines.',
     path: '/contact',
   });
   const { t } = useLanguage();

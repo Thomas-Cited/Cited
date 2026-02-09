@@ -17,8 +17,8 @@ interface ArticleData {
 
 export default function Blog() {
   useSeo({
-    title: 'Blog — GEO Insights & AI Visibility Tips | Cited.',
-    description: 'Learn about Generative Engine Optimization, AI visibility strategies, and how to get your brand cited by ChatGPT, Perplexity, and Google AI.',
+    title: 'Blog — AI Visibility Insights & Tips | Cited.',
+    description: 'Learn about AI visibility strategies, structured data, and how to get your brand cited by ChatGPT, Perplexity, and Google AI.',
     path: '/blog',
   });
   const { t } = useLanguage();

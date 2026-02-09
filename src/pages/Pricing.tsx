@@ -6,8 +6,8 @@ import { useSeo } from '../hooks/use-seo';
 
 export default function Pricing() {
   useSeo({
-    title: 'Pricing — GEO Plans & Schema Audit | Cited.',
-    description: 'Transparent pricing for AI visibility. Choose from Starter, Growth, or Enterprise plans. Includes Schema.org audit and GEO optimization.',
+    title: 'Pricing — AI Visibility Plans | Cited.',
+    description: 'Transparent pricing for AI visibility. Choose from Starter, Growth, or Enterprise plans. Includes Schema.org audit and AI optimization.',
     path: '/pricing',
   });
   const { t } = useLanguage();
