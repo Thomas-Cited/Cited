@@ -413,6 +413,10 @@ const translations: Record<Language, Record<string, string>> = {
     'blog.article6Category': 'Technical',
     'blog.article6ReadTime': '10 min read',
     'blog.article6Date': 'Dec 28, 2025',
+    'blog.backToBlog': 'Back to blog',
+    'blog.ctaTitle': 'Ready to get cited by AI?',
+    'blog.ctaSubtitle': 'Book a free consultation and discover how we can make your brand visible to ChatGPT, Perplexity, and Google AI.',
+    'blog.ctaButton': 'Book a free call',
 
     // Pricing Page
     'pricingPage.tagline': 'Pricing',
@@ -1005,6 +1009,10 @@ const translations: Record<Language, Record<string, string>> = {
     'blog.article6Category': 'Technique',
     'blog.article6ReadTime': '10 min de lecture',
     'blog.article6Date': '28 déc. 2025',
+    'blog.backToBlog': 'Retour au blog',
+    'blog.ctaTitle': 'Prêt à être cité par l\'IA ?',
+    'blog.ctaSubtitle': 'Réservez une consultation gratuite et découvrez comment nous pouvons rendre votre marque visible sur ChatGPT, Perplexity et Google AI.',
+    'blog.ctaButton': 'Réserver un appel gratuit',
 
     // Pricing Page
     'pricingPage.tagline': 'Tarifs',

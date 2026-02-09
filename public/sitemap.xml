@@ -31,6 +31,21 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://citedagency.com/blog/what-is-geo</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/blog/how-chatgpt-cites-websites</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/blog/schema-org-for-ai</loc>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://citedagency.com/faq</loc>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>

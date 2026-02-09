@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+
+interface ArticleData {
+  title: string
+  excerpt: string
+  category: string
+  readTime: string
+  date: string
+  featured?: boolean
+  slug?: string
+}
 
 export default function Blog() {
   useSeo({
@@ -16,7 +27,7 @@ export default function Blog() {
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [subscribeError, setSubscribeError] = useState(false);
 
-  const articles = [
+  const articles: ArticleData[] = [
     {
       title: t('blog.article1Title'),
       excerpt: t('blog.article1Excerpt'),
@@ -24,6 +35,7 @@ export default function Blog() {
       readTime: t('blog.article1ReadTime'),
       date: t('blog.article1Date'),
       featured: true,
+      slug: 'what-is-geo',
     },
     {
       title: t('blog.article2Title'),
@@ -31,6 +43,7 @@ export default function Blog() {
       category: t('blog.article2Category'),
       readTime: t('blog.article2ReadTime'),
       date: t('blog.article2Date'),
+      slug: 'how-chatgpt-cites-websites',
     },
     {
       title: t('blog.article3Title'),
@@ -38,6 +51,7 @@ export default function Blog() {
       category: t('blog.article3Category'),
       readTime: t('blog.article3ReadTime'),
       date: t('blog.article3Date'),
+      slug: 'schema-org-for-ai',
     },
     {
       title: t('blog.article4Title'),
@@ -160,10 +174,20 @@ export default function Blog() {
                     </span>
                     <span>{article.date}</span>
                   </div>
-                  <button className="inline-flex items-center gap-2 text-[#007AFF] font-semibold hover:underline">
-                    {t('blog.readArticle')}
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                  {article.slug ? (
+                    <Link
+                      to={`/blog/${article.slug}`}
+                      className="inline-flex items-center gap-2 text-[#007AFF] font-semibold hover:underline"
+                    >
+                      {t('blog.readArticle')}
+                      <ArrowRight className="w-4 h-4" />
+                    </Link>
+                  ) : (
+                    <span className="inline-flex items-center gap-2 text-[#1d1d1f]/30 font-semibold">
+                      {t('blog.readArticle')}
+                      <ArrowRight className="w-4 h-4" />
+                    </span>
+                  )}
                 </div>
                 <div className="bg-gradient-to-br from-[#007AFF]/10 to-[#5856D6]/10 rounded-2xl h-64 flex items-center justify-center">
                   <FileText className="w-20 h-20 text-[#007AFF]" />
@@ -178,30 +202,53 @@ export default function Blog() {
         <div className="max-w-5xl mx-auto">
           <h2 className="text-2xl font-bold text-[#1d1d1f] mb-8">{t('blog.latestArticles')}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {articles.filter(a => !a.featured).map((article, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="apple-card p-6 hover:shadow-lg transition-shadow cursor-pointer"
-              >
-                <div className="flex items-center gap-2 mb-4">
-                  <Tag className="w-4 h-4 text-[#007AFF]" />
-                  <span className="text-xs text-[#007AFF] font-medium">{article.category}</span>
-                </div>
-                <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2 line-clamp-2">{article.title}</h3>
-                <p className="text-sm text-[#1d1d1f]/60 mb-4 line-clamp-3">{article.excerpt}</p>
-                <div className="flex items-center justify-between text-xs text-[#1d1d1f]/50">
-                  <span className="flex items-center gap-1">
-                    <Clock className="w-3 h-3" />
-                    {article.readTime}
-                  </span>
-                  <span>{article.date}</span>
-                </div>
-              </motion.article>
-            ))}
+            {articles.filter(a => !a.featured).map((article, index) => {
+              const cardContent = (
+                <>
+                  <div className="flex items-center gap-2 mb-4">
+                    <Tag className="w-4 h-4 text-[#007AFF]" />
+                    <span className="text-xs text-[#007AFF] font-medium">{article.category}</span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-[#1d1d1f] mb-2 line-clamp-2">{article.title}</h3>
+                  <p className="text-sm text-[#1d1d1f]/60 mb-4 line-clamp-3">{article.excerpt}</p>
+                  <div className="flex items-center justify-between text-xs text-[#1d1d1f]/50">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      {article.readTime}
+                    </span>
+                    <span>{article.date}</span>
+                  </div>
+                </>
+              );
+
+              return article.slug ? (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link
+                    to={`/blog/${article.slug}`}
+                    className="block apple-card p-6 hover:shadow-lg transition-shadow"
+                  >
+                    {cardContent}
+                  </Link>
+                </motion.div>
+              ) : (
+                <motion.article
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="apple-card p-6 opacity-60"
+                >
+                  {cardContent}
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>

@@ -10,6 +10,7 @@ import Pricing from './pages/Pricing';
 import GeoScore from './pages/GeoScore';
 import SchemaAudit from './pages/SchemaAudit';
 import Blog from './pages/Blog';
+import BlogArticle from './pages/BlogArticle';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import Legal from './pages/Legal';
@@ -31,6 +32,7 @@ function App() {
             <Route path="/geo-score" element={<GeoScore />} />
             <Route path="/schema-audit" element={<SchemaAudit />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogArticle />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/legal" element={<Legal />} />
