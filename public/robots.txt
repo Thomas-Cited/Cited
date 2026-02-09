@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /fr/
+
+Sitemap: https://citedagency.com/sitemap.xml
