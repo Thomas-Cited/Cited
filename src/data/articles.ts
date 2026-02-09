@@ -96,7 +96,6 @@ If you're new to GEO, here's where to start:
 2. **Implement basic Schema.org.** At minimum, add Organization, WebSite, and FAQPage markup to your site.
 3. **Restructure your content.** Add clear, concise answers to common questions at the top of your key pages.
 4. **Build topic authority.** Create comprehensive content clusters around your core expertise.
-5. **Monitor and iterate.** Track your AI citations monthly and adjust your strategy based on results.
 
 GEO is not a replacement for SEO — it's an essential complement. The brands that invest in both will dominate the next era of search. The question isn't whether to start — it's how quickly you can adapt.
 
@@ -177,7 +176,6 @@ Si vous etes nouveau dans le GEO, voici par ou commencer :
 2. **Implementez le Schema.org de base.** Au minimum, ajoutez les balisages Organization, WebSite et FAQPage a votre site.
 3. **Restructurez votre contenu.** Ajoutez des reponses claires et concises aux questions courantes en haut de vos pages cles.
 4. **Construisez l'autorite thematique.** Creez des clusters de contenu complets autour de votre expertise principale.
-5. **Suivez et iterez.** Suivez vos citations IA mensuellement et ajustez votre strategie en fonction des resultats.
 
 Le GEO n'est pas un remplacement du SEO — c'est un complement essentiel. Les marques qui investissent dans les deux domineront la prochaine ere de la recherche. La question n'est pas de savoir si vous devez commencer — mais a quelle vitesse vous pouvez vous adapter.
 
@@ -332,14 +330,6 @@ Develop content specifically designed to be cited:
 - **FAQ pages** — Comprehensive question-answer pairs on your domain
 - **Glossary pages** — Clear definitions of industry terms
 
-### Step 5 — Monitor and Iterate
-
-AI citation is not a one-time optimization. Set up regular monitoring:
-- Test your key queries monthly across all AI engines
-- Track changes in citation frequency and quality
-- Monitor competitors' citation performance
-- Update content based on what's working
-
 ## The Future of AI Citations
 
 AI citation is still evolving rapidly. Several trends are shaping where this is headed:
@@ -489,14 +479,6 @@ Developpez du contenu specifiquement concu pour etre cite :
 - **Guides pratiques** — Instructions etape par etape avec des resultats clairs
 - **Pages FAQ** — Paires question-reponse completes sur votre domaine
 - **Pages glossaire** — Definitions claires des termes de votre secteur
-
-### Etape 5 — Suivez et iterez
-
-La citation IA n'est pas une optimisation ponctuelle. Mettez en place un suivi regulier :
-- Testez vos requetes cles mensuellement sur tous les moteurs IA
-- Suivez les changements de frequence et de qualite des citations
-- Surveillez les performances de citation des concurrents
-- Mettez a jour le contenu en fonction de ce qui fonctionne
 
 ## L'avenir des citations IA
 
@@ -782,15 +764,6 @@ The \`speakable\` property identifies sections of a page that are particularly s
 }
 \`\`\`
 
-## Measuring Schema.org Impact on AI Visibility
-
-After implementing Schema.org, track these metrics:
-
-1. **Rich result appearances** — Monitor Google Search Console for new rich results.
-2. **AI citation frequency** — Test your key queries monthly on ChatGPT, Perplexity, and Google AI.
-3. **Citation accuracy** — Check whether AI responses accurately represent your brand based on your Schema data.
-4. **Crawl and indexing** — Monitor that search engines and AI crawlers are properly processing your structured data.
-
 ## Your Schema.org Implementation Checklist
 
 Here's a prioritized checklist for getting started:
@@ -803,8 +776,6 @@ Here's a prioritized checklist for getting started:
 - [ ] Add Service or Product schema to relevant pages
 - [ ] Validate all markup with Google Rich Results Test
 - [ ] Test AI citations before and after implementation
-- [ ] Set up quarterly reviews to update Schema data
-- [ ] Build cross-references between your Schema entities
 
 Schema.org implementation is one of the highest-ROI activities for AI visibility. It's a one-time technical investment that continuously improves how AI systems understand and cite your brand.
 
@@ -1071,15 +1042,6 @@ La propriete \`speakable\` identifie les sections d'une page particulierement ad
 }
 \`\`\`
 
-## Mesurer l'impact de Schema.org sur la visibilite IA
-
-Apres avoir implemente Schema.org, suivez ces metriques :
-
-1. **Apparitions en resultats enrichis** — Surveillez Google Search Console pour les nouveaux resultats enrichis.
-2. **Frequence de citation IA** — Testez vos requetes cles mensuellement sur ChatGPT, Perplexity et Google AI.
-3. **Precision des citations** — Verifiez si les reponses IA representent precisement votre marque sur la base de vos donnees Schema.
-4. **Exploration et indexation** — Surveillez que les moteurs de recherche et les robots IA traitent correctement vos donnees structurees.
-
 ## Votre checklist d'implementation Schema.org
 
 Voici une liste de priorites pour commencer :
@@ -1092,8 +1054,6 @@ Voici une liste de priorites pour commencer :
 - [ ] Ajouter le schema Service ou Product aux pages pertinentes
 - [ ] Valider tout le balisage avec Google Rich Results Test
 - [ ] Tester les citations IA avant et apres l'implementation
-- [ ] Mettre en place des revues trimestrielles pour mettre a jour les donnees Schema
-- [ ] Construire des references croisees entre vos entites Schema
 
 L'implementation de Schema.org est l'une des activites au meilleur ROI pour la visibilite IA. C'est un investissement technique ponctuel qui ameliore continuellement la facon dont les systemes IA comprennent et citent votre marque.
 
@@ -1615,14 +1575,6 @@ Cross-platform consistency involves maintaining a uniform presence and message a
 2. **Inconsistent Information**: Differing information across platforms can lead to reduced trustworthiness.
 3. **Over-claiming Expertise**: Unsupported claims can damage credibility; always back claims with evidence.
 
-## Measuring E-E-A-T Impact on AI Citations
-
-### Key Metrics
-
-- **Citation Volume**: Track the number of times your content is referenced by AI-generated content.
-- **Engagement Rates**: Higher engagement often correlates with perceived trustworthiness.
-- **Cross-Reference Checks**: Regularly audit how often your content is used in AI-generated outputs.
-
 By refining E-E-A-T signals, you can significantly enhance your content's visibility and credibility among AI systems.
 
 ---
@@ -1757,14 +1709,6 @@ Voici un exemple de code JSON-LD pour signaler l'authenticité et l'autorité :
 1. **Informations Dépassées** : Ne pas mettre à jour régulièrement le contenu.
 2. **Manque de Citations** : Omettre des références précises et fiables.
 3. **Incohérence** : Disparités entre les informations présentées sur différentes plateformes.
-
-## Mesurer l'Impact E-E-A-T sur les Citations IA
-
-Pour évaluer l'impact de l'E-E-A-T sur vos citations IA, surveillez les indicateurs suivants :
-
-- **Taux d'Engagement** : Augmentation des interactions sur votre contenu.
-- **Citations et Mentions** : Fréquence des références par d'autres sources crédibles.
-- **Classement de Recherche** : Amélioration du positionnement dans les résultats de recherche.
 
 Pour un audit complet de votre mise en œuvre de l'E-E-A-T, visitez notre page dédiée à l'audit de schémas : [citedagency.com/schema-audit](https://citedagency.com/schema-audit).`,
     },
