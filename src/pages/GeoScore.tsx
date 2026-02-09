@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 const aiProviders = [
   { id: 'chatgpt', name: 'ChatGPT', icon: '✨' },
@@ -12,6 +13,11 @@ const aiProviders = [
 
 
 export default function GeoScore() {
+  useSeo({
+    title: 'Free GEO Score — Test Your AI Visibility | Cited.',
+    description: 'Check how visible your brand is on ChatGPT, Perplexity, Claude, Gemini, and Google AI. Get your free GEO score in seconds.',
+    path: '/geo-score',
+  });
   const { t } = useLanguage();
   const [activeProvider, setActiveProvider] = useState('chatgpt');
   const [step] = useState(1);

@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Contact() {
+  useSeo({
+    title: 'Contact — Get in Touch | Cited.',
+    description: 'Ready to boost your AI visibility? Contact Cited to discuss your GEO strategy and get your brand cited by AI engines.',
+    path: '/contact',
+  });
   const { t } = useLanguage();
 
   const contactMethods = [

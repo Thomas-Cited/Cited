@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 function FAQItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -37,6 +38,11 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
 }
 
 export default function FAQ() {
+  useSeo({
+    title: 'FAQ — Generative Engine Optimization Questions | Cited.',
+    description: 'Answers to common questions about GEO, AI visibility, Schema.org, and how Cited helps brands get cited by AI engines.',
+    path: '/faq',
+  });
   const { t } = useLanguage();
   const categories = [
     { key: 'General', label: t('faq.catGeneral') },

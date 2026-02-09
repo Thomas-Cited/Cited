@@ -1,7 +1,13 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Legal() {
+  useSeo({
+    title: 'Legal Notice | Cited.',
+    description: 'Legal information, terms of service, and privacy policy for Cited Agency.',
+    path: '/legal',
+  });
   const { t } = useLanguage();
 
   return (

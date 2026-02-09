@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Check, Sparkles, Zap, Crown, ArrowRight, Code, Shield } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Pricing() {
+  useSeo({
+    title: 'Pricing — GEO Plans & Schema Audit | Cited.',
+    description: 'Transparent pricing for AI visibility. Choose from Starter, Growth, or Enterprise plans. Includes Schema.org audit and GEO optimization.',
+    path: '/pricing',
+  });
   const { t } = useLanguage();
 
   const plans = [

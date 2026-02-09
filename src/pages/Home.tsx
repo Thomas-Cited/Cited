@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Home() {
+  useSeo({
+    title: 'Cited. — GEO Agency | AI Visibility Experts',
+    description: 'Get your brand cited by ChatGPT, Perplexity, and Google AI. We optimize your content for AI engines — more citations, more traffic, more leads.',
+    path: '/',
+  });
   const { t } = useLanguage();
 
   return (

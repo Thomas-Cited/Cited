@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { Search, Settings, FileText, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Services() {
+  useSeo({
+    title: 'GEO Services — AI Visibility Optimization | Cited.',
+    description: 'Content optimization, Schema.org markup, AI audits, and strategic consulting to get your brand cited by ChatGPT, Perplexity, and Google AI.',
+    path: '/services',
+  });
   const { t } = useLanguage();
 
   const services = [

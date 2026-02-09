@@ -2,8 +2,14 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 export default function Blog() {
+  useSeo({
+    title: 'Blog — GEO Insights & AI Visibility Tips | Cited.',
+    description: 'Learn about Generative Engine Optimization, AI visibility strategies, and how to get your brand cited by ChatGPT, Perplexity, and Google AI.',
+    path: '/blog',
+  });
   const { t } = useLanguage();
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);

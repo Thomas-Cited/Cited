@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Globe, FileCode, Calculator, Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useSeo } from '../hooks/use-seo';
 
 const schemaTypes = [
   'Organization', 'WebSite', 'WebPage', 'Article', 'Product', 'Service',
@@ -10,6 +11,11 @@ const schemaTypes = [
 ];
 
 export default function SchemaAudit() {
+  useSeo({
+    title: 'Free Schema.org Audit — Structured Data Check | Cited.',
+    description: 'Analyze your website Schema.org markup for free. Detect missing structured data and improve how AI engines understand your content.',
+    path: '/schema-audit',
+  });
   const { t } = useLanguage();
 
   const analysisSteps = [
