@@ -43,14 +43,14 @@ export function Navigation() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between relative">
             {/* Logo */}
             <Link to="/" className="flex items-center hover:scale-102 transition-transform">
               <span className="text-xl font-semibold text-[#1d1d1f]">Cited.</span>
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
+            {/* Desktop Navigation — centered */}
+            <div className="hidden lg:flex items-center gap-1 absolute left-1/2 -translate-x-1/2">
               {navLinksData.map((link) => (
                 <Link
                   key={link.href}
