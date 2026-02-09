@@ -5,13 +5,10 @@ import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 const navLinksData = [
-  { labelKey: 'nav.home', href: '/' },
   { labelKey: 'nav.services', href: '/services' },
   { labelKey: 'nav.pricing', href: '/pricing' },
   { labelKey: 'nav.geoScore', href: '/geo-score' },
-  { labelKey: 'nav.schemaAudit', href: '/schema-audit' },
-  { labelKey: 'nav.blog', href: '/blog' },
-  { labelKey: 'nav.faq', href: '/faq' },
+  { labelKey: 'nav.contact', href: '/contact' },
 ];
 
 export function Navigation() {
