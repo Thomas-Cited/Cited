@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Linkedin, Mail } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
+import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
 
 export default function About() {
@@ -11,6 +13,10 @@ export default function About() {
     title: t('about.seoTitle'),
     description: t('about.seoDescription'),
     path: '/about',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'About', path: '/about' },
+    ],
   });
 
   return (
@@ -48,7 +54,7 @@ export default function About() {
                   LinkedIn
                 </a>
                 <a
-                  href="mailto:contact@citedagency.com"
+                  href={`mailto:${CONTACT.email}`}
                   className="flex items-center gap-2 px-4 py-2.5 bg-[#f5f5f7] text-[#1d1d1f] text-sm font-medium rounded-full hover:bg-[#e8e8ed] transition-colors"
                 >
                   <Mail className="w-4 h-4" />
@@ -118,7 +124,7 @@ export default function About() {
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
-                href="https://calendly.com/vignaudthomas40/30min"
+                href={URLS.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-colors"

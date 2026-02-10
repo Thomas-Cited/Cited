@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
+import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
 
 export default function Legal() {
@@ -43,7 +44,7 @@ export default function Legal() {
                 <p><strong>{t('legal.regBody')}</strong> {t('legal.regBodyValue')}</p>
                 <p><strong>{t('legal.regAddress')}</strong> {t('legal.regAddressValue')}</p>
                 <p><strong>{t('legal.pubDirector')}</strong> {t('legal.pubDirectorValue')}</p>
-                <p><strong>{t('legal.emailLabel')}</strong> <a href="mailto:contact@citedagency.com" className="text-[#007AFF] hover:underline">contact@citedagency.com</a></p>
+                <p><strong>{t('legal.emailLabel')}</strong> <a href={`mailto:${CONTACT.email}`} className="text-[#007AFF] hover:underline">{CONTACT.email}</a></p>
               </div>
             </motion.div>
 
@@ -87,7 +88,7 @@ export default function Legal() {
                 <li>{t('legal.section4Data4')}</li>
               </ul>
               <p className="mb-3"><strong>{t('legal.section4Retention')}</strong> {t('legal.section4RetentionValue')}</p>
-              <p>{t('legal.section4Rights')} <a href="mailto:contact@citedagency.com" className="text-[#007AFF] hover:underline">contact@citedagency.com</a></p>
+              <p>{t('legal.section4Rights')} <a href={`mailto:${CONTACT.email}`} className="text-[#007AFF] hover:underline">{CONTACT.email}</a></p>
             </motion.div>
 
             <motion.div

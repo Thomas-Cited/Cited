@@ -1,5 +1,6 @@
 import { Calendar } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
 
 export function FloatingButtons() {
   const { t } = useLanguage();
@@ -7,7 +8,7 @@ export function FloatingButtons() {
   return (
     <>
       <a
-        href="https://wa.me/33617376439"
+        href={URLS.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
@@ -19,7 +20,7 @@ export function FloatingButtons() {
       </a>
 
       <a
-        href="https://calendly.com/vignaudthomas40/30min"
+        href={URLS.calendly}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-5 py-3 bg-[#007AFF] text-white font-medium rounded-full shadow-lg hover:bg-[#0056CC] hover:scale-105 transition-all"

@@ -6,23 +6,7 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 240 10% 3.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
-    --primary: 211 100% 50%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 240 5% 96%;
-    --secondary-foreground: 240 5.9% 10%;
-    --muted: 240 5% 96%;
-    --muted-foreground: 240 4% 46%;
-    --accent: 211 100% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
     --border: 240 6% 90%;
-    --input: 240 6% 90%;
-    --ring: 211 100% 50%;
     --radius: 0.75rem;
   }
 }
@@ -97,34 +81,6 @@
   transform: translateY(-2px);
 }
 
-/* Apple button */
-.apple-button {
-  background: #007AFF;
-  color: white;
-  border-radius: 980px;
-  padding: 12px 24px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.apple-button:hover {
-  background: #0056CC;
-  transform: scale(1.02);
-}
-
-.apple-button-secondary {
-  background: rgba(0, 0, 0, 0.05);
-  color: #1d1d1f;
-  border-radius: 980px;
-  padding: 12px 24px;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-.apple-button-secondary:hover {
-  background: rgba(0, 0, 0, 0.08);
-}
-
 /* Subtle background gradient */
 .subtle-gradient {
   background: 
@@ -133,35 +89,45 @@
     linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
 }
 
-/* Apple-style section */
-.apple-section {
-  background: #f5f5f7;
-  border-radius: 24px;
-  margin: 0 20px;
+/* Prevent horizontal scroll */
+body {
+  overflow-x: hidden;
 }
 
-/* Floating animation - subtle */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+/* Ensure content is above background */
+main {
+  position: relative;
+  z-index: 1;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+/* Focus visible - Apple */
+*:focus-visible {
+  outline: 2px solid rgba(0, 122, 255, 0.3);
+  outline-offset: 2px;
 }
 
-/* Card lift - Apple style */
-.card-lift {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+/* Remove default button styles */
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-.card-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+/* Ensure images don't overflow */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Link reset */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Typography - Apple style */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.02em;
 }
 
 /* Navigation blur - Apple style */
@@ -187,65 +153,18 @@ input:focus, textarea:focus, select:focus {
 /* Accordion content animation */
 .accordion-content {
   overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
               opacity 0.3s ease,
               padding 0.3s ease;
 }
 
-/* Reveal animation */
-.reveal {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Stagger children */
-.stagger-children > * {
-  opacity: 0;
-  transform: translateY(16px);
-}
-
-.stagger-children.visible > *:nth-child(1) { animation: fadeInUp 0.5s 0.1s forwards; }
-.stagger-children.visible > *:nth-child(2) { animation: fadeInUp 0.5s 0.15s forwards; }
-.stagger-children.visible > *:nth-child(3) { animation: fadeInUp 0.5s 0.2s forwards; }
-.stagger-children.visible > *:nth-child(4) { animation: fadeInUp 0.5s 0.25s forwards; }
-
-@keyframes fadeInUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 
-/* Subtle shadow layers */
-.shadow-apple {
-  box-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.02),
-    0 4px 12px rgba(0, 0, 0, 0.04);
-}
-
-.shadow-apple-hover {
-  box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.02),
-    0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-/* Pricing card highlight */
-.pricing-popular {
-  border: 2px solid #007AFF;
-  position: relative;
-}
-
-.pricing-popular::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(135deg, rgba(0, 122, 255, 0.1), rgba(88, 86, 214, 0.1));
-  z-index: -1;
-}

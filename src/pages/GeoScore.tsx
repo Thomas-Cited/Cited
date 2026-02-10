@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
+
+const COOLDOWN_MS = 30_000;
 
 const aiProviders = [
   { id: 'chatgpt', name: 'ChatGPT', icon: '✨' },
@@ -17,6 +20,10 @@ export default function GeoScore() {
     title: 'Free AI Audit — Test Your AI Visibility | Cited.',
     description: 'Check how visible your brand is on ChatGPT, Perplexity, Claude, Gemini, and Google AI. Get your free AI readiness score in seconds.',
     path: '/ai-readiness',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'AI Readiness', path: '/ai-readiness' },
+    ],
   });
   const { t } = useLanguage();
   const [activeProvider, setActiveProvider] = useState('chatgpt');
@@ -24,6 +31,8 @@ export default function GeoScore() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<null | { score: number; factors: { name: string; weight: number; value: number }[] }>(null);
   const [error, setError] = useState<string | null>(null);
+
+  const lastSubmitRef = useRef(0);
 
   const [formData, setFormData] = useState({
     brandName: '',
@@ -57,11 +66,18 @@ export default function GeoScore() {
   const runAnalysis = async () => {
     if (!formData.brandName || !formData.industry || !formData.website) return;
 
+    const now = Date.now();
+    if (now - lastSubmitRef.current < COOLDOWN_MS) {
+      setError(t('geoScore.cooldown'));
+      return;
+    }
+    lastSubmitRef.current = now;
+
     setLoading(true);
     setError(null);
 
     try {
-      const response = await fetch(`https://geo-score-api.vignaudthomas40.workers.dev?url=${encodeURIComponent(formData.website)}&brand=${encodeURIComponent(formData.brandName)}`);
+      const response = await fetch(`${URLS.api.geoScore}?url=${encodeURIComponent(formData.website)}&brand=${encodeURIComponent(formData.brandName)}`);
 
       if (!response.ok) {
         throw new Error('API failed');
@@ -86,7 +102,7 @@ export default function GeoScore() {
         formDataToSend.append('AI Provider', activeProvider);
         formDataToSend.append('Score', String(score));
 
-        await fetch('https://tally.so/r/0Q6Q5j', {
+        await fetch(URLS.tally.geoScoreLead, {
           method: 'POST',
           body: formDataToSend,
         });
@@ -172,21 +188,21 @@ export default function GeoScore() {
                 </div>
                 <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">{error}</h3>
                 <p className="text-[#1d1d1f]/50 mb-8">
-                  {t('geoScore.errorDescription') || 'Something went wrong while analyzing your website. Please check the URL and try again.'}
+                  {t('geoScore.errorDescription')}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <button
                     onClick={() => runAnalysis()}
                     className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all"
                   >
-                    {t('geoScore.retry') || 'Try Again'}
+                    {t('geoScore.retry')}
                     <ArrowRight className="w-5 h-5" />
                   </button>
                   <button
                     onClick={() => { setError(null); setFormData({ brandName: '', industry: '', website: '' }); }}
                     className="flex-1 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-xl hover:bg-[#e8e8ed] transition-all"
                   >
-                    {t('geoScore.startOver') || 'Start Over'}
+                    {t('geoScore.startOver')}
                   </button>
                 </div>
               </motion.div>

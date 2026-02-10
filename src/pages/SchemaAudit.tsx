@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Globe, FileCode, Calculator, Mail } from 'lucide-react';
+import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Globe, FileCode, Calculator, Mail, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
+
+const COOLDOWN_MS = 30_000;
 
 const schemaTypes = [
   'Organization', 'WebSite', 'WebPage', 'Article', 'Product', 'Service',
@@ -15,6 +18,10 @@ export default function SchemaAudit() {
     title: 'Free Schema.org Audit — Structured Data Check | Cited.',
     description: 'Analyze your website Schema.org markup for free. Detect missing structured data and improve how AI engines understand your content.',
     path: '/schema-audit',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Schema Audit', path: '/schema-audit' },
+    ],
   });
   const { t } = useLanguage();
 
@@ -47,15 +54,25 @@ export default function SchemaAudit() {
     schemasFound: string[];
     issues: { type: string; message: string }[];
   }>(null);
+  const [error, setError] = useState<string | null>(null);
   const [email, setEmail] = useState('');
   const [emailSent, setEmailSent] = useState(false);
+  const lastSubmitRef = useRef(0);
 
   const handleAnalyze = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!url) return;
 
+    const now = Date.now();
+    if (now - lastSubmitRef.current < COOLDOWN_MS) {
+      setError(t('schemaAudit.cooldown'));
+      return;
+    }
+    lastSubmitRef.current = now;
+
     setIsAnalyzing(true);
     setResult(null);
+    setError(null);
     setCurrentStep(0);
 
     try {
@@ -63,7 +80,7 @@ export default function SchemaAudit() {
         setCurrentStep(prev => (prev < analysisSteps.length - 1 ? prev + 1 : prev));
       }, 1000);
 
-      const response = await fetch(`https://schema-audit-api.vignaudthomas40.workers.dev?url=${encodeURIComponent(url)}`);
+      const response = await fetch(`${URLS.api.schemaAudit}?url=${encodeURIComponent(url)}`);
 
       clearInterval(progressInterval);
       setCurrentStep(analysisSteps.length - 1);
@@ -83,16 +100,7 @@ export default function SchemaAudit() {
         })) || [],
       });
     } catch {
-      const schemasFound = ['Organization', 'WebSite', 'WebPage'];
-      const score = Math.floor(Math.random() * 40) + 30;
-
-      setResult({
-        score,
-        schemasFound,
-        issues: [
-          { type: 'warning', message: 'Could not analyze URL - showing demo results' },
-        ],
-      });
+      setError(t('schemaAudit.error'));
     } finally {
       setIsAnalyzing(false);
     }
@@ -109,7 +117,7 @@ export default function SchemaAudit() {
       formDataToSend.append('Score', String(result.score));
       formDataToSend.append('Schemas found', result.schemasFound.join(', '));
 
-      await fetch('https://tally.so/r/dWxW1K', {
+      await fetch(URLS.tally.schemaReport, {
         method: 'POST',
         body: formDataToSend,
       });
@@ -152,7 +160,36 @@ export default function SchemaAudit() {
               <p className="text-[#1d1d1f]/50">{t('schemaAudit.analyzeSubtitle')}</p>
             </div>
 
-            {!result ? (
+            {error ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-8"
+              >
+                <div className="w-16 h-16 rounded-full bg-[#FF3B30]/10 flex items-center justify-center mx-auto mb-6">
+                  <AlertCircle className="w-8 h-8 text-[#FF3B30]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">
+                  {t('schemaAudit.errorTitle')}
+                </h3>
+                <p className="text-[#1d1d1f]/50 mb-8">{error}</p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => { setError(null); handleAnalyze({ preventDefault: () => {} } as React.FormEvent); }}
+                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all"
+                  >
+                    {t('schemaAudit.retry')}
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => { setError(null); setUrl(''); }}
+                    className="flex-1 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-xl hover:bg-[#e8e8ed] transition-all"
+                  >
+                    {t('schemaAudit.startOver')}
+                  </button>
+                </div>
+              </motion.div>
+            ) : !result ? (
               <>
                 <form onSubmit={handleAnalyze} className="space-y-4">
                   <div className="relative">

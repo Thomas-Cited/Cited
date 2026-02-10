@@ -9,6 +9,10 @@ export default function Pricing() {
     title: 'Pricing — AI Visibility Plans | Cited.',
     description: 'Transparent pricing for AI visibility. Choose from Starter, Growth, or Enterprise plans. Includes Schema.org audit and AI optimization.',
     path: '/pricing',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Pricing', path: '/pricing' },
+    ],
   });
   const { t } = useLanguage();
 

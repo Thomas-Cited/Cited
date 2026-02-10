@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
+import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
 
 export default function Contact() {
@@ -9,13 +11,17 @@ export default function Contact() {
     title: 'Contact — Get in Touch | Cited.',
     description: 'Ready to boost your AI visibility? Contact Cited to discuss your strategy and get your brand cited by AI engines.',
     path: '/contact',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Contact', path: '/contact' },
+    ],
   });
   const { t } = useLanguage();
 
   const contactMethods = [
     {
       label: t('contact.email'),
-      value: 'contact@citedagency.com',
+      value: CONTACT.email,
       icon: Mail,
       href: '#',
       copyable: true,
@@ -24,7 +30,7 @@ export default function Contact() {
       label: t('contact.bookCall'),
       value: t('contact.scheduleMeeting'),
       icon: Calendar,
-      href: 'https://calendly.com/vignaudthomas40/30min',
+      href: URLS.calendly,
       copyable: false,
     },
   ];
@@ -51,13 +57,13 @@ export default function Contact() {
 
   const copyEmail = async () => {
     try {
-      await navigator.clipboard.writeText('contact@citedagency.com');
+      await navigator.clipboard.writeText(CONTACT.email);
       setEmailCopied(true);
       setTimeout(() => setEmailCopied(false), 2000);
     } catch {
       // Fallback for browsers without clipboard API
       const textArea = document.createElement('textarea');
-      textArea.value = 'contact@citedagency.com';
+      textArea.value = CONTACT.email;
       textArea.style.position = 'fixed';
       textArea.style.opacity = '0';
       document.body.appendChild(textArea);
@@ -83,7 +89,7 @@ export default function Contact() {
       formDataToSend.append('Budget', formData.budget);
       formDataToSend.append('Goal', formData.goal);
 
-      const response = await fetch('https://tally.so/r/xXaXyJ', {
+      const response = await fetch(URLS.tally.contact, {
         method: 'POST',
         body: formDataToSend,
       });
@@ -94,7 +100,8 @@ export default function Contact() {
         setError(t('contact.error'));
       }
     } catch {
-      // Tally redirects on success, which can cause a CORS error
+      // Tally redirects on success, which causes a CORS error.
+      // A network error from a redirect is expected success behavior.
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);

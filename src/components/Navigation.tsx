@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
 
 const navLinksData = [
   { labelKey: 'nav.services', href: '/services' },
@@ -31,6 +32,18 @@ export function Navigation() {
     setIsMobileMenuOpen(false);
     setIsLangMenuOpen(false);
   }, [location]);
+
+  // Close menus on Escape key
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        setIsLangMenuOpen(false);
+      }
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   return (
     <>
@@ -72,6 +85,8 @@ export function Navigation() {
               <div className="relative">
                 <button
                   onClick={() => setIsLangMenuOpen(!isLangMenuOpen)}
+                  aria-label="Change language"
+                  aria-expanded={isLangMenuOpen}
                   className="flex items-center gap-1.5 px-3 py-2 text-sm text-[#1d1d1f]/70 hover:text-[#1d1d1f] transition-colors rounded-full hover:bg-[#f5f5f7]"
                 >
                   <Globe className="w-4 h-4" />
@@ -108,7 +123,7 @@ export function Navigation() {
               </div>
 
               <a
-                href="https://calendly.com/vignaudthomas40/30min"
+                href={URLS.calendly}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex items-center px-5 py-2.5 bg-[#007AFF] text-white text-sm font-medium rounded-full hover:bg-[#0056CC] transition-colors"
@@ -120,6 +135,8 @@ export function Navigation() {
               <button
                 className="lg:hidden p-2 text-[#1d1d1f]"
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+                aria-expanded={isMobileMenuOpen}
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -175,7 +192,7 @@ export function Navigation() {
                 </div>
 
                 <a
-                  href="https://calendly.com/vignaudthomas40/30min"
+                  href={URLS.calendly}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-2 px-4 py-3 bg-[#007AFF] text-white font-medium rounded-xl text-center block"

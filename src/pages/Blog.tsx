@@ -1,9 +1,12 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
+import { BASE_URL } from '../constants/seo';
 
 interface ArticleData {
   title: string
@@ -16,12 +19,17 @@ interface ArticleData {
 }
 
 export default function Blog() {
+  const { t } = useLanguage();
+
   useSeo({
     title: 'Blog — AI Visibility Insights & Tips | Cited.',
     description: 'Learn about AI visibility strategies, structured data, and how to get your brand cited by ChatGPT, Perplexity, and Google AI.',
     path: '/blog',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Blog', path: '/blog' },
+    ],
   });
-  const { t } = useLanguage();
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubscribing, setIsSubscribing] = useState(false);
   const [isSubscribed, setIsSubscribed] = useState(false);
@@ -55,6 +63,18 @@ export default function Blog() {
     },
   ];
 
+  useJsonLd(useMemo(() => ({
+    '@type': 'ItemList',
+    itemListElement: articles
+      .filter((a) => a.slug)
+      .map((a, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        url: `${BASE_URL}/blog/${a.slug}`,
+        name: a.title,
+      })),
+  }), [articles]));
+
   const categories = [
     t('blog.catAll'), t('blog.catGeoBasics'), t('blog.catTechnical'),
     t('blog.catImplementation'), t('blog.catCaseStudy'), t('blog.catIndustry'),
@@ -70,7 +90,7 @@ export default function Blog() {
       const formDataToSend = new FormData();
       formDataToSend.append('Email', newsletterEmail);
 
-      const response = await fetch('https://tally.so/r/jaQaqa', {
+      const response = await fetch(URLS.tally.newsletter, {
         method: 'POST',
         body: formDataToSend,
       });

@@ -1,11 +1,15 @@
-import { useEffect, useMemo } from 'react';
+import { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Tag, Calendar } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 import { getArticleBySlug } from '../data/articles';
 import { marked } from 'marked';
+import DOMPurify from 'dompurify';
+import { URLS } from '../constants/urls';
+import { BASE_URL } from '../constants/seo';
 import NotFound from './NotFound';
 
 export default function BlogArticle() {
@@ -18,15 +22,18 @@ export default function BlogArticle() {
     title: article ? `${t(article.titleKey)} | Cited. Blog` : 'Article Not Found | Cited.',
     description: article ? t(article.excerptKey) : '',
     path: article ? `/blog/${article.slug}` : '/blog',
+    breadcrumbs: article
+      ? [
+          { name: 'Home', path: '/' },
+          { name: 'Blog', path: '/blog' },
+          { name: t(article.titleKey), path: `/blog/${article.slug}` },
+        ]
+      : undefined,
   });
 
-  useEffect(() => {
-    if (!article) {
-      return;
-    }
-
-    const jsonLd = {
-      '@context': 'https://schema.org',
+  useJsonLd(useMemo(() => {
+    if (!article) return null;
+    return {
       '@type': 'Article',
       headline: t(article.titleKey),
       description: t(article.excerptKey),
@@ -37,28 +44,19 @@ export default function BlogArticle() {
       publisher: {
         '@type': 'Organization',
         name: 'Cited',
-        url: 'https://citedagency.com',
+        url: BASE_URL,
       },
       datePublished: t(article.dateKey),
-      url: `https://citedagency.com/blog/${article.slug}`,
+      url: `${BASE_URL}/blog/${article.slug}`,
     };
-
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(script);
-
-    return () => {
-      document.head.removeChild(script);
-    };
-  }, [article, t]);
+  }, [article, t]));
 
   if (!article) {
     return <NotFound />;
   }
 
   const content = article.content[language];
-  const htmlContent = useMemo(() => marked.parse(content) as string, [content]);
+  const htmlContent = useMemo(() => DOMPurify.sanitize(marked.parse(content) as string), [content]);
 
   return (
     <div className="pt-24">
@@ -131,7 +129,7 @@ export default function BlogArticle() {
               {t('blog.ctaSubtitle')}
             </p>
             <a
-              href="https://calendly.com/vignaudthomas40/30min"
+              href={URLS.calendly}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all"

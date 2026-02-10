@@ -9,6 +9,10 @@ export default function Services() {
     title: 'Services — AI Visibility Optimization | Cited.',
     description: 'Content optimization, Schema.org markup, AI audits, and strategic consulting to get your brand cited by ChatGPT, Perplexity, and Google AI.',
     path: '/services',
+    breadcrumbs: [
+      { name: 'Home', path: '/' },
+      { name: 'Services', path: '/services' },
+    ],
   });
   const { t } = useLanguage();
 
