@@ -13,29 +13,6 @@ export default function About() {
     path: '/about',
   });
 
-  const milestones = [
-    {
-      year: t('about.milestone1Year'),
-      title: t('about.milestone1Title'),
-      desc: t('about.milestone1Desc'),
-    },
-    {
-      year: t('about.milestone2Year'),
-      title: t('about.milestone2Title'),
-      desc: t('about.milestone2Desc'),
-    },
-    {
-      year: t('about.milestone3Year'),
-      title: t('about.milestone3Title'),
-      desc: t('about.milestone3Desc'),
-    },
-    {
-      year: t('about.milestone4Year'),
-      title: t('about.milestone4Title'),
-      desc: t('about.milestone4Desc'),
-    },
-  ];
-
   return (
     <div className="pt-24">
       {/* Hero */}
@@ -122,41 +99,6 @@ export default function About() {
               <p>{t('about.story3')}</p>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Timeline */}
-      <section className="py-16 px-6">
-        <div className="max-w-3xl mx-auto">
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-2xl font-bold text-[#1d1d1f] mb-10 text-center"
-          >
-            {t('about.timelineTitle')}
-          </motion.h2>
-          <div className="space-y-6">
-            {milestones.map((milestone, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="flex gap-6 items-start"
-              >
-                <div className="flex-shrink-0 w-16 text-right">
-                  <span className="text-sm font-bold text-[#007AFF]">{milestone.year}</span>
-                </div>
-                <div className="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-[#007AFF]" />
-                <div>
-                  <h3 className="font-semibold text-[#1d1d1f] mb-1">{milestone.title}</h3>
-                  <p className="text-sm text-[#1d1d1f]/50">{milestone.desc}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 

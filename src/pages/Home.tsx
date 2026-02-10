@@ -107,7 +107,6 @@ export default function Home() {
 
       <StatsSection />
       <ServicesPreview />
-      <ResultsSection />
       <AgencyVsToolsSection />
       <ProcessSection />
       <CTASection />
@@ -273,69 +272,6 @@ function ProcessSection() {
   );
 }
 
-function ResultsSection() {
-  const { t } = useLanguage();
-
-  const audits = [
-    { brand: t('results.audit1Brand'), industry: t('results.audit1Industry'), score: t('results.audit1Score'), finding: t('results.audit1Finding'), color: '#FF3B30' },
-    { brand: t('results.audit2Brand'), industry: t('results.audit2Industry'), score: t('results.audit2Score'), finding: t('results.audit2Finding'), color: '#FF9500' },
-    { brand: t('results.audit3Brand'), industry: t('results.audit3Industry'), score: t('results.audit3Score'), finding: t('results.audit3Finding'), color: '#FF3B30' },
-  ];
-
-  return (
-    <section className="py-24 px-6 bg-[#f5f5f7]">
-      <div className="max-w-5xl mx-auto">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1.5 bg-white rounded-full text-sm text-[#1d1d1f]/50 mb-4">{t('results.badge')}</span>
-          <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
-            {t('results.title')}<br /><span className="gradient-text">{t('results.titleHighlight')}</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {audits.map((audit, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              className="apple-card p-6"
-            >
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <h3 className="font-semibold text-[#1d1d1f]">{audit.brand}</h3>
-                  <p className="text-xs text-[#1d1d1f]/40">{audit.industry}</p>
-                </div>
-                <div className="text-2xl font-bold" style={{ color: audit.color }}>
-                  {audit.score}
-                </div>
-              </div>
-              <p className="text-sm text-[#1d1d1f]/60 leading-relaxed">{audit.finding}</p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="text-center mt-8"
-        >
-          <p className="text-xs text-[#1d1d1f]/30 mb-6">{t('results.auditNote')}</p>
-          <Link
-            to="/ai-readiness"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-all"
-          >
-            {t('results.auditCta')}
-            <ArrowRight className="w-4 h-4" />
-          </Link>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
 
 function AgencyVsToolsSection() {
   const { t } = useLanguage();
