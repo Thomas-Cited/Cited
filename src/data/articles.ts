@@ -24,7 +24,7 @@ export const articles: Article[] = [
     content: {
       en: `## What is Generative Engine Optimization?
 
-Generative Engine Optimization (GEO) is the practice of optimizing your online presence so that AI-powered search engines — like ChatGPT, Perplexity, Google AI Overviews, and Claude — reference and recommend your brand in their responses. While traditional SEO focuses on ranking in a list of blue links, GEO focuses on being **cited** in AI-generated answers.
+Generative Engine Optimization (GEO) is the practice of optimizing your online presence so that AI-powered search engines — like ChatGPT, Perplexity, Google AI Overviews, and Claude — surface your brand in their responses. While traditional SEO focuses on ranking in a list of blue links, GEO focuses on appearing in AI-generated answers.
 
 This distinction matters more than ever. According to Gartner, 40% of online searches now involve AI tools, and that number is accelerating. When someone asks ChatGPT "What's the best project management tool for startups?", the AI doesn't show ten blue links — it gives a direct answer, often mentioning specific brands. GEO is about making sure your brand is one of them.
 
@@ -36,7 +36,7 @@ The search landscape is undergoing its biggest transformation since Google's fou
 
 **2. Traditional SEO is losing effectiveness.** SparkToro's research shows that Google AI Overviews reduce organic clicks by up to 25%. Even if you rank #1 on Google, fewer people are clicking through to your site. The traffic that once came from ranking well is increasingly captured by AI-generated summaries.
 
-**3. Consumer trust in AI is growing.** A 2025 Salesforce study found that 79% of consumers trust AI-generated recommendations as much as personal referrals. When ChatGPT recommends a product, people act on it. Being cited by AI isn't just about visibility — it directly drives purchasing decisions.
+**3. Consumer trust in AI is growing.** A 2025 Salesforce study found that 79% of consumers trust AI-generated answers as much as personal referrals. When ChatGPT surfaces a product, people act on it. Appearing in AI-generated answers isn't just about visibility — it directly drives purchasing decisions.
 
 ## How GEO Differs from Traditional SEO
 
@@ -104,7 +104,7 @@ GEO is not a replacement for SEO — it's an essential complement. The brands th
 *Want to know where your brand stands? [Get a free AI Readiness Audit](/ai-readiness) and see your score in minutes.*`,
       fr: `## Qu'est-ce que le Generative Engine Optimization ?
 
-Le Generative Engine Optimization (GEO) est la pratique qui consiste a optimiser votre presence en ligne pour que les moteurs de recherche alimentes par l'IA — comme ChatGPT, Perplexity, Google AI Overviews et Claude — referencent et recommandent votre marque dans leurs reponses. Alors que le SEO traditionnel se concentre sur le classement dans une liste de liens bleus, le GEO se concentre sur le fait d'etre **cite** dans les reponses generees par l'IA.
+Le Generative Engine Optimization (GEO) est la pratique qui consiste a optimiser votre presence en ligne pour que les moteurs de recherche alimentes par l'IA — comme ChatGPT, Perplexity, Google AI Overviews et Claude — fassent apparaitre votre marque dans leurs reponses. Alors que le SEO traditionnel se concentre sur le classement dans une liste de liens bleus, le GEO se concentre sur l'apparition dans les reponses generees par l'IA.
 
 Cette distinction est plus importante que jamais. Selon Gartner, 40 % des recherches en ligne impliquent desormais des outils d'IA, et ce chiffre s'accelere. Quand quelqu'un demande a ChatGPT "Quel est le meilleur outil de gestion de projet pour les startups ?", l'IA ne montre pas dix liens bleus — elle donne une reponse directe, mentionnant souvent des marques specifiques. Le GEO consiste a s'assurer que votre marque en fait partie.
 
@@ -116,7 +116,7 @@ Le paysage de la recherche connait sa plus grande transformation depuis la creat
 
 **2. Le SEO traditionnel perd en efficacite.** Les recherches de SparkToro montrent que les Google AI Overviews reduisent les clics organiques jusqu'a 25 %. Meme si vous etes numero 1 sur Google, moins de personnes cliquent vers votre site. Le trafic qui provenait d'un bon classement est de plus en plus capture par les resumes generes par l'IA.
 
-**3. La confiance des consommateurs dans l'IA grandit.** Une etude Salesforce de 2025 a revele que 79 % des consommateurs font autant confiance aux recommandations generees par l'IA qu'aux recommandations personnelles. Quand ChatGPT recommande un produit, les gens agissent. Etre cite par l'IA n'est pas qu'une question de visibilite — cela influence directement les decisions d'achat.
+**3. La confiance des consommateurs dans l'IA grandit.** Une etude Salesforce de 2025 a revele que 79 % des consommateurs font autant confiance aux reponses generees par l'IA qu'aux recommandations personnelles. Quand ChatGPT fait apparaitre un produit, les gens agissent. Apparaitre dans les reponses IA n'est pas qu'une question de visibilite — cela influence directement les decisions d'achat.
 
 ## Comment le GEO differe du SEO traditionnel
 
@@ -581,7 +581,7 @@ This is the foundation. Every website should have Organization schema on the hom
   "alternateName": "Cited Agency",
   "url": "https://citedagency.com",
   "logo": "https://citedagency.com/logo.png",
-  "description": "AI visibility agency that helps brands get cited by ChatGPT, Perplexity, and Google AI through Generative Engine Optimization (GEO).",
+  "description": "AI visibility agency that optimizes brands for visibility in ChatGPT, Perplexity, and Google AI through Generative Engine Optimization (GEO).",
   "foundingDate": "2025",
   "founder": {
     "@type": "Person",
@@ -643,7 +643,7 @@ This is one of the highest-impact Schema types for AI citations. When AI systems
       "name": "What is Generative Engine Optimization?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Generative Engine Optimization (GEO) is the practice of optimizing your online presence so that AI-powered search engines like ChatGPT, Perplexity, and Google AI reference and recommend your brand in their responses."
+        "text": "Generative Engine Optimization (GEO) is the practice of optimizing your online presence so that AI-powered search engines like ChatGPT, Perplexity, and Google AI surface your brand in their responses."
       }
     },
     {
@@ -695,7 +695,7 @@ For every blog post or article, add structured data that helps AI understand the
 
 ### Step 5 — Product or Service Schema
 
-If you sell products or services, structured data helps AI accurately describe and recommend them.
+If you sell products or services, structured data helps AI accurately describe and surface them.
 
 \`\`\`json
 {
@@ -859,7 +859,7 @@ C'est la fondation. Chaque site web devrait avoir le schema Organization sur la 
   "alternateName": "Cited Agency",
   "url": "https://citedagency.com",
   "logo": "https://citedagency.com/logo.png",
-  "description": "Agence de visibilite IA qui aide les marques a etre citees par ChatGPT, Perplexity et Google AI grace au Generative Engine Optimization (GEO).",
+  "description": "Agence de visibilite IA qui optimise les marques pour la visibilite dans ChatGPT, Perplexity et Google AI grace au Generative Engine Optimization (GEO).",
   "foundingDate": "2025",
   "founder": {
     "@type": "Person",
@@ -921,7 +921,7 @@ C'est l'un des types Schema a plus fort impact pour les citations IA. Quand les 
       "name": "Qu'est-ce que le Generative Engine Optimization ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Le Generative Engine Optimization (GEO) est la pratique qui consiste a optimiser votre presence en ligne pour que les moteurs de recherche IA comme ChatGPT, Perplexity et Google AI referencent et recommandent votre marque dans leurs reponses."
+        "text": "Le Generative Engine Optimization (GEO) est la pratique qui consiste a optimiser votre presence en ligne pour que les moteurs de recherche IA comme ChatGPT, Perplexity et Google AI fassent apparaitre votre marque dans leurs reponses."
       }
     },
     {
@@ -973,7 +973,7 @@ Pour chaque article de blog, ajoutez des donnees structurees qui aident l'IA a c
 
 ### Etape 5 — Schema Product ou Service
 
-Si vous vendez des produits ou services, les donnees structurees aident l'IA a les decrire et les recommander avec precision.
+Si vous vendez des produits ou services, les donnees structurees aident l'IA a les decrire et les faire apparaitre avec precision.
 
 \`\`\`json
 {
@@ -1060,6 +1060,207 @@ L'implementation de Schema.org est l'une des activites au meilleur ROI pour la v
 ---
 
 *Vous ne savez pas par ou commencer ? [Lancez un Audit Schema gratuit](/schema-audit) et obtenez un rapport detaille sur votre implementation actuelle et les opportunites.*`,
+    },
+  },
+  {
+    slug: 'what-ai-visibility-can-and-cannot-guarantee',
+    titleKey: 'blog.article7Title',
+    excerptKey: 'blog.article7Excerpt',
+    categoryKey: 'blog.article7Category',
+    readTimeKey: 'blog.article7ReadTime',
+    dateKey: 'blog.article7Date',
+    featured: false,
+    content: {
+      en: `## How LLMs Select Information
+
+When a large language model like ChatGPT, Claude, or Gemini generates a response, it draws from two distinct sources:
+
+**1. Parametric memory** — Information encoded in the model's weights during training. This is a compressed representation of the training data, not a database lookup. The model doesn't "remember" specific web pages — it has learned patterns, associations, and factual relationships from billions of documents.
+
+**2. Retrieval-Augmented Generation (RAG)** — Many AI systems now supplement parametric memory with real-time web retrieval. When you ask Perplexity or ChatGPT (with browsing) a question, they search the web, retrieve relevant pages, and synthesize information from those sources into a response.
+
+Both mechanisms are probabilistic. The same query can produce different results depending on the model version, the retrieval results that day, the phrasing of the question, and even the conversation context. This is fundamentally different from traditional search, where a keyword query returns a deterministic ranked list.
+
+## The Difference Between Mention, Citation, and Presence
+
+These terms are often used interchangeably, but they mean different things:
+
+- **Mention** — The AI names your brand in its response. Example: "Tools like Salesforce and HubSpot are popular CRM options."
+- **Citation** — The AI attributes a specific claim or piece of information to your source, often with a link. Example: "According to Cited Agency's research, 40% of searches now go through AI tools. [source]"
+- **Presence** — Your brand's information influences the AI's response even without explicit mention. If the AI accurately describes your product's features without naming you, your structured data and content likely influenced the response.
+
+No service can guarantee any of these outcomes for a specific query at a specific time. AI outputs are non-deterministic by design.
+
+## What AI Visibility Optimization Can Do
+
+While no one controls what AI systems say, there are concrete, measurable actions that influence the likelihood of your brand appearing in AI-generated answers:
+
+### Optimize technical signals
+
+- **Schema.org implementation** — Structured data gives AI systems a machine-readable map of your brand, products, and services. This directly influences how accurately AI describes your business.
+- **Site architecture** — Clean URL structure, proper heading hierarchy, and fast page loads make your content easier for AI retrieval systems to process.
+- **Entity consistency** — When your brand information is consistent across your website, social profiles, directories, and Wikipedia, AI systems have higher confidence in the accuracy of information about you.
+
+### Optimize content signals
+
+- **Answer-first content** — Structuring content to directly answer common questions makes it more likely to be retrieved and used by AI systems.
+- **Data-backed claims** — Content with specific statistics, citations, and verifiable data points is weighted more heavily by AI retrieval systems.
+- **Topic authority** — Comprehensive coverage of your domain signals expertise that AI systems recognize.
+
+### Measure and track
+
+- **AI visibility scoring** — Testing your brand across multiple AI providers on relevant queries and tracking changes over time.
+- **Competitive benchmarking** — Understanding how your visibility compares to competitors and identifying gaps.
+- **Monthly reporting** — Documenting progress with concrete data points.
+
+## What No One Can Guarantee
+
+This is where transparency matters. Here is what no AI visibility service — including ours — can honestly promise:
+
+### Specific placement outcomes
+
+"Your brand will be the #1 recommendation in ChatGPT for [query]" — This is not possible to guarantee. AI responses vary based on model updates, retrieval changes, query phrasing, user context, and randomness built into the generation process.
+
+### Permanent results
+
+AI models are updated regularly. Training data changes. Retrieval algorithms evolve. A brand that appears frequently in AI responses today may not tomorrow — and vice versa. Optimization is an ongoing process, not a one-time fix.
+
+### Control over AI outputs
+
+No one controls what ChatGPT, Perplexity, or Google AI says. These are independent systems built by separate companies with their own priorities, training processes, and safety measures. Any service claiming to control AI outputs is misrepresenting their capabilities.
+
+### Guaranteed score improvements
+
+While our scoring methodology measures real signals — structured data quality, content optimization, entity consistency — the score reflects optimization inputs, not guaranteed AI behavior. A perfect optimization score does not guarantee any specific AI output.
+
+## How to Measure Progress Honestly
+
+Given these constraints, here is what honest measurement looks like:
+
+**1. Track optimization inputs, not just outputs.** Measure whether Schema.org markup is implemented correctly, whether content is structured for AI comprehension, whether entity data is consistent. These are things you can control and verify.
+
+**2. Sample AI responses over time.** Test a consistent set of queries across multiple AI providers monthly. Track trends — is your brand appearing more frequently? In more positive contexts? This shows directional progress even if individual queries fluctuate.
+
+**3. Compare against a baseline.** Your starting score matters. A brand with no structured data and minimal web presence has more room for measurable improvement than one that's already well-optimized.
+
+**4. Be transparent about methodology.** Any scoring system should be documented and reproducible. You should understand exactly what's being measured and how.
+
+## FTC Guidelines and Transparency Best Practices
+
+The Federal Trade Commission (FTC) has clear guidelines about marketing claims:
+
+- **Substantiation** — Claims must be backed by evidence. "We improve your AI visibility" is supportable with data. "We guarantee you'll be cited by ChatGPT" is not.
+- **Truthful advertising** — Marketing materials must not contain deceptive claims. Promising specific AI outputs that no one can control is inherently deceptive.
+- **Clear disclosures** — Any limitations on services should be clearly communicated, not buried in fine print.
+
+These principles align with good business practice. Clients who understand what they're buying — optimization services with measurable inputs and probabilistic outcomes — are better clients than those sold on false promises.
+
+## Our Approach
+
+At Cited, we optimize the signals that influence AI visibility. We measure our work through a proprietary scoring methodology that tracks technical optimization, content quality, and entity consistency. We report monthly with concrete data.
+
+We do not promise specific citation outcomes, guaranteed placements, or controlled AI responses. We commit to measurable progress on the factors we can influence, and transparent reporting on the results we observe.
+
+This is what honest AI visibility optimization looks like.
+
+---
+
+*Want to understand your current AI visibility? [Get a free audit](/ai-readiness) and see where you stand — with full transparency on what the score means and what it doesn't.*`,
+      fr: `## Comment les LLMs selectionnent l'information
+
+Quand un grand modele de langage comme ChatGPT, Claude ou Gemini genere une reponse, il puise dans deux sources distinctes :
+
+**1. Memoire parametrique** — L'information encodee dans les poids du modele lors de l'entrainement. C'est une representation compressee des donnees d'entrainement, pas une recherche en base de donnees. Le modele ne "se souvient" pas de pages web specifiques — il a appris des patterns, des associations et des relations factuelles a partir de milliards de documents.
+
+**2. Generation augmentee par recuperation (RAG)** — De nombreux systemes IA completent maintenant la memoire parametrique avec une recherche web en temps reel. Quand vous posez une question a Perplexity ou ChatGPT (avec navigation), ils recherchent sur le web, recuperent les pages pertinentes et synthetisent l'information de ces sources en une reponse.
+
+Les deux mecanismes sont probabilistes. La meme requete peut produire des resultats differents selon la version du modele, les resultats de recuperation du jour, la formulation de la question et meme le contexte de la conversation. C'est fondamentalement different de la recherche traditionnelle, ou une requete par mots-cles retourne une liste classee deterministe.
+
+## La difference entre mention, citation et presence
+
+Ces termes sont souvent utilises de maniere interchangeable, mais ils signifient des choses differentes :
+
+- **Mention** — L'IA nomme votre marque dans sa reponse. Exemple : "Des outils comme Salesforce et HubSpot sont des options CRM populaires."
+- **Citation** — L'IA attribue une affirmation ou information specifique a votre source, souvent avec un lien. Exemple : "Selon les recherches de Cited Agency, 40 % des recherches passent desormais par des outils IA. [source]"
+- **Presence** — Les informations de votre marque influencent la reponse de l'IA meme sans mention explicite. Si l'IA decrit avec precision les fonctionnalites de votre produit sans vous nommer, vos donnees structurees et votre contenu ont probablement influence la reponse.
+
+Aucun service ne peut garantir l'un de ces resultats pour une requete specifique a un moment donne. Les outputs de l'IA sont non-deterministes par conception.
+
+## Ce que l'optimisation de la visibilite IA peut faire
+
+Bien que personne ne controle ce que les systemes IA disent, il existe des actions concretes et mesurables qui influencent la probabilite que votre marque apparaisse dans les reponses generees par l'IA :
+
+### Optimiser les signaux techniques
+
+- **Implementation Schema.org** — Les donnees structurees donnent aux systemes IA une carte lisible par machine de votre marque, produits et services. Cela influence directement la precision avec laquelle l'IA decrit votre activite.
+- **Architecture du site** — Une structure d'URL propre, une hierarchie de titres correcte et des chargements de page rapides facilitent le traitement de votre contenu par les systemes de recuperation IA.
+- **Coherence des entites** — Quand les informations de votre marque sont coherentes sur votre site web, profils sociaux, annuaires et Wikipedia, les systemes IA ont une plus grande confiance dans l'exactitude des informations vous concernant.
+
+### Optimiser les signaux de contenu
+
+- **Contenu "reponse d'abord"** — Structurer le contenu pour repondre directement aux questions courantes augmente la probabilite qu'il soit recupere et utilise par les systemes IA.
+- **Affirmations appuyees par des donnees** — Le contenu avec des statistiques specifiques, des citations et des donnees verifiables est pondere plus fortement par les systemes de recuperation IA.
+- **Autorite thematique** — Une couverture complete de votre domaine signale une expertise que les systemes IA reconnaissent.
+
+### Mesurer et suivre
+
+- **Score de visibilite IA** — Tester votre marque sur plusieurs fournisseurs IA pour des requetes pertinentes et suivre les changements dans le temps.
+- **Benchmarking concurrentiel** — Comprendre comment votre visibilite se compare a celle des concurrents et identifier les lacunes.
+- **Reporting mensuel** — Documenter les progres avec des donnees concretes.
+
+## Ce que personne ne peut garantir
+
+C'est ici que la transparence compte. Voici ce qu'aucun service de visibilite IA — y compris le notre — ne peut honnetement promettre :
+
+### Des resultats de placement specifiques
+
+"Votre marque sera la recommandation n°1 dans ChatGPT pour [requete]" — Ceci est impossible a garantir. Les reponses IA varient en fonction des mises a jour du modele, des changements de recuperation, de la formulation de la requete, du contexte utilisateur et de l'aleatoire integre au processus de generation.
+
+### Des resultats permanents
+
+Les modeles IA sont mis a jour regulierement. Les donnees d'entrainement changent. Les algorithmes de recuperation evoluent. Une marque qui apparait frequemment dans les reponses IA aujourd'hui peut ne plus apparaitre demain — et vice versa. L'optimisation est un processus continu, pas une intervention ponctuelle.
+
+### Le controle des outputs IA
+
+Personne ne controle ce que ChatGPT, Perplexity ou Google AI dit. Ce sont des systemes independants construits par des entreprises separees avec leurs propres priorites, processus d'entrainement et mesures de securite. Tout service pretendant controler les outputs IA deforme ses capacites.
+
+### Des ameliorations de score garanties
+
+Bien que notre methodologie de scoring mesure de vrais signaux — qualite des donnees structurees, optimisation du contenu, coherence des entites — le score reflete les inputs d'optimisation, pas un comportement IA garanti. Un score d'optimisation parfait ne garantit aucun output IA specifique.
+
+## Comment mesurer les progres honnetement
+
+Compte tenu de ces contraintes, voici a quoi ressemble une mesure honnete :
+
+**1. Suivre les inputs d'optimisation, pas seulement les outputs.** Mesurer si le balisage Schema.org est correctement implemente, si le contenu est structure pour la comprehension IA, si les donnees d'entite sont coherentes. Ce sont des choses que vous pouvez controler et verifier.
+
+**2. Echantillonner les reponses IA dans le temps.** Tester un ensemble coherent de requetes sur plusieurs fournisseurs IA mensuellement. Suivre les tendances — votre marque apparait-elle plus frequemment ? Dans des contextes plus positifs ? Cela montre une progression directionnelle meme si les requetes individuelles fluctuent.
+
+**3. Comparer par rapport a une base de reference.** Votre score de depart compte. Une marque sans donnees structurees et avec une presence web minimale a plus de marge pour une amelioration mesurable qu'une marque deja bien optimisee.
+
+**4. Etre transparent sur la methodologie.** Tout systeme de scoring devrait etre documente et reproductible. Vous devriez comprendre exactement ce qui est mesure et comment.
+
+## Directives FTC et bonnes pratiques de transparence
+
+La Federal Trade Commission (FTC) a des directives claires sur les affirmations marketing :
+
+- **Justification** — Les affirmations doivent etre etayees par des preuves. "Nous ameliorons votre visibilite IA" est justifiable avec des donnees. "Nous garantissons que vous serez cite par ChatGPT" ne l'est pas.
+- **Publicite veridique** — Les supports marketing ne doivent pas contenir d'affirmations trompeuses. Promettre des outputs IA specifiques que personne ne controle est intrinsequement trompeur.
+- **Divulgations claires** — Toute limitation des services devrait etre clairement communiquee, pas enfouie dans les petits caracteres.
+
+Ces principes s'alignent avec les bonnes pratiques commerciales. Les clients qui comprennent ce qu'ils achetent — des services d'optimisation avec des inputs mesurables et des resultats probabilistes — sont de meilleurs clients que ceux a qui on a vendu de fausses promesses.
+
+## Notre approche
+
+Chez Cited, nous optimisons les signaux qui influencent la visibilite IA. Nous mesurons notre travail a travers une methodologie de scoring proprietaire qui suit l'optimisation technique, la qualite du contenu et la coherence des entites. Nous rendons compte mensuellement avec des donnees concretes.
+
+Nous ne promettons pas de resultats de citation specifiques, de placements garantis ou de reponses IA controlees. Nous nous engageons a une progression mesurable sur les facteurs que nous pouvons influencer, et a un reporting transparent sur les resultats que nous observons.
+
+C'est a cela que ressemble une optimisation honnete de la visibilite IA.
+
+---
+
+*Vous voulez comprendre votre visibilite IA actuelle ? [Obtenez un audit gratuit](/ai-readiness) et voyez ou vous en etes — en toute transparence sur ce que le score signifie et ce qu'il ne signifie pas.*`,
     },
   },
 ]

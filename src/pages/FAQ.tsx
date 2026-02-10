@@ -43,7 +43,7 @@ export default function FAQ() {
 
   useSeo({
     title: 'FAQ — AI Visibility Questions | Cited.',
-    description: 'Answers to common questions about AI visibility, Schema.org, and how Cited helps brands get cited by AI engines.',
+    description: 'Answers to common questions about AI visibility, Schema.org, and how Cited helps brands appear in AI-generated answers.',
     path: '/faq',
     breadcrumbs: [
       { name: 'Home', path: '/' },

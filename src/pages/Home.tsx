@@ -7,7 +7,7 @@ import { useSeo } from '../hooks/use-seo';
 export default function Home() {
   useSeo({
     title: 'Cited. — AI Visibility Agency',
-    description: 'Get your brand cited by ChatGPT, Perplexity, and Google AI. We optimize your content for AI engines — more citations, more traffic, more leads.',
+    description: 'Improve your brand\'s visibility in AI-generated answers from ChatGPT, Perplexity, and Google AI. Better structure, more mentions, more traffic — without ads.',
     path: '/',
   });
   const { t } = useLanguage();

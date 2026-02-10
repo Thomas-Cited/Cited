@@ -128,6 +128,15 @@ export default function Legal() {
               <p>{t('legal.section8P1')}</p>
             </motion.div>
 
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <h2 className="text-2xl font-semibold text-[#1d1d1f] mb-4">{t('legal.section9Title')}</h2>
+              <p>{t('legal.section9P1')}</p>
+            </motion.div>
+
             <p className="text-sm text-[#1d1d1f]/30 pt-8">{t('legal.lastUpdate')}</p>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function Blog() {
 
   useSeo({
     title: 'Blog — AI Visibility Insights & Tips | Cited.',
-    description: 'Learn about AI visibility strategies, structured data, and how to get your brand cited by ChatGPT, Perplexity, and Google AI.',
+    description: 'Learn about AI visibility strategies, structured data, and how to improve your brand\'s presence across ChatGPT, Perplexity, and Google AI.',
     path: '/blog',
     breadcrumbs: [
       { name: 'Home', path: '/' },

@@ -7,7 +7,7 @@ import { useSeo } from '../hooks/use-seo';
 export default function Services() {
   useSeo({
     title: 'Services — AI Visibility Optimization | Cited.',
-    description: 'Content optimization, Schema.org markup, AI audits, and strategic consulting to get your brand cited by ChatGPT, Perplexity, and Google AI.',
+    description: 'Content optimization, Schema.org markup, AI audits, and strategic consulting to improve your brand\'s visibility across ChatGPT, Perplexity, and Google AI.',
     path: '/services',
     breadcrumbs: [
       { name: 'Home', path: '/' },
