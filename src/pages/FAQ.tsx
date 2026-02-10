@@ -143,7 +143,7 @@ export default function FAQ() {
           <div className="space-y-4">
             {faqs[activeCategory]?.map((item, index) => (
               <motion.div
-                key={index}
+                key={item.q}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}

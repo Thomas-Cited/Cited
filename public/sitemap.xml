@@ -2,66 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://citedagency.com/</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/services</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/pricing</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/ai-readiness</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/schema-audit</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/blog</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/faq</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/contact</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/about</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/blog/what-is-geo</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/blog/how-chatgpt-cites-websites</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/blog/schema-org-for-ai</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
     <loc>https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee</loc>
+    <lastmod>2026-02-10</lastmod>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>

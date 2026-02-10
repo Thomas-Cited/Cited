@@ -38,10 +38,13 @@ function extractSlugsFromArticlesFile() {
   return slugs
 }
 
+const TODAY = new Date().toISOString().split('T')[0]
+
 function buildUrlEntry(loc, priority, changefreq) {
   return [
     '  <url>',
     `    <loc>${loc}</loc>`,
+    `    <lastmod>${TODAY}</lastmod>`,
     `    <priority>${priority}</priority>`,
     `    <changefreq>${changefreq}</changefreq>`,
     '  </url>',

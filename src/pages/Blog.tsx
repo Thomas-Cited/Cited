@@ -61,6 +61,14 @@ export default function Blog() {
       date: t('blog.article3Date'),
       slug: 'schema-org-for-ai',
     },
+    {
+      title: t('blog.article7Title'),
+      excerpt: t('blog.article7Excerpt'),
+      category: t('blog.article7Category'),
+      readTime: t('blog.article7ReadTime'),
+      date: t('blog.article7Date'),
+      slug: 'what-ai-visibility-can-and-cannot-guarantee',
+    },
   ];
 
   useJsonLd(useMemo(() => ({
@@ -74,11 +82,6 @@ export default function Blog() {
         name: a.title,
       })),
   }), [articles]));
-
-  const categories = [
-    t('blog.catAll'), t('blog.catGeoBasics'), t('blog.catTechnical'),
-    t('blog.catImplementation'), t('blog.catCaseStudy'), t('blog.catIndustry'),
-  ];
 
   const handleNewsletterSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -127,24 +130,6 @@ export default function Blog() {
         </div>
       </section>
 
-      <section className="py-8 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-2">
-            {categories.map((cat, index) => (
-              <button
-                key={index}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  index === 0
-                    ? 'bg-[#007AFF] text-white'
-                    : 'bg-[#f5f5f7] text-[#1d1d1f]/70 hover:bg-[#e8e8ed]'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
 
       <section className="py-8 px-6">
         <div className="max-w-5xl mx-auto">
