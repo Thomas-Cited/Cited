@@ -52,7 +52,7 @@ export default function Home() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
-              to="/geo-score"
+              to="/ai-readiness"
               className="group flex items-center gap-2 px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all"
             >
               {t('hero.cta')}
@@ -325,7 +325,7 @@ function ResultsSection() {
         >
           <p className="text-xs text-[#1d1d1f]/30 mb-6">{t('results.auditNote')}</p>
           <Link
-            to="/geo-score"
+            to="/ai-readiness"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-all"
           >
             {t('results.auditCta')}
@@ -458,7 +458,7 @@ function CTASection() {
             {t('cta.subtitle')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/geo-score" className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all">
+            <Link to="/ai-readiness" className="px-8 py-4 bg-[#007AFF] text-white font-semibold rounded-full hover:bg-[#0056CC] transition-all">
               {t('cta.button')}
             </Link>
             <Link to="/contact" className="px-8 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-full hover:bg-[#e8e8ed] transition-all">

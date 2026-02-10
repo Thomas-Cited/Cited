@@ -8,10 +8,11 @@ export function Footer() {
   const footerLinks = [
     { labelKey: 'footer.services', href: '/services' },
     { labelKey: 'footer.pricing', href: '/pricing' },
-    { labelKey: 'footer.geoScore', href: '/geo-score' },
+    { labelKey: 'footer.geoScore', href: '/ai-readiness' },
     { labelKey: 'footer.schemaAudit', href: '/schema-audit' },
     { labelKey: 'footer.blog', href: '/blog' },
     { labelKey: 'footer.faq', href: '/faq' },
+    { labelKey: 'footer.about', href: '/about' },
     { labelKey: 'footer.contact', href: '/contact' },
     { labelKey: 'footer.legal', href: '/legal' },
   ];

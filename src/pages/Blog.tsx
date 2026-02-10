@@ -53,30 +53,6 @@ export default function Blog() {
       date: t('blog.article3Date'),
       slug: 'schema-org-for-ai',
     },
-    {
-      title: t('blog.article4Title'),
-      excerpt: t('blog.article4Excerpt'),
-      category: t('blog.article4Category'),
-      readTime: t('blog.article4ReadTime'),
-      date: t('blog.article4Date'),
-      slug: 'auditing-50-brands',
-    },
-    {
-      title: t('blog.article5Title'),
-      excerpt: t('blog.article5Excerpt'),
-      category: t('blog.article5Category'),
-      readTime: t('blog.article5ReadTime'),
-      date: t('blog.article5Date'),
-      slug: 'future-of-search',
-    },
-    {
-      title: t('blog.article6Title'),
-      excerpt: t('blog.article6Excerpt'),
-      category: t('blog.article6Category'),
-      readTime: t('blog.article6ReadTime'),
-      date: t('blog.article6Date'),
-      slug: 'eeat-for-llms',
-    },
   ];
 
   const categories = [

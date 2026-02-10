@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Tag, Calendar } from 'lucide-react';
@@ -18,6 +19,39 @@ export default function BlogArticle() {
     description: article ? t(article.excerptKey) : '',
     path: article ? `/blog/${article.slug}` : '/blog',
   });
+
+  useEffect(() => {
+    if (!article) {
+      return;
+    }
+
+    const jsonLd = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: t(article.titleKey),
+      description: t(article.excerptKey),
+      author: {
+        '@type': 'Person',
+        name: 'Thomas Vignaud',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Cited',
+        url: 'https://citedagency.com',
+      },
+      datePublished: t(article.dateKey),
+      url: `https://citedagency.com/blog/${article.slug}`,
+    };
+
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(script);
+    };
+  }, [article, t]);
 
   if (!article) {
     return <NotFound />;

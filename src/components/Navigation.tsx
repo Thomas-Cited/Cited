@@ -7,7 +7,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 const navLinksData = [
   { labelKey: 'nav.services', href: '/services' },
   { labelKey: 'nav.pricing', href: '/pricing' },
-  { labelKey: 'nav.geoScore', href: '/geo-score' },
+  { labelKey: 'nav.geoScore', href: '/ai-readiness' },
   { labelKey: 'nav.contact', href: '/contact' },
 ];
 

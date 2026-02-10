@@ -17,7 +17,7 @@ export function CTA() {
   ];
 
   return (
-    <section ref={sectionRef} id="geo-score" className="relative py-24 px-6">
+    <section ref={sectionRef} id="ai-readiness" className="relative py-24 px-6">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 40 }}

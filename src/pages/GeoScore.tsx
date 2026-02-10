@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Loader2 } from 'lucide-react';
+import { ArrowRight, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
 
@@ -16,13 +16,14 @@ export default function GeoScore() {
   useSeo({
     title: 'Free AI Audit — Test Your AI Visibility | Cited.',
     description: 'Check how visible your brand is on ChatGPT, Perplexity, Claude, Gemini, and Google AI. Get your free AI readiness score in seconds.',
-    path: '/geo-score',
+    path: '/ai-readiness',
   });
   const { t } = useLanguage();
   const [activeProvider, setActiveProvider] = useState('chatgpt');
   const [step] = useState(1);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<null | { score: number; factors: { name: string; weight: number; value: number }[] }>(null);
+  const [error, setError] = useState<string | null>(null);
 
   const [formData, setFormData] = useState({
     brandName: '',
@@ -53,66 +54,57 @@ export default function GeoScore() {
     { name: 'AI-Friendly Content', weight: 10 },
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.brandName || !formData.industry) return;
+  const runAnalysis = async () => {
+    if (!formData.brandName || !formData.industry || !formData.website) return;
 
     setLoading(true);
-
-    let score = 0;
-    let factors = scoreFactors.map(f => ({ ...f, value: 0 }));
+    setError(null);
 
     try {
-      if (formData.website) {
-        const response = await fetch(`https://geo-score-api.vignaudthomas40.workers.dev?url=${encodeURIComponent(formData.website)}&brand=${encodeURIComponent(formData.brandName)}`);
+      const response = await fetch(`https://geo-score-api.vignaudthomas40.workers.dev?url=${encodeURIComponent(formData.website)}&brand=${encodeURIComponent(formData.brandName)}`);
 
-        if (response.ok) {
-          const data = await response.json();
-          score = data.score;
-
-          factors = scoreFactors.map(f => {
-            const apiFactor = data.factors?.find((af: { name: string }) => af.name === f.name);
-            return {
-              ...f,
-              value: apiFactor ? Math.round((apiFactor.value / apiFactor.max) * 100) : Math.floor(Math.random() * 50) + 20,
-            };
-          });
-        } else {
-          throw new Error('API failed');
-        }
-      } else {
-        score = Math.floor(Math.random() * 40) + 30;
-        factors = scoreFactors.map(f => ({
-          ...f,
-          value: Math.floor(Math.random() * 60) + 20,
-        }));
+      if (!response.ok) {
+        throw new Error('API failed');
       }
-    } catch {
-      score = Math.floor(Math.random() * 40) + 30;
-      factors = scoreFactors.map(f => ({
-        ...f,
-        value: Math.floor(Math.random() * 60) + 20,
-      }));
-    }
 
-    try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('Brand name', formData.brandName);
-      formDataToSend.append('Industry', formData.industry);
-      formDataToSend.append('Website', formData.website || 'Not provided');
-      formDataToSend.append('AI Provider', activeProvider);
-      formDataToSend.append('Score', String(score));
+      const data = await response.json();
+      const score = data.score;
 
-      await fetch('https://tally.so/r/0Q6Q5j', {
-        method: 'POST',
-        body: formDataToSend,
+      const factors = scoreFactors.map(f => {
+        const apiFactor = data.factors?.find((af: { name: string }) => af.name === f.name);
+        return {
+          ...f,
+          value: apiFactor ? Math.round((apiFactor.value / apiFactor.max) * 100) : 0,
+        };
       });
-    } catch {
-      // Silent fail - still show results
-    }
 
-    setResult({ score, factors });
-    setLoading(false);
+      try {
+        const formDataToSend = new FormData();
+        formDataToSend.append('Brand name', formData.brandName);
+        formDataToSend.append('Industry', formData.industry);
+        formDataToSend.append('Website', formData.website);
+        formDataToSend.append('AI Provider', activeProvider);
+        formDataToSend.append('Score', String(score));
+
+        await fetch('https://tally.so/r/0Q6Q5j', {
+          method: 'POST',
+          body: formDataToSend,
+        });
+      } catch {
+        // Silent fail - still show results
+      }
+
+      setResult({ score, factors });
+    } catch {
+      setError('Analysis failed. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    runAnalysis();
   };
 
   return (
@@ -169,7 +161,36 @@ export default function GeoScore() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="apple-card p-8"
           >
-            {!result ? (
+            {error ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-8"
+              >
+                <div className="w-16 h-16 rounded-full bg-[#FF3B30]/10 flex items-center justify-center mx-auto mb-6">
+                  <AlertCircle className="w-8 h-8 text-[#FF3B30]" />
+                </div>
+                <h3 className="text-xl font-semibold text-[#1d1d1f] mb-2">{error}</h3>
+                <p className="text-[#1d1d1f]/50 mb-8">
+                  {t('geoScore.errorDescription') || 'Something went wrong while analyzing your website. Please check the URL and try again.'}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <button
+                    onClick={() => runAnalysis()}
+                    className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all"
+                  >
+                    {t('geoScore.retry') || 'Try Again'}
+                    <ArrowRight className="w-5 h-5" />
+                  </button>
+                  <button
+                    onClick={() => { setError(null); setFormData({ brandName: '', industry: '', website: '' }); }}
+                    className="flex-1 py-4 bg-[#f5f5f7] text-[#1d1d1f] font-semibold rounded-xl hover:bg-[#e8e8ed] transition-all"
+                  >
+                    {t('geoScore.startOver') || 'Start Over'}
+                  </button>
+                </div>
+              </motion.div>
+            ) : !result ? (
               <>
                 <div className="flex items-center justify-center gap-2 mb-8">
                   {[1, 2, 3].map((s) => (
@@ -217,7 +238,7 @@ export default function GeoScore() {
 
                   <div>
                     <label className="block text-sm font-medium text-[#1d1d1f] mb-2">
-                      {t('geoScore.websiteLabel')} <span className="text-[#1d1d1f]/40">{t('geoScore.websiteOptional')}</span>
+                      {t('geoScore.websiteLabel')}
                     </label>
                     <input
                       type="url"
@@ -225,13 +246,14 @@ export default function GeoScore() {
                       onChange={(e) => setFormData({ ...formData, website: e.target.value })}
                       placeholder={t('geoScore.websitePlaceholder')}
                       className="w-full px-4 py-4 bg-[#f5f5f7] border-0 rounded-xl text-[#1d1d1f] placeholder-[#1d1d1f]/30 focus:ring-2 focus:ring-[#007AFF]/20 transition-all"
+                      required
                     />
                     <p className="text-xs text-[#1d1d1f]/40 mt-2">{t('geoScore.websiteHint')}</p>
                   </div>
 
                   <button
                     type="submit"
-                    disabled={loading || !formData.brandName || !formData.industry}
+                    disabled={loading || !formData.brandName || !formData.industry || !formData.website}
                     className="w-full flex items-center justify-center gap-2 py-4 bg-[#007AFF] text-white font-semibold rounded-xl hover:bg-[#0056CC] transition-all disabled:opacity-50"
                   >
                     {loading ? (

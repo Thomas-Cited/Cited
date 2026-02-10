@@ -16,7 +16,7 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://citedagency.com/geo-score</loc>
+    <loc>https://citedagency.com/ai-readiness</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
@@ -31,6 +31,21 @@
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>https://citedagency.com/faq</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/contact</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/about</loc>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://citedagency.com/blog/what-is-geo</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
@@ -43,16 +58,6 @@
   <url>
     <loc>https://citedagency.com/blog/schema-org-for-ai</loc>
     <priority>0.7</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://citedagency.com/faq</loc>
-    <priority>0.6</priority>
-    <changefreq>monthly</changefreq>
-  </url>
-  <url>
-    <loc>https://citedagency.com/contact</loc>
-    <priority>0.6</priority>
     <changefreq>monthly</changefreq>
   </url>
 </urlset>

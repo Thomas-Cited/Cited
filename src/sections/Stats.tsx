@@ -127,7 +127,7 @@ export function Stats() {
           className="text-center mt-12"
         >
           <motion.a
-            href="#geo-score"
+            href="#ai-readiness"
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#f5f5f7] text-[#1d1d1f] rounded-full hover:bg-[#e8e8ed] transition-colors font-medium group"
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}

@@ -91,7 +91,7 @@ export function Process() {
           className="text-center mt-16"
         >
           <motion.a
-            href="#geo-score"
+            href="#ai-readiness"
             className="inline-flex items-center px-8 py-4 bg-[#007AFF] text-white font-medium rounded-full hover:bg-[#0056CC] transition-colors"
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
