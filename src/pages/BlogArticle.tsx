@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Clock, Tag, Calendar } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
 import { getArticleBySlug } from '../data/articles';
-import ReactMarkdown from 'react-markdown';
+import { marked } from 'marked';
 import NotFound from './NotFound';
 
 export default function BlogArticle() {
@@ -58,6 +58,7 @@ export default function BlogArticle() {
   }
 
   const content = article.content[language];
+  const htmlContent = useMemo(() => marked.parse(content) as string, [content]);
 
   return (
     <div className="pt-24">
@@ -113,7 +114,7 @@ export default function BlogArticle() {
               prose-hr:border-[#e8e8ed] prose-hr:my-12
               prose-blockquote:border-l-[#007AFF] prose-blockquote:text-[#1d1d1f]/60"
           >
-            <ReactMarkdown>{content}</ReactMarkdown>
+            <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
           </motion.div>
 
           <motion.div
