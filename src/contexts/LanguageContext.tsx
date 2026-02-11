@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import type { ReactNode } from 'react';
 import { en } from '../i18n/en';
 import { fr } from '../i18n/fr';
@@ -15,18 +15,17 @@ const translations: Record<Language, Record<string, string>> = { en, fr };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-function getSavedLanguage(): Language {
-  try {
-    const saved = localStorage.getItem('language');
-    if (saved === 'en' || saved === 'fr') return saved;
-  } catch {
-    // localStorage unavailable (SSR, private browsing, etc.)
-  }
-  return 'en';
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getSavedLanguage);
+  const [language, setLanguageState] = useState<Language>('en');
+
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('language');
+      if (saved === 'en' || saved === 'fr') setLanguageState(saved);
+    } catch {
+      // localStorage unavailable
+    }
+  }, []);
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);

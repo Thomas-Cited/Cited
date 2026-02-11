@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "generate-sitemap": "node scripts/generate-sitemap.mjs",
-    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && tsc -b && vite build",
+    "build": "node scripts/generate-sitemap.mjs && node scripts/generate-rss.mjs && tsc -b && vite build && node scripts/prerender.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -32,6 +32,7 @@
     "eslint-plugin-react-hooks": "^7.0.1",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "playwright": "^1.58.2",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
     "typescript": "~5.9.3",
