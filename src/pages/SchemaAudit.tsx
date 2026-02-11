@@ -5,6 +5,8 @@ import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Glob
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
+import { BASE_URL } from '../constants/seo';
 
 const COOLDOWN_MS = 30_000;
 
@@ -22,6 +24,17 @@ export default function SchemaAudit() {
       { name: 'Home', path: '/' },
       { name: 'Schema Audit', path: '/schema-audit' },
     ],
+  });
+
+  useJsonLd({
+    '@type': 'SoftwareApplication',
+    name: 'Schema.org Audit',
+    description: 'Free tool to audit your website structured data and Schema.org markup.',
+    url: `${BASE_URL}/schema-audit`,
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    provider: { '@type': 'Organization', name: 'Cited' },
   });
   const { t } = useLanguage();
 

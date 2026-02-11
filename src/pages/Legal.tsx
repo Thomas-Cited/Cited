@@ -8,6 +8,7 @@ export default function Legal() {
     title: 'Legal Notice | Cited.',
     description: 'Legal information, terms of service, and privacy policy for Cited Agency.',
     path: '/legal',
+    noindex: true,
   });
   const { t } = useLanguage();
 

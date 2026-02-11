@@ -74,6 +74,9 @@ export default function About() {
                   <img
                     src="/thomas-vignaud.png"
                     alt="Thomas Vignaud — Founder of Cited"
+                    width="320"
+                    height="320"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                 </div>

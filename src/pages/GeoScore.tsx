@@ -5,6 +5,8 @@ import { ArrowRight, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
+import { BASE_URL } from '../constants/seo';
 
 const COOLDOWN_MS = 30_000;
 
@@ -24,6 +26,17 @@ export default function GeoScore() {
       { name: 'Home', path: '/' },
       { name: 'AI Readiness', path: '/ai-readiness' },
     ],
+  });
+
+  useJsonLd({
+    '@type': 'SoftwareApplication',
+    name: 'AI Readiness Audit',
+    description: 'Free tool to test your brand visibility across ChatGPT, Perplexity, and Google AI.',
+    url: `${BASE_URL}/ai-readiness`,
+    applicationCategory: 'WebApplication',
+    operatingSystem: 'Any',
+    offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+    provider: { '@type': 'Organization', name: 'Cited' },
   });
   const { t } = useLanguage();
   const [activeProvider, setActiveProvider] = useState('chatgpt');

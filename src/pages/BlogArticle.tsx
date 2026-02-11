@@ -33,23 +33,28 @@ export default function BlogArticle() {
 
   useJsonLd(useMemo(() => {
     if (!article) return null;
+    const wordCount = article.content[language].split(/\s+/).length;
     return {
       '@type': 'Article',
       headline: t(article.titleKey),
       description: t(article.excerptKey),
-      author: {
-        '@type': 'Person',
-        name: 'Thomas Vignaud',
-      },
+      image: `${BASE_URL}/og-image.png`,
+      wordCount,
+      keywords: ['AI Visibility', 'GEO', 'Generative Engine Optimization'],
+      articleSection: t(article.categoryKey),
+      mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${article.slug}` },
+      author: { '@type': 'Person', name: 'Thomas Vignaud', url: `${BASE_URL}/about` },
       publisher: {
         '@type': 'Organization',
         name: 'Cited',
         url: BASE_URL,
+        logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.svg` },
       },
       datePublished: t(article.dateKey),
+      dateModified: t(article.dateKey),
       url: `${BASE_URL}/blog/${article.slug}`,
     };
-  }, [article, t]));
+  }, [article, t, language]));
 
   if (!article) {
     return <NotFound />;

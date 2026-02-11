@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cited. Blog</title>
+    <link>https://citedagency.com/blog</link>
+    <description>AI Visibility, GEO, and Generative Engine Optimization insights from Cited Agency.</description>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Feb 2026 00:00:19 GMT</lastBuildDate>
+    <atom:link href="https://citedagency.com/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What is Generative Engine Optimization (GEO)?</title>
+      <link>https://citedagency.com/blog/what-is-geo</link>
+      <guid isPermaLink="true">https://citedagency.com/blog/what-is-geo</guid>
+      <description>Discover how GEO differs from traditional SEO and why it matters for your business in the AI era.</description>
+      <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How ChatGPT Cites Websites: A Technical Deep Dive</title>
+      <link>https://citedagency.com/blog/how-chatgpt-cites-websites</link>
+      <guid isPermaLink="true">https://citedagency.com/blog/how-chatgpt-cites-websites</guid>
+      <description>Understanding the mechanisms behind AI citation and how to optimize your content for maximum visibility.</description>
+      <pubDate>Sun, 11 Jan 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Schema.org for AI: The Complete Guide</title>
+      <link>https://citedagency.com/blog/schema-org-for-ai</link>
+      <guid isPermaLink="true">https://citedagency.com/blog/schema-org-for-ai</guid>
+      <description>Learn how to implement structured data that helps AI systems understand and cite your content.</description>
+      <pubDate>Wed, 07 Jan 2026 23:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>What AI Visibility Can and Cannot Guarantee</title>
+      <link>https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee</link>
+      <guid isPermaLink="true">https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee</guid>
+      <description>An honest look at how LLMs select information, what optimization can achieve, and why no one can guarantee AI outputs.</description>
+      <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

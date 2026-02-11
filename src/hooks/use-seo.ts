@@ -5,10 +5,11 @@ interface SeoProps {
   title: string
   description: string
   path: string
+  noindex?: boolean
   breadcrumbs?: Array<{ name: string; path: string }>
 }
 
-export function useSeo({ title, description, path, breadcrumbs }: SeoProps) {
+export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoProps) {
   useEffect(() => {
     document.title = title
 
@@ -49,6 +50,33 @@ export function useSeo({ title, description, path, breadcrumbs }: SeoProps) {
       twitterDescription.setAttribute('content', description)
     }
 
+    // Hreflang
+    const hreflangValues = ['en', 'fr', 'x-default']
+    hreflangValues.forEach(lang => {
+      const selector = `link[hreflang="${lang}"]`
+      let tag = document.querySelector(selector) as HTMLLinkElement | null
+      if (!tag) {
+        tag = document.createElement('link')
+        tag.rel = 'alternate'
+        tag.hreflang = lang
+        document.head.appendChild(tag)
+      }
+      tag.href = fullUrl
+    })
+
+    // Noindex
+    let robotsMeta = document.querySelector('meta[name="robots"]') as HTMLMetaElement | null
+    if (noindex) {
+      if (!robotsMeta) {
+        robotsMeta = document.createElement('meta')
+        robotsMeta.name = 'robots'
+        document.head.appendChild(robotsMeta)
+      }
+      robotsMeta.content = 'noindex, nofollow'
+    } else if (robotsMeta) {
+      robotsMeta.remove()
+    }
+
     let breadcrumbScript: HTMLScriptElement | null = null
     if (breadcrumbs && breadcrumbs.length > 0) {
       const items = breadcrumbs.map((crumb, index) => ({
@@ -73,5 +101,5 @@ export function useSeo({ title, description, path, breadcrumbs }: SeoProps) {
         document.head.removeChild(breadcrumbScript)
       }
     }
-  }, [title, description, path, breadcrumbs])
+  }, [title, description, path, noindex, breadcrumbs])
 }
