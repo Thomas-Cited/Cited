@@ -50,8 +50,8 @@ export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoPr
       twitterDescription.setAttribute('content', description)
     }
 
-    // Hreflang
-    const hreflangValues = ['en', 'fr', 'x-default']
+    // Hreflang (en + x-default only — no server-side fr URLs)
+    const hreflangValues = ['en', 'x-default']
     hreflangValues.forEach(lang => {
       const selector = `link[hreflang="${lang}"]`
       let tag = document.querySelector(selector) as HTMLLinkElement | null
