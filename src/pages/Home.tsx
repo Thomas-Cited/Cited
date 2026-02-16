@@ -72,10 +72,12 @@ export default function Home() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-6 flex items-center justify-center gap-2 text-sm text-[#34C759] font-medium"
+            className="mt-6 flex items-center justify-center"
           >
-            <Shield className="w-4 h-4" />
-            <span>{t('hero.guarantee')}</span>
+            <span className="inline-flex items-center gap-2 bg-[#34C759]/10 px-4 py-2 rounded-full text-sm text-[#34C759] font-medium">
+              <Shield className="w-4 h-4" />
+              {t('hero.guarantee')}
+            </span>
           </motion.div>
 
           <motion.div
