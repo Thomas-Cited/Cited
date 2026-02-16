@@ -13,6 +13,7 @@ export function Footer() {
     { labelKey: 'footer.blog', href: '/blog' },
     { labelKey: 'footer.faq', href: '/faq' },
     { labelKey: 'footer.about', href: '/about' },
+    { labelKey: 'footer.glossary', href: '/glossary' },
     { labelKey: 'footer.contact', href: '/contact' },
     { labelKey: 'footer.legal', href: '/legal' },
   ];

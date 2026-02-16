@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, Settings, FileText, Users, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake } from 'lucide-react';
+import { Search, Settings, FileText, Users, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake, MessageCircleQuestion } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
 
@@ -75,6 +75,21 @@ export default function Services() {
         t('servicesPage.service4Feature4'),
         t('servicesPage.service4Feature5'),
         t('servicesPage.service4Feature6'),
+      ],
+    },
+    {
+      icon: MessageCircleQuestion,
+      title: t('servicesPage.service5Title'),
+      subtitle: t('servicesPage.service5Subtitle'),
+      description: t('servicesPage.service5Desc'),
+      color: '#34C759',
+      features: [
+        t('servicesPage.service5Feature1'),
+        t('servicesPage.service5Feature2'),
+        t('servicesPage.service5Feature3'),
+        t('servicesPage.service5Feature4'),
+        t('servicesPage.service5Feature5'),
+        t('servicesPage.service5Feature6'),
       ],
     },
   ];

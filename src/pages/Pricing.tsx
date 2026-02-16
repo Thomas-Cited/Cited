@@ -50,6 +50,8 @@ export default function Pricing() {
         t('pricingPage.growthFeature5'),
         t('pricingPage.growthFeature6'),
         t('pricingPage.growthFeature7'),
+        t('pricingPage.growthFeature8'),
+        t('pricingPage.growthFeature9'),
       ],
     },
     {
@@ -68,6 +70,7 @@ export default function Pricing() {
         t('pricingPage.customFeature5'),
         t('pricingPage.customFeature6'),
         t('pricingPage.customFeature7'),
+        t('pricingPage.customFeature8'),
       ],
     },
   ];
