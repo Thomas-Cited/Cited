@@ -661,6 +661,10 @@ export const fr: Record<string, string> = {
   'about.ctaAudit': 'Audit IA gratuit',
 
   // Footer
+  'footer.tagline': 'Optimisez votre visibilité dans les réponses IA.',
+  'footer.colServices': 'Services',
+  'footer.colResources': 'Ressources',
+  'footer.colLegal': 'Légal',
   'footer.services': 'Services',
   'footer.pricing': 'Tarifs',
   'footer.geoScore': 'Score IA',

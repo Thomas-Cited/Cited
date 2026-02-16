@@ -661,6 +661,10 @@ export const en: Record<string, string> = {
   'about.ctaAudit': 'Free AI audit',
 
   // Footer
+  'footer.tagline': 'Optimize your visibility in AI responses.',
+  'footer.colServices': 'Services',
+  'footer.colResources': 'Resources',
+  'footer.colLegal': 'Legal',
   'footer.services': 'Services',
   'footer.pricing': 'Pricing',
   'footer.geoScore': 'AI Readiness',
