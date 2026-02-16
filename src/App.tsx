@@ -1,5 +1,5 @@
-import { lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './contexts/LanguageContext';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { DynamicBackground } from './components/DynamicBackground';
@@ -24,9 +24,16 @@ const Sectors = lazy(() => import('./pages/Sectors'));
 const Sector = lazy(() => import('./pages/Sector'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <LanguageProvider>
       <ErrorBoundary>
       <div className="relative min-h-screen">
