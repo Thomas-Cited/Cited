@@ -45,6 +45,7 @@ export default function Services() {
         t('servicesPage.service2Feature4'),
         t('servicesPage.service2Feature5'),
         t('servicesPage.service2Feature6'),
+        t('servicesPage.service2Feature7'),
       ],
     },
     {
@@ -160,6 +161,52 @@ export default function Services() {
               </div>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      <section className="py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-[#1d1d1f] mb-2">
+              {t('servicesPage.timelineTitle')} <span className="gradient-text">{t('servicesPage.timelineTitleHighlight')}</span>
+            </h2>
+            <p className="text-[#1d1d1f]/50">{t('servicesPage.timelineSubtitle')}</p>
+          </div>
+          <div className="relative">
+            <div className="hidden md:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-[#007AFF] via-[#5856D6] to-[#AF52DE]" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {([
+                { titleKey: 'servicesPage.timeline30Title', durationKey: 'servicesPage.timeline30Duration', items: ['servicesPage.timeline30Item1', 'servicesPage.timeline30Item2', 'servicesPage.timeline30Item3', 'servicesPage.timeline30Item4'], color: '#007AFF' },
+                { titleKey: 'servicesPage.timeline60Title', durationKey: 'servicesPage.timeline60Duration', items: ['servicesPage.timeline60Item1', 'servicesPage.timeline60Item2', 'servicesPage.timeline60Item3', 'servicesPage.timeline60Item4'], color: '#5856D6' },
+                { titleKey: 'servicesPage.timeline90Title', durationKey: 'servicesPage.timeline90Duration', items: ['servicesPage.timeline90Item1', 'servicesPage.timeline90Item2', 'servicesPage.timeline90Item3', 'servicesPage.timeline90Item4'], color: '#AF52DE' },
+              ] as const).map((phase, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="relative"
+                >
+                  <div className="hidden md:flex w-4 h-4 rounded-full mx-auto mb-6 ring-4 ring-white" style={{ background: phase.color }} />
+                  <div className="apple-card p-6">
+                    <span className="text-xs font-semibold uppercase tracking-wider" style={{ color: phase.color }}>{t(phase.durationKey)}</span>
+                    <h3 className="text-xl font-bold text-[#1d1d1f] mt-1 mb-4">{t(phase.titleKey)}</h3>
+                    <ul className="space-y-3">
+                      {phase.items.map((itemKey, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style={{ background: `${phase.color}15` }}>
+                            <Check className="w-3 h-3" style={{ color: phase.color }} />
+                          </div>
+                          <span className="text-sm text-[#1d1d1f]/70">{t(itemKey)}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 

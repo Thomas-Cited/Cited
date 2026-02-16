@@ -3,3 +3,4 @@ Allow: /
 Disallow: /fr/
 
 Sitemap: https://citedagency.com/sitemap.xml
+Llms-Txt: https://citedagency.com/llms.txt

@@ -10,6 +10,7 @@ export function Footer() {
     { labelKey: 'footer.pricing', href: '/pricing' },
     { labelKey: 'footer.geoScore', href: '/ai-readiness' },
     { labelKey: 'footer.schemaAudit', href: '/schema-audit' },
+    { labelKey: 'footer.sectors', href: '/sectors' },
     { labelKey: 'footer.blog', href: '/blog' },
     { labelKey: 'footer.faq', href: '/faq' },
     { labelKey: 'footer.about', href: '/about' },

@@ -55,6 +55,54 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://citedagency.com/glossary</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/saas</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/real-estate</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/healthcare</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/fintech</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/ecommerce</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/sectors/consulting</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://citedagency.com/legal</loc>
     <lastmod>2026-02-16</lastmod>
     <priority>0.3</priority>

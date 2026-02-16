@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Clock, Tag, FileText, Loader2, Check } from 'lucide-react';
+import { ArrowRight, Clock, Tag, FileText, Loader2, Check, BookOpen, Code, PenTool, BarChart3 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
 import { useSeo } from '../hooks/use-seo';
@@ -238,6 +238,48 @@ export default function Blog() {
       </section>
 
       <section className="py-16 px-6 bg-[#f5f5f7]">
+        <div className="max-w-5xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold text-[#1d1d1f] mb-3">{t('blog.resourcesTitle')}</h2>
+            <p className="text-[#1d1d1f]/50">{t('blog.resourcesSubtitle')}</p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {([
+              { titleKey: 'blog.resource1Title', descKey: 'blog.resource1Desc', icon: BookOpen },
+              { titleKey: 'blog.resource2Title', descKey: 'blog.resource2Desc', icon: Code },
+              { titleKey: 'blog.resource3Title', descKey: 'blog.resource3Desc', icon: PenTool },
+              { titleKey: 'blog.resource4Title', descKey: 'blog.resource4Desc', icon: BarChart3 },
+            ] as const).map((resource, index) => (
+              <motion.a
+                key={index}
+                href={URLS.calendly}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="apple-card p-6 flex flex-col hover:shadow-lg transition-shadow group"
+              >
+                <div className="flex items-center justify-between mb-3">
+                  <div className="w-10 h-10 rounded-xl bg-[#007AFF]/10 flex items-center justify-center">
+                    <resource.icon className="w-5 h-5 text-[#007AFF]" />
+                  </div>
+                  <span className="text-xs font-medium px-2 py-0.5 bg-[#34C759]/10 text-[#34C759] rounded-full">{t('blog.resourcesBadge')}</span>
+                </div>
+                <h3 className="font-semibold text-[#1d1d1f] mb-1">{t(resource.titleKey)}</h3>
+                <p className="text-sm text-[#1d1d1f]/50 mb-4 flex-1">{t(resource.descKey)}</p>
+                <span className="inline-flex items-center gap-1 text-sm font-medium text-[#007AFF] group-hover:gap-2 transition-all">
+                  {t('blog.resourcesCta')}
+                  <ArrowRight className="w-4 h-4" />
+                </span>
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16 px-6">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-[#1d1d1f] mb-4">{t('blog.stayUpdated')}</h2>
           <p className="text-[#1d1d1f]/50 mb-8">{t('blog.stayUpdatedSubtitle')}</p>

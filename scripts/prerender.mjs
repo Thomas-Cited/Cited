@@ -20,6 +20,13 @@ const STATIC_ROUTES = [
   '/glossary',
   '/contact',
   '/legal',
+  '/sectors',
+  '/sectors/saas',
+  '/sectors/real-estate',
+  '/sectors/healthcare',
+  '/sectors/fintech',
+  '/sectors/ecommerce',
+  '/sectors/consulting',
 ]
 
 function extractSlugsFromArticlesFile() {

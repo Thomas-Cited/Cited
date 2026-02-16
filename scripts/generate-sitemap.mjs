@@ -18,6 +18,13 @@ const STATIC_PAGES = [
   { path: '/contact', priority: '0.6', changefreq: 'monthly' },
   { path: '/about', priority: '0.6', changefreq: 'monthly' },
   { path: '/glossary', priority: '0.6', changefreq: 'monthly' },
+  { path: '/sectors', priority: '0.8', changefreq: 'monthly' },
+  { path: '/sectors/saas', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sectors/real-estate', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sectors/healthcare', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sectors/fintech', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sectors/ecommerce', priority: '0.7', changefreq: 'monthly' },
+  { path: '/sectors/consulting', priority: '0.7', changefreq: 'monthly' },
   { path: '/legal', priority: '0.3', changefreq: 'yearly' },
 ]
 

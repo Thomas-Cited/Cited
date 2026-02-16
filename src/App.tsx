@@ -20,6 +20,8 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Legal = lazy(() => import('./pages/Legal'));
 const Glossary = lazy(() => import('./pages/Glossary'));
+const Sectors = lazy(() => import('./pages/Sectors'));
+const Sector = lazy(() => import('./pages/Sector'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 function App() {
@@ -50,6 +52,8 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/sectors" element={<Sectors />} />
+            <Route path="/sectors/:slug" element={<Sector />} />
             <Route path="/glossary" element={<Glossary />} />
             <Route path="/legal" element={<Legal />} />
             <Route path="*" element={<NotFound />} />

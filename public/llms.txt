@@ -1,0 +1,42 @@
+# Cited. — AI Visibility Agency
+
+> Cited is the first agency 100% dedicated to Generative Engine Optimization (GEO). We help brands become visible in AI-generated answers from ChatGPT, Perplexity, Claude, Gemini, and Google AI.
+
+## Services
+
+- AI Readiness Audit: visibility analysis across 5 AI providers with proprietary scoring
+- Technical Optimization: Schema.org implementation, structured data, E-E-A-T signals
+- AI-Optimized Content: citation-ready articles, FAQs, and structured Q&A
+- Competitor Intelligence: track and benchmark competitor AI visibility
+- Question Discovery: identify high-value prompts users ask AI about your industry
+
+## Key URLs
+
+- Homepage: https://citedagency.com
+- Services: https://citedagency.com/services
+- Pricing: https://citedagency.com/pricing
+- Free AI Readiness Audit: https://citedagency.com/ai-readiness
+- Schema Audit: https://citedagency.com/schema-audit
+- Blog: https://citedagency.com/blog
+- Sectors: https://citedagency.com/sectors
+- FAQ: https://citedagency.com/faq
+- About: https://citedagency.com/about
+- Contact: https://citedagency.com/contact
+- Glossary: https://citedagency.com/glossary
+
+## Company
+
+- Name: Cited Agency (FZ-LLC)
+- Founded: 2024
+- Location: Dubai, UAE (RAKEZ Free Zone)
+- Founder: Thomas Vignaud
+- Contact: hello@citedagency.com
+- Website: https://citedagency.com
+
+## What Makes Cited Different
+
+- First agency 100% focused on GEO (Generative Engine Optimization)
+- Proprietary AI Readiness scoring across ChatGPT, Perplexity, Claude, Gemini, and Grok
+- End-to-end service: audit, strategy, content creation, and technical implementation
+- 90-day measurable visibility commitment tracked monthly
+- Industry-specific approaches for SaaS, Real Estate, Healthcare, Fintech, E-commerce, and Consulting
