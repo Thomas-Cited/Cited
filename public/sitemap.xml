@@ -127,6 +127,24 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://citedagency.com/blog/what-we-found-auditing-50-brands</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/blog/future-of-search-ai-vs-seo</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://citedagency.com/blog/eeat-optimization-for-llms</loc>
+    <lastmod>2026-02-16</lastmod>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee</loc>
     <lastmod>2026-02-16</lastmod>
     <priority>0.7</priority>

@@ -111,6 +111,7 @@ export default function Home() {
       <SeoVsGeoSection />
       <ServicesPreview />
       <AgencyVsToolsSection />
+      <GuaranteeSection />
       <ProcessSection />
       <CTASection />
     </>
@@ -445,6 +446,76 @@ function AgencyVsToolsSection() {
         >
           {t('agencyVsTools.conclusion')}
         </motion.p>
+      </div>
+    </section>
+  );
+}
+
+function GuaranteeSection() {
+  const { t } = useLanguage();
+
+  const steps = [
+    { num: '1', title: t('guarantee.step1Title'), desc: t('guarantee.step1Desc'), icon: Search },
+    { num: '2', title: t('guarantee.step2Title'), desc: t('guarantee.step2Desc'), icon: TrendingDown },
+    { num: '3', title: t('guarantee.step3Title'), desc: t('guarantee.step3Desc'), icon: Shield },
+  ];
+
+  return (
+    <section className="py-24 px-6 bg-[#f5f5f7]">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#34C759]/10 rounded-full text-sm text-[#34C759] font-medium mb-4">
+              <Shield className="w-4 h-4" />
+              {t('guarantee.sectionBadge')}
+            </span>
+            <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
+              {t('guarantee.sectionTitle')}<br /><span className="gradient-text">{t('guarantee.sectionTitleHighlight')}</span>
+            </h2>
+            <p className="text-lg text-[#1d1d1f]/50 max-w-2xl mx-auto">
+              {t('guarantee.sectionDesc')}
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {steps.map((step, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="apple-card p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div
+                  className="w-10 h-10 rounded-full text-white flex items-center justify-center text-sm font-bold"
+                  style={{ background: 'linear-gradient(135deg, #34C759, #30B350)' }}
+                >
+                  {step.num}
+                </div>
+                <h3 className="text-lg font-semibold text-[#1d1d1f]">{step.title}</h3>
+              </div>
+              <p className="text-sm text-[#1d1d1f]/50 leading-relaxed">{step.desc}</p>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#34C759] text-white font-semibold rounded-full hover:bg-[#2DA44E] transition-all"
+          >
+            {t('guarantee.sectionCta')}
+            <ArrowRight className="w-5 h-5" />
+          </Link>
+        </div>
       </div>
     </section>
   );

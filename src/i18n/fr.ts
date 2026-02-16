@@ -132,6 +132,19 @@ export const fr: Record<string, string> = {
   'guarantee.title': 'Engagement visibilit\u00E9 90 jours',
   'guarantee.description': 'Nous nous engageons \u00E0 une progression mesurable de votre score de visibilit\u00E9 IA en 90 jours \u2014 suivi et rapport mensuel.',
 
+  // Guarantee Section (Homepage)
+  'guarantee.sectionBadge': 'Garantie 90 jours',
+  'guarantee.sectionTitle': 'Des r\u00E9sultats mesurables, ',
+  'guarantee.sectionTitleHighlight': 'ou on continue gratuitement.',
+  'guarantee.sectionDesc': 'Pas besoin de nous croire sur parole. Chaque engagement est soutenu par un commitment transparent et data-driven : si votre visibilit\u00E9 IA ne s\'am\u00E9liore pas en 90 jours, nous prolongeons notre travail sans co\u00FBt suppl\u00E9mentaire.',
+  'guarantee.step1Title': 'Audit de r\u00E9f\u00E9rence',
+  'guarantee.step1Desc': 'Nous mesurons votre score de visibilit\u00E9 IA actuel sur 5 fournisseurs avant tout travail \u2014 votre point de d\u00E9part, enti\u00E8rement document\u00E9.',
+  'guarantee.step2Title': 'Suivi mensuel',
+  'guarantee.step2Desc': 'Chaque mois, vous recevez un rapport de progression transparent avec scores actualis\u00E9s, tendances et prochaines \u00E9tapes concr\u00E8tes.',
+  'guarantee.step3Title': 'La garantie',
+  'guarantee.step3Desc': 'Pas d\'am\u00E9lioration mesurable \u00E0 90 jours ? Nous continuons \u00E0 optimiser sans frais suppl\u00E9mentaires jusqu\'\u00E0 ce que vous voyiez des r\u00E9sultats.',
+  'guarantee.sectionCta': 'R\u00E9server un appel gratuit',
+
   // CTA Section
   'cta.title': 'Votre marque est-elle ',
   'cta.titleHighlight': 'invisible pour l\'IA ?',

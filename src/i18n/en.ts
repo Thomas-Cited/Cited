@@ -132,6 +132,19 @@ export const en: Record<string, string> = {
   'guarantee.title': '90-Day Visibility Commitment',
   'guarantee.description': 'We commit to measurable progress on your AI visibility score within 90 days — tracked and reported monthly.',
 
+  // Guarantee Section (Homepage)
+  'guarantee.sectionBadge': '90-Day Guarantee',
+  'guarantee.sectionTitle': 'Measurable results, ',
+  'guarantee.sectionTitleHighlight': 'or we keep working for free.',
+  'guarantee.sectionDesc': 'We don\'t ask you to take our word for it. Every engagement is backed by a transparent, data-driven commitment: if your AI visibility doesn\'t improve within 90 days, we extend our work at no additional cost.',
+  'guarantee.step1Title': 'Baseline Audit',
+  'guarantee.step1Desc': 'We measure your current AI visibility score across 5 providers before any work begins — your starting point, fully documented.',
+  'guarantee.step2Title': 'Monthly Tracking',
+  'guarantee.step2Desc': 'Every month, you receive a transparent progress report with updated scores, trends, and concrete next steps.',
+  'guarantee.step3Title': 'The Guarantee',
+  'guarantee.step3Desc': 'No measurable improvement at 90 days? We continue optimizing at no extra cost until you see results.',
+  'guarantee.sectionCta': 'Book a free call',
+
   // CTA Section
   'cta.title': 'Is your brand ',
   'cta.titleHighlight': 'invisible to AI?',
