@@ -108,6 +108,7 @@ export default function Home() {
       </section>
 
       <StatsSection />
+      <SeoVsGeoSection />
       <ServicesPreview />
       <AgencyVsToolsSection />
       <ProcessSection />
@@ -155,6 +156,78 @@ function StatsSection() {
             </motion.div>
           ))}
         </div>
+      </div>
+    </section>
+  );
+}
+
+function SeoVsGeoSection() {
+  const { t } = useLanguage();
+
+  const rows = [
+    { label: t('seoVsGeo.row1Label'), seo: t('seoVsGeo.row1Seo'), geo: t('seoVsGeo.row1Geo') },
+    { label: t('seoVsGeo.row2Label'), seo: t('seoVsGeo.row2Seo'), geo: t('seoVsGeo.row2Geo') },
+    { label: t('seoVsGeo.row3Label'), seo: t('seoVsGeo.row3Seo'), geo: t('seoVsGeo.row3Geo') },
+    { label: t('seoVsGeo.row4Label'), seo: t('seoVsGeo.row4Seo'), geo: t('seoVsGeo.row4Geo') },
+    { label: t('seoVsGeo.row5Label'), seo: t('seoVsGeo.row5Seo'), geo: t('seoVsGeo.row5Geo') },
+    { label: t('seoVsGeo.row6Label'), seo: t('seoVsGeo.row6Seo'), geo: t('seoVsGeo.row6Geo') },
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">
+            {t('seoVsGeo.badge')}
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
+            {t('seoVsGeo.title')}<span className="gradient-text">{t('seoVsGeo.titleHighlight')}</span>
+          </h2>
+          <p className="text-lg text-[#1d1d1f]/50 max-w-2xl mx-auto">
+            {t('seoVsGeo.subtitle')}
+          </p>
+        </div>
+
+        <div className="apple-card overflow-hidden">
+          {/* Header row */}
+          <div className="grid grid-cols-3 px-6 py-4 border-b border-[#e8e8ed] bg-[#f5f5f7]/50">
+            <div className="text-sm font-semibold text-[#1d1d1f]/40 uppercase tracking-wider">SEO</div>
+            <div />
+            <div className="text-sm font-semibold uppercase tracking-wider text-right">
+              <span className="gradient-text">GEO</span>
+            </div>
+          </div>
+
+          {/* Comparison rows */}
+          {rows.map((row, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className={`grid grid-cols-3 items-center px-6 py-5 ${index < rows.length - 1 ? 'border-b border-[#e8e8ed]' : ''}`}
+            >
+              <div className="text-sm text-[#1d1d1f]/40 pr-4">{row.seo}</div>
+              <div className="text-center">
+                <span className="inline-block px-3 py-1 bg-[#f5f5f7] rounded-full text-xs font-semibold text-[#1d1d1f] uppercase tracking-wider">
+                  {row.label}
+                </span>
+              </div>
+              <div className="text-sm text-[#007AFF] font-medium text-right pl-4">{row.geo}</div>
+            </motion.div>
+          ))}
+        </div>
+
+        <motion.p
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="text-center mt-8 text-lg font-semibold text-[#1d1d1f]"
+        >
+          {t('seoVsGeo.conclusion')}
+        </motion.p>
       </div>
     </section>
   );
