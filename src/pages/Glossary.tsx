@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Search, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 
 const TERM_COUNT = 20;
 
@@ -51,6 +52,18 @@ export default function Glossary() {
     }
     return items;
   }, [t]);
+
+  useJsonLd(useMemo(() => ({
+    '@type': 'DefinedTermSet',
+    name: 'GEO & SEO Glossary',
+    description: 'Complete glossary of GEO, SEO, and AI visibility terms.',
+    url: 'https://citedagency.com/glossary',
+    hasDefinedTerm: terms.map((item) => ({
+      '@type': 'DefinedTerm',
+      name: item.term,
+      description: item.definition,
+    })),
+  }), [terms]));
 
   const filteredTerms = useMemo(() => {
     const query = searchQuery.toLowerCase();

@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
 import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 
 export default function Contact() {
   useSeo({
@@ -17,6 +18,25 @@ export default function Contact() {
     ],
   });
   const { t } = useLanguage();
+
+  useJsonLd({
+    '@type': 'ContactPage',
+    name: 'Contact Cited Agency',
+    description: 'Get in touch with Cited Agency to discuss your AI visibility strategy.',
+    url: 'https://citedagency.com/contact',
+    mainEntity: {
+      '@type': 'Organization',
+      name: 'Cited Agency',
+      url: 'https://citedagency.com',
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: 'contact@citedagency.com',
+        telephone: '+33617376439',
+        contactType: 'sales',
+        availableLanguage: ['English', 'French'],
+      },
+    },
+  });
 
   const contactMethods = [
     {

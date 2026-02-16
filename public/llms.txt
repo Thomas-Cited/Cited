@@ -10,6 +10,32 @@
 - Competitor Intelligence: track and benchmark competitor AI visibility
 - Question Discovery: identify high-value prompts users ask AI about your industry
 
+## Pricing
+
+- **Starter**: $2,000 one-time setup + $450/month — AI Readiness Audit, basic Schema.org, content recommendations
+- **Growth**: $4,000 one-time setup + $600/month — Full optimization, AI-optimized content, competitor intelligence, monthly reporting
+- **Custom**: $6,000+ one-time setup — Enterprise-grade strategy, dedicated support, advanced analytics, custom integrations
+
+## Methodology
+
+1. **Audit** — AI Readiness Audit across ChatGPT, Perplexity, Claude, Gemini, and Grok with proprietary scoring
+2. **Strategy** — Custom optimization roadmap based on audit findings, competitive landscape, and industry specifics
+3. **Execution** — Schema.org implementation, content creation, technical optimization, and authority building
+4. **Measure** — Monthly reporting with AI visibility score tracking, competitor benchmarking, and ROI analysis
+
+## 90-Day Guarantee
+
+Cited offers a 90-day measurable improvement guarantee. If your AI visibility score does not show measurable improvement within 90 days, we continue working for free until it does. Progress is tracked monthly with transparent reporting.
+
+## Sectors
+
+- SaaS: AI visibility for software companies, developer tools, and B2B platforms
+- Real Estate: AI optimization for property agencies, developers, and real estate platforms
+- Healthcare: AI visibility for clinics, healthtech, and medical practices
+- Fintech: AI optimization for payment platforms, neobanks, and financial services
+- E-commerce: AI visibility for online retailers, D2C brands, and marketplaces
+- Consulting: AI optimization for consulting firms, agencies, and professional services
+
 ## Key URLs
 
 - Homepage: https://citedagency.com
@@ -24,12 +50,27 @@
 - Contact: https://citedagency.com/contact
 - Glossary: https://citedagency.com/glossary
 
+## Free Tools
+
+- **AI Readiness Audit**: Free instant analysis of your brand's visibility across 5 AI providers — https://citedagency.com/ai-readiness
+- **Schema Audit**: Free Schema.org implementation audit with actionable recommendations — https://citedagency.com/schema-audit
+
+## Blog
+
+- What is Generative Engine Optimization (GEO)? — https://citedagency.com/blog/what-is-geo
+- How ChatGPT Cites Websites: A Technical Deep Dive — https://citedagency.com/blog/how-chatgpt-cites-websites
+- Schema.org for AI: The Complete Guide — https://citedagency.com/blog/schema-org-for-ai
+- What We Found Auditing 50 Brands for AI Visibility — https://citedagency.com/blog/what-we-found-auditing-50-brands
+- The Future of Search: AI vs Traditional SEO — https://citedagency.com/blog/future-of-search-ai-vs-seo
+- E-E-A-T Optimization for Large Language Models — https://citedagency.com/blog/eeat-optimization-for-llms
+- What AI Visibility Can and Cannot Guarantee — https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee
+
 ## Company
 
 - Name: Cited Agency (FZ-LLC)
 - Founded: 2024
 - Location: Dubai, UAE (RAKEZ Free Zone)
-- Founder: Thomas Vignaud
+- Founder: Thomas Vignaud (Sup de Pub, Groupe INSEEC alumnus)
 - Contact: hello@citedagency.com
 - Website: https://citedagency.com
 
@@ -38,5 +79,6 @@
 - First agency 100% focused on GEO (Generative Engine Optimization)
 - Proprietary AI Readiness scoring across ChatGPT, Perplexity, Claude, Gemini, and Grok
 - End-to-end service: audit, strategy, content creation, and technical implementation
-- 90-day measurable visibility commitment tracked monthly
+- 90-day measurable visibility guarantee — continued work for free if no improvement
 - Industry-specific approaches for SaaS, Real Estate, Healthcare, Fintech, E-commerce, and Consulting
+- Free tools: AI Readiness Audit and Schema Audit available to everyone

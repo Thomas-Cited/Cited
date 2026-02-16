@@ -5,6 +5,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
 import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 
 export default function About() {
   const { t } = useLanguage();
@@ -17,6 +18,25 @@ export default function About() {
       { name: 'Home', path: '/' },
       { name: 'About', path: '/about' },
     ],
+  });
+
+  useJsonLd({
+    '@type': 'ProfilePage',
+    url: 'https://citedagency.com/about',
+    mainEntity: {
+      '@type': 'Person',
+      name: 'Thomas Vignaud',
+      jobTitle: 'Founder',
+      url: 'https://citedagency.com/about',
+      image: 'https://citedagency.com/thomas-vignaud.png',
+      sameAs: ['https://www.linkedin.com/in/thomas-vignaud-447361134/'],
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Cited Agency',
+        url: 'https://citedagency.com',
+      },
+      alumniOf: 'Sup de Pub (Groupe INSEEC)',
+    },
   });
 
   return (

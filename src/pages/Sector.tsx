@@ -3,6 +3,7 @@ import { Link, useParams, Navigate } from 'react-router-dom';
 import { ArrowRight, ArrowLeft, AlertTriangle, Lightbulb } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 import { sectors } from '../data/sectors';
 
 export default function Sector() {
@@ -20,6 +21,20 @@ export default function Sector() {
       ...(sector ? [{ name: t(sector.titleKey), path: `/sectors/${slug}` }] : []),
     ],
   });
+
+  useJsonLd(sector ? {
+    '@type': 'Service',
+    name: t(sector.titleKey),
+    description: t(sector.descKey),
+    provider: {
+      '@type': 'Organization',
+      name: 'Cited Agency',
+      url: 'https://citedagency.com',
+    },
+    serviceType: 'Generative Engine Optimization',
+    areaServed: 'Worldwide',
+    url: `https://citedagency.com/sectors/${slug}`,
+  } : null);
 
   if (!sector) {
     return <Navigate to="/sectors" replace />;

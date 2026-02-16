@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Search, Settings, FileText, Users, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake, MessageCircleQuestion } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 
 export default function Services() {
   useSeo({
@@ -15,6 +16,65 @@ export default function Services() {
     ],
   });
   const { t } = useLanguage();
+
+  useJsonLd({
+    '@type': 'ProfessionalService',
+    name: 'AI Visibility Optimization',
+    provider: {
+      '@type': 'Organization',
+      name: 'Cited Agency',
+      url: 'https://citedagency.com',
+    },
+    url: 'https://citedagency.com/services',
+    description: 'Content optimization, Schema.org markup, AI audits, and strategic consulting to improve your brand\'s visibility across ChatGPT, Perplexity, and Google AI.',
+    areaServed: 'Worldwide',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'AI Visibility Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Readiness Audit',
+            description: 'Visibility analysis across 5 AI providers with proprietary scoring.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Technical Optimization',
+            description: 'Schema.org implementation, structured data, and E-E-A-T signals.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI-Optimized Content',
+            description: 'Citation-ready articles, FAQs, and structured Q&A content.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Competitor Intelligence',
+            description: 'Track and benchmark competitor AI visibility across providers.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Question Discovery',
+            description: 'Identify high-value prompts users ask AI about your industry.',
+          },
+        },
+      ],
+    },
+  });
 
   const services = [
     {

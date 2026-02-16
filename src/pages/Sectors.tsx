@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 import { sectors } from '../data/sectors';
 
 export default function Sectors() {
@@ -16,6 +17,18 @@ export default function Sectors() {
     ],
   });
   const { t } = useLanguage();
+
+  useJsonLd({
+    '@type': 'CollectionPage',
+    name: 'AI Visibility by Industry',
+    description: 'Discover how Cited optimizes AI visibility for SaaS, Real Estate, Healthcare, Fintech, E-commerce, and Consulting brands.',
+    url: 'https://citedagency.com/sectors',
+    hasPart: sectors.map((sector) => ({
+      '@type': 'WebPage',
+      name: t(sector.titleKey),
+      url: `https://citedagency.com/sectors/${sector.slug}`,
+    })),
+  });
 
   return (
     <div className="pt-24">

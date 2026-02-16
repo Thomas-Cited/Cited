@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Check, Sparkles, Zap, Crown, ArrowRight, Code, Shield } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
+import { useJsonLd } from '../hooks/use-json-ld';
 
 export default function Pricing() {
   useSeo({
@@ -15,6 +16,50 @@ export default function Pricing() {
     ],
   });
   const { t } = useLanguage();
+
+  useJsonLd({
+    '@graph': [
+      {
+        '@type': 'Product',
+        name: 'Starter Plan',
+        description: 'AI visibility essentials for brands getting started with Generative Engine Optimization. Includes AI Readiness Audit and basic optimization.',
+        brand: { '@type': 'Organization', name: 'Cited Agency' },
+        url: 'https://citedagency.com/pricing',
+        offers: {
+          '@type': 'Offer',
+          price: '2000',
+          priceCurrency: 'USD',
+          url: 'https://citedagency.com/pricing',
+        },
+      },
+      {
+        '@type': 'Product',
+        name: 'Growth Plan',
+        description: 'Comprehensive AI visibility optimization with content creation, competitor intelligence, and monthly reporting for growing brands.',
+        brand: { '@type': 'Organization', name: 'Cited Agency' },
+        url: 'https://citedagency.com/pricing',
+        offers: {
+          '@type': 'Offer',
+          price: '4000',
+          priceCurrency: 'USD',
+          url: 'https://citedagency.com/pricing',
+        },
+      },
+      {
+        '@type': 'Product',
+        name: 'Custom Plan',
+        description: 'Enterprise-grade AI visibility strategy with dedicated support, advanced analytics, and custom integrations for established brands.',
+        brand: { '@type': 'Organization', name: 'Cited Agency' },
+        url: 'https://citedagency.com/pricing',
+        offers: {
+          '@type': 'Offer',
+          price: '6000',
+          priceCurrency: 'USD',
+          url: 'https://citedagency.com/pricing',
+        },
+      },
+    ],
+  });
 
   const plans = [
     {
