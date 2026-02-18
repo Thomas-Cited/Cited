@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Globe, FileCode, Calculator, Mail, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
-import { submitToTally } from '../utils/tally';
+import { submitForm } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
 import { BASE_URL } from '../constants/seo';
@@ -125,7 +125,7 @@ export default function SchemaAudit() {
     if (!email || !result) return;
 
     try {
-      await submitToTally(URLS.tally.schemaReport, {
+      await submitForm('Schema Audit Report', {
         Email: email,
         URL: url,
         Score: String(result.score),

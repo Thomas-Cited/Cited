@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { ArrowRight, Shield, Eye, TrendingDown, Users, CheckCircle, Mail, Globe, User, Loader2, Check, Sparkles, Zap, BarChart3 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { URLS } from '../constants/urls';
-import { submitToTally } from '../utils/tally';
+import { submitForm } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 
 export default function FreeAudit() {
@@ -225,7 +224,7 @@ function AuditForm({ t }: { t: (key: string) => string }) {
     setError('');
 
     try {
-      await submitToTally(URLS.tally.geoScoreLead, {
+      await submitForm('Free Audit Request', {
         Name: formData.name,
         Email: formData.email,
         Website: formData.website,

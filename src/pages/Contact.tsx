@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
-import { submitToTally } from '../utils/tally';
+import { submitForm } from '../utils/tally';
 import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
@@ -102,7 +102,7 @@ export default function Contact() {
     setError('');
 
     try {
-      await submitToTally(URLS.tally.contact, {
+      await submitForm('Contact Form', {
         'First name': formData.firstName,
         'Last name': formData.lastName,
         Email: formData.email,

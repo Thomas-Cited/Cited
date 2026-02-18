@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Clock, Tag, FileText, Loader2, Check, BookOpen, Code, PenTool, BarChart3 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
-import { submitToTally } from '../utils/tally';
+import { submitForm } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
 import { BASE_URL } from '../constants/seo';
@@ -115,7 +115,7 @@ export default function Blog() {
     setIsSubscribing(true);
     setSubscribeError(false);
     try {
-      await submitToTally(URLS.tally.newsletter, {
+      await submitForm('Newsletter Subscription', {
         Email: newsletterEmail,
       });
       setIsSubscribed(true);
