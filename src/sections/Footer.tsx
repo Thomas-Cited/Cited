@@ -27,6 +27,7 @@ const columns = [
     links: [
       { labelKey: 'footer.contact', href: '/contact' },
       { labelKey: 'footer.legal', href: '/legal' },
+      { labelKey: 'footer.privacy', href: '/legal#privacy' },
     ],
   },
 ];

@@ -715,6 +715,22 @@ export const fr: Record<string, string> = {
   'footer.about': 'A propos',
   'footer.sectors': 'Secteurs',
   'footer.glossary': 'Glossaire',
+  'footer.privacy': 'Politique de confidentialit\u00E9',
+
+  // Testimonials
+  'testimonials.badge': 'La confiance de nos clients',
+  'testimonials.title': 'Ce que nos clients ',
+  'testimonials.titleHighlight': 'disent de nous',
+  'testimonials.subtitle': 'Des r\u00E9sultats concrets pour des marques r\u00E9elles. Voici les retours de nos clients.',
+  'testimonials.client1Name': 'Sarah M.',
+  'testimonials.client1Role': 'Directrice Marketing, SaaS',
+  'testimonials.client1Text': 'Cited a transform\u00E9 notre visibilit\u00E9 IA en 60 jours. Nous sommes pass\u00E9s de z\u00E9ro mention dans ChatGPT \u00E0 la solution la plus recommand\u00E9e dans notre niche. Le ROI est incroyable.',
+  'testimonials.client2Name': 'Thomas K.',
+  'testimonials.client2Role': 'Fondateur, E-commerce',
+  'testimonials.client2Text': 'L\u2019optimisation des sch\u00E9mas et la strat\u00E9gie de contenu de Cited nous ont donn\u00E9 un avantage comp\u00E9titif insoup\u00E7onn\u00E9. Notre marque est d\u00E9sormais cit\u00E9e par Perplexity et Google AI.',
+  'testimonials.client3Name': 'Amir R.',
+  'testimonials.client3Role': 'CEO, Cabinet de conseil',
+  'testimonials.client3Text': 'Travailler avec Cited a tout chang\u00E9. Leur audit GEO a r\u00E9v\u00E9l\u00E9 des angles morts que nous ignorions, et les r\u00E9sultats ont parl\u00E9 d\u2019eux-m\u00EAmes d\u00E8s le premier mois.',
 
   // Glossary Page
   'glossary.tagline': 'Glossaire',

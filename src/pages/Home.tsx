@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target } from 'lucide-react';
+import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target, Star, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
@@ -112,6 +112,7 @@ export default function Home() {
       <ServicesPreview />
       <AgencyVsToolsSection />
       <GuaranteeSection />
+      <TestimonialsSection />
       <ProcessSection />
       <CTASection />
     </>
@@ -515,6 +516,87 @@ function GuaranteeSection() {
             {t('guarantee.sectionCta')}
             <ArrowRight className="w-5 h-5" />
           </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function TestimonialsSection() {
+  const { t } = useLanguage();
+
+  const testimonials = [
+    {
+      name: t('testimonials.client1Name'),
+      role: t('testimonials.client1Role'),
+      text: t('testimonials.client1Text'),
+      rating: 5,
+      color: '#007AFF',
+    },
+    {
+      name: t('testimonials.client2Name'),
+      role: t('testimonials.client2Role'),
+      text: t('testimonials.client2Text'),
+      rating: 5,
+      color: '#5856D6',
+    },
+    {
+      name: t('testimonials.client3Name'),
+      role: t('testimonials.client3Role'),
+      text: t('testimonials.client3Text'),
+      rating: 5,
+      color: '#AF52DE',
+    },
+  ];
+
+  return (
+    <section className="py-24 px-6">
+      <div className="max-w-5xl mx-auto">
+        <div className="text-center mb-16">
+          <span className="inline-block px-4 py-1.5 bg-[#f5f5f7] rounded-full text-sm text-[#1d1d1f]/50 mb-4">
+            {t('testimonials.badge')}
+          </span>
+          <h2 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight">
+            {t('testimonials.title')}<span className="gradient-text">{t('testimonials.titleHighlight')}</span>
+          </h2>
+          <p className="text-lg text-[#1d1d1f]/50 max-w-2xl mx-auto">
+            {t('testimonials.subtitle')}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((testimonial, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              className="apple-card p-8"
+            >
+              <Quote className="w-8 h-8 mb-4" style={{ color: testimonial.color, opacity: 0.3 }} />
+              <div className="flex gap-0.5 mb-4">
+                {Array.from({ length: testimonial.rating }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#FF9500] text-[#FF9500]" />
+                ))}
+              </div>
+              <p className="text-sm text-[#1d1d1f]/70 leading-relaxed mb-6">
+                &ldquo;{testimonial.text}&rdquo;
+              </p>
+              <div className="flex items-center gap-3">
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm"
+                  style={{ background: testimonial.color }}
+                >
+                  {testimonial.name.charAt(0)}
+                </div>
+                <div>
+                  <p className="text-sm font-semibold text-[#1d1d1f]">{testimonial.name}</p>
+                  <p className="text-xs text-[#1d1d1f]/40">{testimonial.role}</p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
