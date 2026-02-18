@@ -718,10 +718,10 @@ export const fr: Record<string, string> = {
   'footer.privacy': 'Politique de confidentialit\u00E9',
 
   // Testimonials
-  'testimonials.badge': 'La confiance de nos clients',
+  'testimonials.badge': 'Testimonials clients',
   'testimonials.title': 'Ce que nos clients ',
   'testimonials.titleHighlight': 'disent de nous',
-  'testimonials.subtitle': 'Des r\u00E9sultats concrets pour des marques r\u00E9elles. Voici les retours de nos clients.',
+  'testimonials.subtitle': 'Des r\u00E9sultats concrets pour des marques r\u00E9elles. Lisez les avis et reviews de nos clients.',
   'testimonials.client1Name': 'Sarah M.',
   'testimonials.client1Role': 'Directrice Marketing, SaaS',
   'testimonials.client1Text': 'Cited a transform\u00E9 notre visibilit\u00E9 IA en 60 jours. Nous sommes pass\u00E9s de z\u00E9ro mention dans ChatGPT \u00E0 la solution la plus recommand\u00E9e dans notre niche. Le ROI est incroyable.',

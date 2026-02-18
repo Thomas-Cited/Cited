@@ -718,10 +718,10 @@ export const en: Record<string, string> = {
   'footer.privacy': 'Privacy Policy',
 
   // Testimonials
-  'testimonials.badge': 'Trusted by clients worldwide',
+  'testimonials.badge': 'Client testimonials',
   'testimonials.title': 'What our clients ',
   'testimonials.titleHighlight': 'say about us',
-  'testimonials.subtitle': 'Real results from real brands. Here\'s what our trusted clients have to say about working with Cited.',
+  'testimonials.subtitle': 'Real results from real brands. Read trusted client reviews and see why companies choose Cited for AI visibility.',
   'testimonials.client1Name': 'Sarah M.',
   'testimonials.client1Role': 'Marketing Director, SaaS Company',
   'testimonials.client1Text': 'Cited transformed our AI visibility in just 60 days. We went from zero mentions in ChatGPT to being the top recommended solution in our niche. The ROI has been incredible.',
