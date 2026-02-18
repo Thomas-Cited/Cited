@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { ArrowRight, Shield, Eye, TrendingDown, Users, CheckCircle, Mail, Globe, User, Loader2, Check, Sparkles, Zap, BarChart3 } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
+import { submitToTally } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 
 export default function FreeAudit() {
@@ -224,24 +225,15 @@ function AuditForm({ t }: { t: (key: string) => string }) {
     setError('');
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('Name', formData.name);
-      formDataToSend.append('Email', formData.email);
-      formDataToSend.append('Website', formData.website);
-      formDataToSend.append('Source', 'meta-ads-landing');
-
-      const response = await fetch(URLS.tally.geoScoreLead, {
-        method: 'POST',
-        body: formDataToSend,
+      await submitToTally(URLS.tally.geoScoreLead, {
+        Name: formData.name,
+        Email: formData.email,
+        Website: formData.website,
+        Source: 'free-audit-page',
       });
-
-      if (response.ok || response.redirected) {
-        setIsSubmitted(true);
-      } else {
-        setError(t('freeAudit.formError'));
-      }
-    } catch {
       setIsSubmitted(true);
+    } catch {
+      setError(t('freeAudit.formError'));
     } finally {
       setIsSubmitting(false);
     }

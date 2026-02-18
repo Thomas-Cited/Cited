@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Check, Loader2, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
+import { submitToTally } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
 import { BASE_URL } from '../constants/seo';
@@ -107,21 +108,13 @@ export default function GeoScore() {
         };
       });
 
-      try {
-        const formDataToSend = new FormData();
-        formDataToSend.append('Brand name', formData.brandName);
-        formDataToSend.append('Industry', formData.industry);
-        formDataToSend.append('Website', formData.website);
-        formDataToSend.append('AI Provider', activeProvider);
-        formDataToSend.append('Score', String(score));
-
-        await fetch(URLS.tally.geoScoreLead, {
-          method: 'POST',
-          body: formDataToSend,
-        });
-      } catch {
-        // Silent fail - still show results
-      }
+      submitToTally(URLS.tally.geoScoreLead, {
+        'Brand name': formData.brandName,
+        Industry: formData.industry,
+        Website: formData.website,
+        'AI Provider': activeProvider,
+        Score: String(score),
+      }).catch(() => { /* Silent fail - still show results */ });
 
       setResult({ score, factors });
     } catch {

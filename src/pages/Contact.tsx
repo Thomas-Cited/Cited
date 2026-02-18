@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Send, User, Mail, Globe, DollarSign, Target, Check, Loader2, Calendar, Copy } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
+import { submitToTally } from '../utils/tally';
 import { CONTACT } from '../constants/contact';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
@@ -101,28 +102,17 @@ export default function Contact() {
     setError('');
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('First name', formData.firstName);
-      formDataToSend.append('Last name', formData.lastName);
-      formDataToSend.append('Email', formData.email);
-      formDataToSend.append('Website', formData.website);
-      formDataToSend.append('Budget', formData.budget);
-      formDataToSend.append('Goal', formData.goal);
-
-      const response = await fetch(URLS.tally.contact, {
-        method: 'POST',
-        body: formDataToSend,
+      await submitToTally(URLS.tally.contact, {
+        'First name': formData.firstName,
+        'Last name': formData.lastName,
+        Email: formData.email,
+        Website: formData.website,
+        Budget: formData.budget,
+        Goal: formData.goal,
       });
-
-      if (response.ok || response.redirected) {
-        setIsSubmitted(true);
-      } else {
-        setError(t('contact.error'));
-      }
-    } catch {
-      // Tally redirects on success, which causes a CORS error.
-      // A network error from a redirect is expected success behavior.
       setIsSubmitted(true);
+    } catch {
+      setError(t('contact.error'));
     } finally {
       setIsSubmitting(false);
     }

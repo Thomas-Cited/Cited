@@ -4,7 +4,7 @@
   X-Frame-Options: DENY
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://geo-score-api.vignaudthomas40.workers.dev https://schema-audit-api.vignaudthomas40.workers.dev https://tally.so; frame-src https://calendly.com
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; connect-src 'self' https://geo-score-api.vignaudthomas40.workers.dev https://schema-audit-api.vignaudthomas40.workers.dev https://tally.so; frame-src https://calendly.com https://tally.so
 
 /assets/*
   Cache-Control: public, max-age=31536000, immutable

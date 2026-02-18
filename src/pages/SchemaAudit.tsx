@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Code, Check, ArrowRight, Zap, Shield, TrendingUp, Loader2, Search, Globe, FileCode, Calculator, Mail, AlertCircle } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { URLS } from '../constants/urls';
+import { submitToTally } from '../utils/tally';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
 import { BASE_URL } from '../constants/seo';
@@ -124,15 +125,11 @@ export default function SchemaAudit() {
     if (!email || !result) return;
 
     try {
-      const formDataToSend = new FormData();
-      formDataToSend.append('Email', email);
-      formDataToSend.append('URL', url);
-      formDataToSend.append('Score', String(result.score));
-      formDataToSend.append('Schemas found', result.schemasFound.join(', '));
-
-      await fetch(URLS.tally.schemaReport, {
-        method: 'POST',
-        body: formDataToSend,
+      await submitToTally(URLS.tally.schemaReport, {
+        Email: email,
+        URL: url,
+        Score: String(result.score),
+        'Schemas found': result.schemasFound.join(', '),
       });
       setEmailSent(true);
     } catch {
