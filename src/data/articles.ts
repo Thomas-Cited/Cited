@@ -5,6 +5,10 @@ export interface Article {
   categoryKey: string
   readTimeKey: string
   dateKey: string
+  dateIso: string
+  dateModifiedIso: string
+  keywords: string[]
+  faqs?: Array<{ q: string; a: string }>
   featured: boolean
   content: {
     en: string
@@ -20,6 +24,15 @@ export const articles: Article[] = [
     categoryKey: 'blog.article1Category',
     readTimeKey: 'blog.article1ReadTime',
     dateKey: 'blog.article1Date',
+    dateIso: '2026-01-15',
+    dateModifiedIso: '2026-01-15',
+    keywords: ['GEO', 'Generative Engine Optimization', 'AI visibility', 'AI search optimization', 'ChatGPT SEO', 'AI-powered search'],
+    faqs: [
+      { q: 'What is GEO (Generative Engine Optimization)?', a: 'GEO is the practice of optimizing your online presence so AI-powered search engines like ChatGPT, Perplexity, and Google AI Overviews surface your brand in their responses.' },
+      { q: 'How is GEO different from SEO?', a: 'SEO focuses on ranking in blue links on search engine results pages. GEO focuses on appearing in AI-generated answers by optimizing structured data, entity clarity, and content authority.' },
+      { q: 'Why does GEO matter now?', a: 'Over 40% of online searches now involve AI tools. ChatGPT has 200 million weekly active users and Google AI Overviews appear in 30%+ of search results, making AI visibility essential for brands.' },
+      { q: 'How do you measure GEO success?', a: 'GEO success is measured through citation frequency, citation quality, share of voice compared to competitors, and a composite AI Readiness Score.' },
+    ],
     featured: true,
     content: {
       en: `## What is Generative Engine Optimization?
@@ -191,6 +204,14 @@ Le GEO n'est pas un remplacement du SEO — c'est un complement essentiel. Les m
     categoryKey: 'blog.article2Category',
     readTimeKey: 'blog.article2ReadTime',
     dateKey: 'blog.article2Date',
+    dateIso: '2026-01-12',
+    dateModifiedIso: '2026-01-12',
+    keywords: ['ChatGPT citations', 'AI website ranking', 'how ChatGPT works', 'Retrieval-Augmented Generation', 'AI content sourcing', 'ChatGPT references'],
+    faqs: [
+      { q: 'How does ChatGPT decide which websites to cite?', a: 'ChatGPT uses Retrieval-Augmented Generation (RAG) to retrieve and rank web content based on authority signals, content structure, entity clarity, and information freshness.' },
+      { q: 'Does Schema.org markup help with ChatGPT citations?', a: 'Yes. Schema.org markup provides machine-readable context that helps AI systems understand your content, entities, and relationships, increasing the likelihood of being cited.' },
+      { q: 'Can you guarantee a citation in ChatGPT?', a: 'No. AI responses are non-deterministic. However, optimizing structured data, content quality, and entity consistency significantly increases citation probability.' },
+    ],
     featured: false,
     content: {
       en: `## How Do AI Engines Generate Citations?
@@ -502,6 +523,15 @@ Les marques qui investissent dans la comprehension et l'optimisation des citatio
     categoryKey: 'blog.article3Category',
     readTimeKey: 'blog.article3ReadTime',
     dateKey: 'blog.article3Date',
+    dateIso: '2026-01-08',
+    dateModifiedIso: '2026-01-08',
+    keywords: ['Schema.org', 'structured data', 'JSON-LD', 'AI structured data', 'schema markup', 'AI SEO', 'knowledge graph'],
+    faqs: [
+      { q: 'What is Schema.org and why does it matter for AI?', a: 'Schema.org is a structured data vocabulary that helps AI systems understand your content in machine-readable format. It improves entity recognition, citation accuracy, and AI visibility.' },
+      { q: 'Which Schema.org types should I implement for AI visibility?', a: 'Start with Organization, WebSite, FAQPage, Article, and Product schemas. These cover the essential entity types that AI systems look for when generating responses.' },
+      { q: 'How do I test my Schema.org implementation?', a: 'Use Google Rich Results Test, Schema.org Validator, and test queries on ChatGPT and Perplexity to verify your structured data is being recognized by AI systems.' },
+      { q: 'Does JSON-LD or Microdata work better for AI?', a: 'JSON-LD is the recommended format. It is easier to implement, maintain, and is the preferred format by Google and most AI crawlers.' },
+    ],
     featured: false,
     content: {
       en: `## Why Schema.org Matters for AI Visibility
@@ -1069,6 +1099,14 @@ L'implementation de Schema.org est l'une des activites au meilleur ROI pour la v
     categoryKey: 'blog.article4Category',
     readTimeKey: 'blog.article4ReadTime',
     dateKey: 'blog.article4Date',
+    dateIso: '2026-01-05',
+    dateModifiedIso: '2026-01-05',
+    keywords: ['AI visibility audit', 'brand AI score', 'AI brand presence', 'GEO audit results', 'AI readiness', 'brand visibility benchmark'],
+    faqs: [
+      { q: 'What is an AI visibility audit?', a: 'An AI visibility audit tests your brand across 50-150 queries on major AI providers (ChatGPT, Perplexity, Claude, Gemini, Google AI) to measure how often and how accurately your brand is cited.' },
+      { q: 'What is a good AI visibility score?', a: 'Most brands score between 20-45 out of 100. Scores above 60 indicate strong AI visibility with consistent citations across multiple providers. The average score across 50 audited brands was 31.' },
+      { q: 'Which industries perform best in AI visibility?', a: 'SaaS and technology companies with strong content strategies and structured data tend to score highest, while local services and newer brands typically score lower without optimization.' },
+    ],
     featured: false,
     content: {
       en: `## Why We Audited 50 Brands
@@ -1348,6 +1386,14 @@ Les marques qui prennent ces mesures maintenant verront des resultats mesurables
     categoryKey: 'blog.article5Category',
     readTimeKey: 'blog.article5ReadTime',
     dateKey: 'blog.article5Date',
+    dateIso: '2026-01-02',
+    dateModifiedIso: '2026-01-02',
+    keywords: ['AI vs SEO', 'future of search', 'AI search trends', 'SEO evolution', 'generative search', 'zero-click search'],
+    faqs: [
+      { q: 'Is SEO dead because of AI search?', a: 'No. SEO is evolving, not dying. Traditional SEO remains important for Google rankings, but brands now need GEO (Generative Engine Optimization) alongside SEO to capture AI-driven traffic.' },
+      { q: 'How will AI change search in the next 5 years?', a: 'AI will become the primary interface for information discovery. Expect conversational search to dominate, with AI-generated answers replacing many traditional search result clicks.' },
+      { q: 'Should I invest in SEO or GEO?', a: 'Both. SEO and GEO are complementary strategies. Strong SEO foundations (content quality, technical health, authority) also benefit AI visibility, while GEO adds AI-specific optimizations.' },
+    ],
     featured: false,
     content: {
       en: `## The Search Landscape Is Splitting in Two
@@ -1617,6 +1663,14 @@ La question n'est pas de savoir si l'IA va transformer la recherche — c'est de
     categoryKey: 'blog.article6Category',
     readTimeKey: 'blog.article6ReadTime',
     dateKey: 'blog.article6Date',
+    dateIso: '2025-12-28',
+    dateModifiedIso: '2025-12-28',
+    keywords: ['E-E-A-T', 'LLM optimization', 'Google E-E-A-T', 'AI trust signals', 'expertise authority trustworthiness', 'content quality AI'],
+    faqs: [
+      { q: 'What does E-E-A-T stand for?', a: 'E-E-A-T stands for Experience, Expertise, Authoritativeness, and Trustworthiness. It is Google\'s framework for evaluating content quality, and LLMs use similar signals when deciding which sources to cite.' },
+      { q: 'How do LLMs evaluate E-E-A-T signals?', a: 'LLMs assess E-E-A-T through author credentials, domain authority, citation patterns, content depth, data-backed claims, and consistency across multiple sources.' },
+      { q: 'How can I improve my E-E-A-T for AI visibility?', a: 'Add author bylines with credentials, cite authoritative sources, include original data and research, maintain consistent entity information across platforms, and build topical authority in your domain.' },
+    ],
     featured: false,
     content: {
       en: `## What Is E-E-A-T and Why Does It Matter for AI?
@@ -2126,6 +2180,14 @@ L'amelioration de ces metriques est directement correlee a une meilleure visibil
     categoryKey: 'blog.article7Category',
     readTimeKey: 'blog.article7ReadTime',
     dateKey: 'blog.article7Date',
+    dateIso: '2026-02-10',
+    dateModifiedIso: '2026-02-10',
+    keywords: ['AI visibility guarantees', 'GEO transparency', 'AI marketing claims', 'honest AI optimization', 'FTC AI advertising', 'GEO limitations'],
+    faqs: [
+      { q: 'Can anyone guarantee specific AI citations?', a: 'No. AI responses are non-deterministic and influenced by factors outside any optimizer\'s control. Legitimate GEO services optimize inputs (structured data, content, entity consistency) to increase citation probability.' },
+      { q: 'How should AI visibility services be measured?', a: 'Measure optimization inputs (Schema.org implementation, content structure, entity consistency) and track directional trends in AI citations over time, rather than expecting guaranteed specific outcomes.' },
+      { q: 'What are the FTC guidelines for AI marketing claims?', a: 'The FTC requires substantiation for marketing claims. Promising specific AI outputs that no one controls is inherently misleading. Legitimate services communicate optimization capabilities with clear limitations.' },
+    ],
     featured: false,
     content: {
       en: `## How LLMs Select Information
@@ -2320,8 +2382,6 @@ C'est a cela que ressemble une optimisation honnete de la visibilite IA.
 *Vous voulez comprendre votre visibilite IA actuelle ? [Obtenez un audit gratuit](/ai-readiness) et voyez ou vous en etes — en toute transparence sur ce que le score signifie et ce qu'il ne signifie pas.*`,
     },
   },
-]
-
   {
     slug: 'chatgpt-ads-ai-visibility',
     titleKey: 'blog.article8Title',
@@ -2329,6 +2389,15 @@ C'est a cela que ressemble une optimisation honnete de la visibilite IA.
     categoryKey: 'blog.article8Category',
     readTimeKey: 'blog.article8ReadTime',
     dateKey: 'blog.article8Date',
+    dateIso: '2026-02-20',
+    dateModifiedIso: '2026-02-20',
+    keywords: ['ChatGPT ads', 'OpenAI advertising', 'AI paid visibility', 'ChatGPT sponsored', 'AI ads 2026', 'GEO vs paid AI'],
+    faqs: [
+      { q: 'Does ChatGPT now show ads?', a: 'Yes. As of February 2026, OpenAI is testing sponsored banner placements at the bottom of ChatGPT responses for Free and Go tier users. Ads are labeled as Sponsored and do not affect organic answers.' },
+      { q: 'Do ChatGPT ads affect organic AI visibility?', a: 'No. OpenAI has stated that ads do not influence organic responses. Ads appear below the organic answer as a separate sponsored section, creating a two-tier system similar to Google Search.' },
+      { q: 'Should brands invest in organic GEO or ChatGPT ads?', a: 'Both. Organic AI visibility compounds over time and builds lasting authority. Paid ads provide immediate visibility but stop when the budget runs out. The strongest strategy combines both.' },
+      { q: 'Who sees ads in ChatGPT?', a: 'Ads only appear for Free and Go tier users (the $8/month plan). Plus, Pro, Business, Enterprise, and Education subscribers do not see ads.' },
+    ],
     featured: false,
     content: {
       en: `## ChatGPT Now Shows Ads. Here's What That Means.

@@ -28,45 +28,54 @@ const STATIC_PAGES = [
   { path: '/legal', priority: '0.3', changefreq: 'yearly' },
 ]
 
-function extractSlugsFromArticlesFile() {
+function extractArticlesFromFile() {
   const articlesPath = resolve(ROOT_DIR, 'src/data/articles.ts')
   const content = readFileSync(articlesPath, 'utf-8')
 
   const slugRegex = /slug:\s*['"]([^'"]+)['"]/g
+  const dateModifiedRegex = /dateModifiedIso:\s*['"]([^'"]+)['"]/g
+
   const slugs = []
   let match
-
   while ((match = slugRegex.exec(content)) !== null) {
     slugs.push(match[1])
+  }
+
+  const dates = []
+  while ((match = dateModifiedRegex.exec(content)) !== null) {
+    dates.push(match[1])
   }
 
   if (slugs.length === 0) {
     throw new Error('No article slugs found in src/data/articles.ts')
   }
 
-  return slugs
+  return slugs.map((slug, i) => ({
+    slug,
+    lastmod: dates[i] || new Date().toISOString().split('T')[0],
+  }))
 }
 
 const TODAY = new Date().toISOString().split('T')[0]
 
-function buildUrlEntry(loc, priority, changefreq) {
+function buildUrlEntry(loc, priority, changefreq, lastmod) {
   return [
     '  <url>',
     `    <loc>${loc}</loc>`,
-    `    <lastmod>${TODAY}</lastmod>`,
+    `    <lastmod>${lastmod}</lastmod>`,
     `    <priority>${priority}</priority>`,
     `    <changefreq>${changefreq}</changefreq>`,
     '  </url>',
   ].join('\n')
 }
 
-function generateSitemap(slugs) {
+function generateSitemap(articles) {
   const staticEntries = STATIC_PAGES.map((page) =>
-    buildUrlEntry(`${BASE_URL}${page.path}`, page.priority, page.changefreq)
+    buildUrlEntry(`${BASE_URL}${page.path}`, page.priority, page.changefreq, TODAY)
   )
 
-  const articleEntries = slugs.map((slug) =>
-    buildUrlEntry(`${BASE_URL}/blog/${slug}`, '0.7', 'monthly')
+  const articleEntries = articles.map(({ slug, lastmod }) =>
+    buildUrlEntry(`${BASE_URL}/blog/${slug}`, '0.7', 'monthly', lastmod)
   )
 
   return [
@@ -80,16 +89,16 @@ function generateSitemap(slugs) {
 }
 
 try {
-  const slugs = extractSlugsFromArticlesFile()
-  const sitemap = generateSitemap(slugs)
+  const articles = extractArticlesFromFile()
+  const sitemap = generateSitemap(articles)
   const outputPath = resolve(ROOT_DIR, 'public/sitemap.xml')
 
   writeFileSync(outputPath, sitemap, 'utf-8')
 
   console.log(`Sitemap generated at ${outputPath}`)
   console.log(`  Static pages: ${STATIC_PAGES.length}`)
-  console.log(`  Article pages: ${slugs.length}`)
-  console.log(`  Total URLs: ${STATIC_PAGES.length + slugs.length}`)
+  console.log(`  Article pages: ${articles.length}`)
+  console.log(`  Total URLs: ${STATIC_PAGES.length + articles.length}`)
 } catch (error) {
   console.error('Failed to generate sitemap:', error.message)
   process.exit(1)

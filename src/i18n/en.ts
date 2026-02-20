@@ -461,6 +461,7 @@ export const en: Record<string, string> = {
   'blog.resource4Title': 'Competitor Analysis Template',
   'blog.resource4Desc': 'Benchmark your AI visibility against competitors and identify actionable gaps.',
 
+  'blog.authorBy': 'By',
   'blog.ctaTitle': 'Ready to be visible in AI answers?',
   'blog.ctaSubtitle': 'Book a free consultation and discover how we can improve your brand\'s visibility across ChatGPT, Perplexity, and Google AI.',
   'blog.ctaButton': 'Book a free call',

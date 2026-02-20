@@ -461,6 +461,7 @@ export const fr: Record<string, string> = {
   'blog.resource4Title': 'Template analyse concurrentielle',
   'blog.resource4Desc': '\u00C9valuez votre visibilit\u00E9 IA par rapport \u00E0 vos concurrents et identifiez les opportunit\u00E9s.',
 
+  'blog.authorBy': 'Par',
   'blog.ctaTitle': 'Pr\u00EAt \u00E0 \u00EAtre visible dans les r\u00E9ponses IA ?',
   'blog.ctaSubtitle': 'R\u00E9servez une consultation gratuite et d\u00E9couvrez comment nous pouvons am\u00E9liorer la visibilit\u00E9 de votre marque sur ChatGPT, Perplexity et Google AI.',
   'blog.ctaButton': 'R\u00E9server un appel gratuit',

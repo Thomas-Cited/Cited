@@ -21,7 +21,10 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const saved = localStorage.getItem('language');
-      if (saved === 'en' || saved === 'fr') setLanguageState(saved);
+      if (saved === 'en' || saved === 'fr') {
+        setLanguageState(saved);
+        document.documentElement.lang = saved;
+      }
     } catch {
       // localStorage unavailable
     }
@@ -29,6 +32,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   const setLanguage = useCallback((lang: Language) => {
     setLanguageState(lang);
+    document.documentElement.lang = lang;
     try {
       localStorage.setItem('language', lang);
     } catch {

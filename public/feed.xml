@@ -5,7 +5,7 @@
     <link>https://citedagency.com/blog</link>
     <description>AI Visibility, GEO, and Generative Engine Optimization insights from Cited Agency.</description>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Feb 2026 23:19:54 GMT</lastBuildDate>
+    <lastBuildDate>Fri, 20 Feb 2026 14:44:06 GMT</lastBuildDate>
     <atom:link href="https://citedagency.com/feed.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is Generative Engine Optimization (GEO)?</title>
@@ -13,6 +13,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/what-is-geo</guid>
       <description>Discover how GEO differs from traditional SEO and why it matters for your business in the AI era.</description>
       <pubDate>Wed, 14 Jan 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>AI Basics</category>
     </item>
     <item>
       <title>How ChatGPT Cites Websites: A Technical Deep Dive</title>
@@ -20,6 +22,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/how-chatgpt-cites-websites</guid>
       <description>Understanding the mechanisms behind AI citation and how to optimize your content for maximum visibility.</description>
       <pubDate>Sun, 11 Jan 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Technical</category>
     </item>
     <item>
       <title>Schema.org for AI: The Complete Guide</title>
@@ -27,6 +31,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/schema-org-for-ai</guid>
       <description>Learn how to implement structured data that helps AI systems understand and cite your content.</description>
       <pubDate>Wed, 07 Jan 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Implementation</category>
     </item>
     <item>
       <title>What We Found Auditing 50 Brands for AI Visibility</title>
@@ -34,6 +40,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/what-we-found-auditing-50-brands</guid>
       <description>Key takeaways from analyzing real brands across industries — and why most are invisible to AI.</description>
       <pubDate>Sun, 04 Jan 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Case Study</category>
     </item>
     <item>
       <title>The Future of Search: AI vs Traditional SEO</title>
@@ -41,6 +49,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/future-of-search-ai-vs-seo</guid>
       <description>Why traditional SEO is no longer enough and how to prepare for the AI-first future.</description>
       <pubDate>Thu, 01 Jan 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Industry</category>
     </item>
     <item>
       <title>E-E-A-T Optimization for Large Language Models</title>
@@ -48,6 +58,8 @@
       <guid isPermaLink="true">https://citedagency.com/blog/eeat-optimization-for-llms</guid>
       <description>How to build authority signals that AI systems recognize and trust.</description>
       <pubDate>Sat, 27 Dec 2025 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Technical</category>
     </item>
     <item>
       <title>What AI Visibility Can and Cannot Guarantee</title>
@@ -55,6 +67,17 @@
       <guid isPermaLink="true">https://citedagency.com/blog/what-ai-visibility-can-and-cannot-guarantee</guid>
       <description>An honest look at how LLMs select information, what optimization can achieve, and why no one can guarantee AI outputs.</description>
       <pubDate>Mon, 09 Feb 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>AI Basics</category>
+    </item>
+    <item>
+      <title>ChatGPT Now Shows Ads: What It Means for Your Brand\</title>
+      <link>https://citedagency.com/blog/chatgpt-ads-ai-visibility</link>
+      <guid isPermaLink="true">https://citedagency.com/blog/chatgpt-ads-ai-visibility</guid>
+      <description>OpenAI is testing paid ads inside ChatGPT. Here\</description>
+      <pubDate>Thu, 19 Feb 2026 23:00:00 GMT</pubDate>
+      <author>contact@citedagency.com (Thomas Vignaud)</author>
+      <category>Industry News</category>
     </item>
   </channel>
 </rss>

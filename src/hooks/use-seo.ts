@@ -6,10 +6,14 @@ interface SeoProps {
   description: string
   path: string
   noindex?: boolean
+  ogType?: string
+  articlePublishedTime?: string
+  articleModifiedTime?: string
+  articleSection?: string
   breadcrumbs?: Array<{ name: string; path: string }>
 }
 
-export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoProps) {
+export function useSeo({ title, description, path, noindex, ogType, articlePublishedTime, articleModifiedTime, articleSection, breadcrumbs }: SeoProps) {
   useEffect(() => {
     document.title = title
 
@@ -33,6 +37,11 @@ export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoPr
     const ogUrl = document.querySelector('meta[property="og:url"]')
     if (ogUrl) {
       ogUrl.setAttribute('content', fullUrl)
+    }
+
+    const ogTypeMeta = document.querySelector('meta[property="og:type"]')
+    if (ogTypeMeta) {
+      ogTypeMeta.setAttribute('content', ogType ?? 'website')
     }
 
     const canonical = document.querySelector('link[rel="canonical"]')
@@ -77,6 +86,29 @@ export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoPr
       robotsMeta.remove()
     }
 
+    // Article meta tags (Open Graph article namespace)
+    const dynamicMetas: HTMLMetaElement[] = []
+    const articleMetaEntries: Array<[string, string | undefined]> = [
+      ['article:published_time', articlePublishedTime],
+      ['article:modified_time', articleModifiedTime],
+      ['article:section', articleSection],
+    ]
+
+    for (const [property, content] of articleMetaEntries) {
+      let meta = document.querySelector(`meta[property="${property}"]`) as HTMLMetaElement | null
+      if (content) {
+        if (!meta) {
+          meta = document.createElement('meta')
+          meta.setAttribute('property', property)
+          document.head.appendChild(meta)
+          dynamicMetas.push(meta)
+        }
+        meta.setAttribute('content', content)
+      } else if (meta) {
+        meta.remove()
+      }
+    }
+
     let breadcrumbScript: HTMLScriptElement | null = null
     if (breadcrumbs && breadcrumbs.length > 0) {
       const items = breadcrumbs.map((crumb, index) => ({
@@ -100,6 +132,9 @@ export function useSeo({ title, description, path, noindex, breadcrumbs }: SeoPr
       if (breadcrumbScript) {
         document.head.removeChild(breadcrumbScript)
       }
+      for (const meta of dynamicMetas) {
+        meta.remove()
+      }
     }
-  }, [title, description, path, noindex, breadcrumbs])
+  }, [title, description, path, noindex, ogType, articlePublishedTime, articleModifiedTime, articleSection, breadcrumbs])
 }

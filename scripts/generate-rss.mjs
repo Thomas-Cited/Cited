@@ -17,9 +17,14 @@ function extractArticlesFromFile() {
   for (const block of articleBlocks) {
     const slugMatch = block.match(/['"]([^'"]+)['"]/)
     const titleKeyMatch = block.match(/titleKey:\s*['"]blog\.article(\d+)Title['"]/)
+    const categoryKeyMatch = block.match(/categoryKey:\s*['"]blog\.article(\d+)Category['"]/)
 
     if (slugMatch && titleKeyMatch) {
-      articles.push({ slug: slugMatch[1], num: titleKeyMatch[1] })
+      articles.push({
+        slug: slugMatch[1],
+        num: titleKeyMatch[1],
+        catNum: categoryKeyMatch ? categoryKeyMatch[1] : titleKeyMatch[1],
+      })
     }
   }
 
@@ -35,7 +40,7 @@ function extractTranslations() {
   const content = readFileSync(enPath, 'utf-8')
 
   const translations = {}
-  const regex = /'(blog\.article\d+(?:Title|Excerpt|Date))':\s*'([^']*)'/g
+  const regex = /'(blog\.article\d+(?:Title|Excerpt|Date|Category))':\s*'([^']*)'/g
   let match
 
   while ((match = regex.exec(content)) !== null) {
@@ -57,22 +62,30 @@ function escapeXml(str) {
 function generateRss(articles, translations) {
   const now = new Date().toUTCString()
 
-  const items = articles.map(({ slug, num }) => {
+  const items = articles.map(({ slug, num, catNum }) => {
     const title = translations[`blog.article${num}Title`] || slug
     const excerpt = translations[`blog.article${num}Excerpt`] || ''
     const dateStr = translations[`blog.article${num}Date`] || ''
+    const category = translations[`blog.article${catNum}Category`] || ''
 
     const pubDate = dateStr ? new Date(dateStr).toUTCString() : now
 
-    return [
+    const lines = [
       '    <item>',
       `      <title>${escapeXml(title)}</title>`,
       `      <link>${BASE_URL}/blog/${slug}</link>`,
       `      <guid isPermaLink="true">${BASE_URL}/blog/${slug}</guid>`,
       `      <description>${escapeXml(excerpt)}</description>`,
       `      <pubDate>${pubDate}</pubDate>`,
-      '    </item>',
-    ].join('\n')
+      `      <author>contact@citedagency.com (Thomas Vignaud)</author>`,
+    ]
+
+    if (category) {
+      lines.push(`      <category>${escapeXml(category)}</category>`)
+    }
+
+    lines.push('    </item>')
+    return lines.join('\n')
   })
 
   return [

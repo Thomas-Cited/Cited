@@ -22,6 +22,10 @@ export default function BlogArticle() {
     title: article ? `${t(article.titleKey)} | Cited. Blog` : 'Article Not Found | Cited.',
     description: article ? t(article.excerptKey) : '',
     path: article ? `/blog/${article.slug}` : '/blog',
+    ogType: article ? 'article' : undefined,
+    articlePublishedTime: article?.dateIso,
+    articleModifiedTime: article?.dateModifiedIso,
+    articleSection: article ? t(article.categoryKey) : undefined,
     breadcrumbs: article
       ? [
           { name: 'Home', path: '/' },
@@ -40,21 +44,41 @@ export default function BlogArticle() {
       description: t(article.excerptKey),
       image: `${BASE_URL}/og-image.png`,
       wordCount,
-      keywords: ['AI Visibility', 'GEO', 'Generative Engine Optimization'],
+      keywords: article.keywords,
       articleSection: t(article.categoryKey),
       mainEntityOfPage: { '@type': 'WebPage', '@id': `${BASE_URL}/blog/${article.slug}` },
-      author: { '@type': 'Person', name: 'Thomas Vignaud', url: `${BASE_URL}/about` },
+      author: {
+        '@type': 'Person',
+        name: 'Thomas Vignaud',
+        url: `${BASE_URL}/about`,
+        sameAs: 'https://www.linkedin.com/in/thomas-vignaud-447361134/',
+      },
       publisher: {
         '@type': 'Organization',
         name: 'Cited',
         url: BASE_URL,
         logo: { '@type': 'ImageObject', url: `${BASE_URL}/favicon.svg` },
       },
-      datePublished: t(article.dateKey),
-      dateModified: t(article.dateKey),
+      datePublished: article.dateIso,
+      dateModified: article.dateModifiedIso,
       url: `${BASE_URL}/blog/${article.slug}`,
     };
   }, [article, t, language]));
+
+  useJsonLd(useMemo(() => {
+    if (!article?.faqs || article.faqs.length === 0) return null;
+    return {
+      '@type': 'FAQPage',
+      mainEntity: article.faqs.map((faq) => ({
+        '@type': 'Question',
+        name: faq.q,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.a,
+        },
+      })),
+    };
+  }, [article]));
 
   if (!article) {
     return <NotFound />;
@@ -89,15 +113,22 @@ export default function BlogArticle() {
                 <Clock className="w-3.5 h-3.5" />
                 {t(article.readTimeKey)}
               </span>
-              <span className="inline-flex items-center gap-1.5 text-sm text-[#1d1d1f]/50">
+              <time dateTime={article.dateIso} className="inline-flex items-center gap-1.5 text-sm text-[#1d1d1f]/50">
                 <Calendar className="w-3.5 h-3.5" />
                 {t(article.dateKey)}
-              </span>
+              </time>
             </div>
 
-            <h1 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-8 tracking-tight leading-tight">
+            <h1 className="text-4xl sm:text-5xl font-bold text-[#1d1d1f] mb-4 tracking-tight leading-tight">
               {t(article.titleKey)}
             </h1>
+
+            <p className="text-sm text-[#1d1d1f]/50 mb-8">
+              {t('blog.authorBy')}{' '}
+              <a href="/about" rel="author" className="text-[#007AFF] hover:underline">
+                Thomas Vignaud
+              </a>
+            </p>
           </motion.div>
 
           <motion.div
