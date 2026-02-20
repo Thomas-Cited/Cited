@@ -1,3 +1,4 @@
 /fr/*  /  301
 /geo-score  /ai-readiness  301
+/contracts/*  /contracts/:splat  200
 /*  /index.html  200
