@@ -441,6 +441,11 @@ export const en: Record<string, string> = {
   'blog.article7Category': 'AI Basics',
   'blog.article7ReadTime': '9 min read',
   'blog.article7Date': 'Feb 10, 2026',
+  'blog.article8Title': 'ChatGPT Now Shows Ads: What It Means for Your Brand\'s AI Visibility',
+  'blog.article8Excerpt': 'OpenAI is testing paid ads inside ChatGPT. Here\'s how it works, what it means for organic AI visibility, and why brands need to act now.',
+  'blog.article8Category': 'Industry News',
+  'blog.article8ReadTime': '8 min read',
+  'blog.article8Date': 'Feb 20, 2026',
   'blog.backToBlog': 'Back to blog',
   // Blog — Resources
   'blog.resourcesTitle': 'Free Resources',

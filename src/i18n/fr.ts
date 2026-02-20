@@ -441,6 +441,11 @@ export const fr: Record<string, string> = {
   'blog.article7Category': 'Bases IA',
   'blog.article7ReadTime': '9 min de lecture',
   'blog.article7Date': '10 f\u00E9v. 2026',
+  'blog.article8Title': 'ChatGPT affiche des publicit\u00E9s : ce que \u00E7a change pour la visibilit\u00E9 IA de votre marque',
+  'blog.article8Excerpt': 'OpenAI teste des publicit\u00E9s payantes dans ChatGPT. Voici comment \u00E7a fonctionne, l\'impact sur la visibilit\u00E9 IA organique, et pourquoi les marques doivent agir maintenant.',
+  'blog.article8Category': 'Actualit\u00E9 IA',
+  'blog.article8ReadTime': '8 min de lecture',
+  'blog.article8Date': '20 f\u00E9v. 2026',
   'blog.backToBlog': 'Retour au blog',
   // Blog — Resources
   'blog.resourcesTitle': 'Ressources gratuites',
