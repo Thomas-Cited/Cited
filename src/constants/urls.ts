@@ -1,5 +1,5 @@
 export const URLS = {
-  calendly: 'https://calendly.com/vignaudthomas40/30min',
+  calendly: 'https://calendly.com/contact-citedagency/30min',
   whatsapp: 'https://wa.me/33617376439',
   api: {
     geoScore: 'https://geo-score-api.vignaudthomas40.workers.dev',
