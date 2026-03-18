@@ -723,20 +723,6 @@ export const en: Record<string, string> = {
   'footer.glossary': 'Glossary',
   'footer.privacy': 'Privacy Policy',
 
-  // Testimonials
-  'testimonials.badge': 'Client testimonials',
-  'testimonials.title': 'What our clients ',
-  'testimonials.titleHighlight': 'say about us',
-  'testimonials.subtitle': 'Real results from real brands. Read trusted client reviews and see why companies choose Cited for AI visibility.',
-  'testimonials.client1Name': 'Sarah M.',
-  'testimonials.client1Role': 'Marketing Director, SaaS Company',
-  'testimonials.client1Text': 'Cited transformed our AI visibility in just 60 days. We went from zero mentions in ChatGPT to being the top recommended solution in our niche. The ROI has been incredible.',
-  'testimonials.client2Name': 'Thomas K.',
-  'testimonials.client2Role': 'Founder, E-commerce Brand',
-  'testimonials.client2Text': 'The schema optimization and content strategy from Cited gave us a competitive edge we didn\'t know existed. Our brand is now consistently cited by Perplexity and Google AI.',
-  'testimonials.client3Name': 'Amir R.',
-  'testimonials.client3Role': 'CEO, Consulting Firm',
-  'testimonials.client3Text': 'Working with Cited was a game-changer. Their GEO audit revealed blind spots we had no idea about, and the results spoke for themselves within the first month.',
 
   // 404
   // Glossary Page
