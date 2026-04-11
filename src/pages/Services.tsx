@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Search, Settings, FileText, Users, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake, MessageCircleQuestion } from 'lucide-react';
+import { Search, Settings, FileText, Users, ArrowRight, Check, BookOpen, GraduationCap, Newspaper, Handshake, MessageCircleQuestion, Megaphone } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
 import { useJsonLd } from '../hooks/use-json-ld';
@@ -151,6 +151,21 @@ export default function Services() {
         t('servicesPage.service5Feature4'),
         t('servicesPage.service5Feature5'),
         t('servicesPage.service5Feature6'),
+      ],
+    },
+    {
+      icon: Megaphone,
+      title: t('servicesPage.service6Title'),
+      subtitle: t('servicesPage.service6Subtitle'),
+      description: t('servicesPage.service6Desc'),
+      color: '#FF2D55',
+      features: [
+        t('servicesPage.service6Feature1'),
+        t('servicesPage.service6Feature2'),
+        t('servicesPage.service6Feature3'),
+        t('servicesPage.service6Feature4'),
+        t('servicesPage.service6Feature5'),
+        t('servicesPage.service6Feature6'),
       ],
     },
   ];

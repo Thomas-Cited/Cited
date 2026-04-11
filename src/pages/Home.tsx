@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target } from 'lucide-react';
+import { ArrowRight, MessageCircle, Eye, TrendingDown, Users, Search, Settings, PenTool, Shield, CheckCircle, X, BarChart3, Target, Megaphone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '../contexts/LanguageContext';
 import { useSeo } from '../hooks/use-seo';
@@ -242,6 +242,7 @@ function ServicesPreview() {
     { icon: Search, title: t('services.service1Title'), desc: t('services.service1Subtitle'), color: '#007AFF', features: [t('services.service1Feature1'), t('services.service1Feature2'), t('services.service1Feature3'), t('services.service1Feature4')] },
     { icon: Settings, title: t('services.service2Title'), desc: t('services.service2Subtitle'), color: '#5856D6', features: [t('services.service2Feature1'), t('services.service2Feature2'), t('services.service2Feature3'), t('services.service2Feature4')] },
     { icon: PenTool, title: t('services.service3Title'), desc: t('services.service3Subtitle'), color: '#AF52DE', features: [t('services.service3Feature1'), t('services.service3Feature2'), t('services.service3Feature3'), t('services.service3Feature4')] },
+    { icon: Megaphone, title: t('services.service4Title'), desc: t('services.service4Subtitle'), color: '#FF2D55', features: [t('services.service4Feature1'), t('services.service4Feature2'), t('services.service4Feature3'), t('services.service4Feature4')] },
   ];
 
   return (
@@ -254,7 +255,7 @@ function ServicesPreview() {
           </h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
